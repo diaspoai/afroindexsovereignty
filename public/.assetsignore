@@ -1,2 +1,5 @@
-_worker.js
-_routes.json
+# Cloudflare Pages reads this file from dist/ to know which built files to
+# exclude from its static-asset serving layer. IAFS deploys as a pure static
+# site (no Cloudflare adapter, no Workers) — nothing to exclude — so this
+# file is intentionally empty.
+# Astro copies public/ verbatim into dist/, so this lands at dist/.assetsignore.

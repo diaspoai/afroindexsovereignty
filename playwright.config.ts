@@ -9,11 +9,9 @@ export default defineConfig({
     trace: "retain-on-failure",
   },
   webServer: {
-    // The merged Cloudflare adapter disables `astro preview` and requires
-    // wrangler for its own preview path. For E2E we don't need the Worker
-    // runtime — every page is prerendered to dist/ — so we serve dist/
-    // with a plain static file server. Avoids pulling wrangler into tests.
-    command: "npm run build && npx --yes http-server dist -p 4321 -a 127.0.0.1 -s --no-dotfiles",
+    // Pure-static build (no Cloudflare adapter) → astro preview works directly.
+    // No wrangler, no http-server workaround.
+    command: "npm run build && npx astro preview --port 4321 --host 127.0.0.1",
     url: "http://127.0.0.1:4321",
     reuseExistingServer: !process.env.CI,
     timeout: 180_000,

@@ -17,16 +17,13 @@
     "test:unit": "vitest run --dir scripts",
     "dev": "astro dev",
     "build": "npm run build:data && astro build",
-    "preview": "npm run build && wrangler dev",
+    "preview": "astro preview",
     "lint:composite": "bash .claude/hooks/forbid-composite.sh --scan",
     "gen:africa": "tsx scripts/gen-africa-paths.ts",
     "e2e": "playwright test",
-    "ci": "npm run validate && npm run normalize && npm run test && npm run build && npm run e2e",
-    "deploy": "npm run build && wrangler deploy",
-    "cf-typegen": "wrangler types"
+    "ci": "npm run validate && npm run normalize && npm run test && npm run build && npm run e2e"
   },
   "dependencies": {
-    "@astrojs/cloudflare": "11",
     "@astrojs/tailwind": "^5.1.0",
     "astro": "^4.16.0",
     "d3": "^7.9.0",
@@ -46,7 +43,6 @@
     "tsx": "^4.19.0",
     "typescript": "^5.6.0",
     "vitest": "^2.1.0",
-    "world-atlas": "^2.0.2",
-    "wrangler": "^4.105.0"
+    "world-atlas": "^2.0.2"
   }
 }
