@@ -15,23 +15,27 @@ const { locale, number, title, body, href, type } = Astro.props;
 
 <a
   href={localePath(locale, href)}
-  class="iafs-commitment relative block border border-ink/15 p-6 bg-white/60 hover:bg-white hover:border-ink/40 transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ink focus-visible:ring-offset-2 focus-visible:ring-offset-paper cursor-pointer h-full"
+  class="iafs-commitment group relative block bg-surface border border-border p-6 rounded-md
+         hover:border-axisA hover:-translate-y-0.5
+         focus-visible:border-axisA
+         active:translate-y-0
+         transition-all duration-200 cursor-pointer h-full"
 >
-  <span class="absolute top-4 right-4 font-mono text-[10px] text-ink/40 uppercase tracking-widest">
+  <span class="absolute top-4 right-4 font-mono text-xs text-dim uppercase tracking-widest">
     {number}
   </span>
 
   {type && (
-    <span
-      class={`absolute top-4 right-14 ${type === "HARD" ? "type-hard" : "type-interp"} text-ink/40 text-xs`}
-      aria-label={type === "HARD" ? "HARD indicator family" : "Interpretive indicator family"}
-    ></span>
+    <span class={`absolute top-4 right-14 ${type === "HARD" ? "type-hard" : "type-interp"} text-dim text-xs`}
+          aria-label={type === "HARD" ? "HARD indicator family" : "Interpretive indicator family"}></span>
   )}
 
-  <h3 class="font-serif text-xl mb-3 leading-tight">{title}</h3>
-  <p class="text-sm text-ink/75 leading-snug max-w-prose">{body}</p>
+  <h3 class="font-serif text-lg mb-3 leading-tight pr-16 group-hover:text-axisA transition-colors">
+    {title}
+  </h3>
+  <p class="text-sm text-muted leading-snug max-w-prose mb-4">{body}</p>
 
-  <span class="mt-4 inline-flex items-center gap-1 font-mono text-xs text-ink/60 group-hover:text-ink">
+  <span class="inline-flex items-center gap-1 font-mono text-xs text-muted group-hover:text-axisA transition-colors">
     {locale === "fr" ? "Lire" : "Read"}
     <svg width="10" height="10" viewBox="0 0 10 10" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="1.5">
       <path d="M1 5h8M6 2l3 3-3 3" stroke-linecap="square" />

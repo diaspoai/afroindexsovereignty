@@ -1,120 +1,279 @@
 ---
 /**
- * 2D Africa map with the 12 CFA-franc states highlighted.
- * Pure SVG, no runtime JS — paths pre-projected at build time via
- * scripts/gen-africa-paths.ts (Equal Earth, equal-area).
+ * IAFS — interactive 2D Africa map (v2.1).
  *
- * Visual rules:
- *   - non-CFA Africa: faint ink hairline, no fill (the basemap is quiet)
- *   - 12 CFA states: translucent earth fill, bold ink outline
- *   - UEMOA states get a subtle indigo tick; CEMAC ochre
- *     (this is monetary zone, not axis — the two-axis non-fusion rule holds)
- *   - hover/focus reveals an HTML tooltip via CSS (no JS), name + zone + "data forthcoming"
+ * BIG. The 12 CFA states fill the frame because the Equal Earth projection
+ * is FITTED to the CFA bounding box (gen-africa-paths.ts). Neighboring
+ * African countries form a quiet silhouette backdrop (uniform fill, no
+ * per-country borders — the "grey lines" treatment the maintainer rejected
+ * is gone). Non-African countries are off-canvas.
  *
- * Phase 2: states are NOT clickable (no real data yet — only ZZA/ZZB dummies live elsewhere).
- * Hover tooltips identify scope without implying we have scores we don't.
+ * Layout:
+ *   - Map fills the container width (which is full viewport on the hero).
+ *   - Zone-legend chips + live country detail strip sit BELOW the map,
+ *     so nothing competes with the map for real estate.
+ *
+ * Interactivity (vanilla JS island, ~2.5 KB):
+ *   - Hover any CFA state → detail card populates
+ *   - Click → lock the detail until Esc / Dismiss / another click
+ *   - Zone-legend chip click → pulse all states of that zone for ~700ms
+ *   - Tab through 12 states via keyboard; Enter to lock
+ *
+ * Non-negotiables: the indigo/amber here are MONETARY ZONE colors, not
+ * score colors. Caption + tooltips explicitly say so.
  */
 import paths from "./_africa-paths.json";
 import type { Locale } from "@site/lib/i18n";
-import { t } from "@site/lib/i18n";
 
 interface Props { locale: Locale; }
 const { locale } = Astro.props;
 
-const dataForthcoming = locale === "fr" ? "Données à venir" : "Data forthcoming";
-const cfaCount = paths.countries.filter((c) => c.isCfa).length;
-const captionId = "africa-map-caption";
+const fr = locale === "fr";
+const dataForthcoming = fr ? "Données à venir" : "Data forthcoming";
+const dismissLabel    = fr ? "Désélectionner" : "Dismiss";
+const hintLabel       = fr ? "Survoler un État pour en savoir plus" : "Hover any state for details";
+
+const cfaStates  = paths.cfaCountries;
+const uemoaCount = cfaStates.filter((c) => c.zone === "UEMOA").length;
+const cemacCount = cfaStates.filter((c) => c.zone === "CEMAC").length;
+const captionId  = "africa-map-caption";
 ---
 
-<figure class="iafs-africa-map relative" aria-labelledby={captionId}>
-  <svg
-    viewBox={paths.viewBox}
-    role="img"
-    aria-labelledby={`${captionId}-title`}
-    class="w-full h-auto bg-paper"
-    preserveAspectRatio="xMidYMid meet"
-  >
-    <title id={`${captionId}-title`}>
-      {locale === "fr"
-        ? `Carte de l'Afrique — ${cfaCount} États du franc CFA mis en évidence`
-        : `Map of Africa — ${cfaCount} CFA-franc states highlighted`}
-    </title>
+<figure class="iafs-africa-map flex flex-col gap-4" aria-labelledby={captionId} data-africa-map>
+  {/* MAP — full container width, big */}
+  <div class="relative w-full">
+    <svg
+      viewBox={paths.viewBox}
+      role="img"
+      aria-labelledby={`${captionId}-title`}
+      class="w-full h-auto bg-bg rounded-md"
+      preserveAspectRatio="xMidYMid meet"
+    >
+      <title id={`${captionId}-title`}>
+        {fr
+          ? `Carte de l'Afrique de l'Ouest et du Centre — ${cfaStates.length} États du franc CFA mis en évidence`
+          : `Map of West and Central Africa — ${cfaStates.length} CFA-franc states highlighted`}
+      </title>
 
-    <g class="base">
-      {paths.countries.filter((c) => !c.isCfa).map((c) => (
-        <path
-          d={c.d}
-          fill="none"
-          stroke="#1B1B1F"
-          stroke-width="0.4"
-          stroke-opacity="0.18"
-          vector-effect="non-scaling-stroke"
-        />
-      ))}
-    </g>
+      {/* Backdrop — every non-CFA African country with uniform fill + NO stroke.
+          Adjacent shapes meet, producing a silhouette without grey lines. */}
+      <g class="backdrop" aria-hidden="true">
+        {paths.backdropPaths.map((p) => (
+          <path d={p.d} fill="rgb(31 34 48)" stroke="none" />
+        ))}
+      </g>
 
-    <g class="cfa">
-      {paths.countries.filter((c) => c.isCfa).map((c) => (
-        <g class="cfa-state" data-iso3={c.iso3} data-zone={c.zone}>
-          <path
-            d={c.d}
-            fill="#C9A37A"
-            fill-opacity="0.45"
-            stroke="#1B1B1F"
-            stroke-width="0.9"
-            vector-effect="non-scaling-stroke"
-            tabindex="0"
-            role="button"
-            aria-label={`${c.name} (${c.zone}, ${c.currency}) — ${dataForthcoming}`}
-            aria-describedby={`tip-${c.iso3}`}
-          />
-        </g>
-      ))}
-    </g>
-  </svg>
+      {/* CFA states — bold zone fills, brighter outlines */}
+      <g class="cfa">
+        {cfaStates.map((c) => (
+          <g class="cfa-state"
+             data-iso3={c.iso3}
+             data-zone={c.zone}
+             data-name={c.name}
+             data-currency={c.currency}>
+            <path
+              d={c.d}
+              fill={c.zone === "UEMOA" ? "rgb(74 107 214)" : "rgb(217 147 32)"}
+              stroke={c.zone === "UEMOA" ? "rgb(107 142 255)" : "rgb(255 185 74)"}
+              stroke-width="1.5"
+              stroke-linejoin="round"
+              vector-effect="non-scaling-stroke"
+              tabindex="0"
+              role="button"
+              aria-label={`${c.name} — ${c.zone}, ${c.currency} — ${dataForthcoming}`}
+            />
+          </g>
+        ))}
+      </g>
+    </svg>
 
-  {/* Tooltips — absolutely positioned via JS-free CSS hover, but the names also
-       live in aria-label so screen readers get them. */}
-  <ul class="sr-only" id="cfa-states-list" aria-label={locale === "fr" ? "États du franc CFA" : "CFA-franc states"}>
-    {paths.countries.filter((c) => c.isCfa).map((c) => (
-      <li id={`tip-${c.iso3}`}>{c.name} · {c.zone} · {c.currency} · {dataForthcoming}</li>
-    ))}
-  </ul>
+    {/* Floating hint top-right corner — invisible until idle */}
+    <p class="absolute top-3 right-3 text-xs font-mono text-dim bg-bg/80 backdrop-blur px-2 py-1 rounded pointer-events-none select-none"
+       data-hint>
+      {hintLabel}
+    </p>
+  </div>
 
-  <figcaption id={captionId} class="mt-3 text-xs font-mono text-ink/60 flex items-center gap-4 flex-wrap">
-    <span class="inline-flex items-center gap-1.5">
-      <span class="inline-block w-3 h-3 bg-earth/45 border border-ink"></span>
-      {locale === "fr" ? "État du franc CFA" : "CFA-franc state"} ({cfaCount})
-    </span>
-    <span class="inline-flex items-center gap-1.5 axis-A">
-      <span class="inline-block w-2 h-2 rounded-full bg-axisA"></span>
-      UEMOA (XOF)
-    </span>
-    <span class="inline-flex items-center gap-1.5 axis-B">
-      <span class="inline-block w-2 h-2 rounded-full bg-axisB"></span>
-      CEMAC (XAF)
-    </span>
-  </figcaption>
+  {/* INFO STRIP — chips + live detail BELOW the map */}
+  <div class="grid grid-cols-1 md:grid-cols-[auto_1fr] gap-4 items-stretch">
+    {/* Zone legend chips */}
+    <div class="flex md:flex-col gap-2 md:min-w-[200px]">
+      <button type="button"
+              class="iafs-zone-chip flex-1 md:flex-none flex items-center justify-between gap-3 px-3 py-2 bg-surface border border-border rounded-md cursor-pointer
+                     hover:border-axisA hover:bg-surface2 focus-visible:border-axisA active:scale-[0.98]
+                     transition-all"
+              data-zone-chip="UEMOA"
+              aria-label={fr ? `Zone UEMOA · ${uemoaCount} États · XOF` : `UEMOA zone · ${uemoaCount} states · XOF`}>
+        <span class="flex items-center gap-2">
+          <span class="w-3 h-3 rounded-sm bg-axisAsoft border border-axisA"></span>
+          <span class="font-medium text-sm">UEMOA</span>
+        </span>
+        <span class="text-xs font-mono text-muted">{uemoaCount} · XOF</span>
+      </button>
+      <button type="button"
+              class="iafs-zone-chip flex-1 md:flex-none flex items-center justify-between gap-3 px-3 py-2 bg-surface border border-border rounded-md cursor-pointer
+                     hover:border-axisB hover:bg-surface2 focus-visible:border-axisB active:scale-[0.98]
+                     transition-all"
+              data-zone-chip="CEMAC"
+              aria-label={fr ? `Zone CEMAC · ${cemacCount} États · XAF` : `CEMAC zone · ${cemacCount} states · XAF`}>
+        <span class="flex items-center gap-2">
+          <span class="w-3 h-3 rounded-sm bg-axisBsoft border border-axisB"></span>
+          <span class="font-medium text-sm">CEMAC</span>
+        </span>
+        <span class="text-xs font-mono text-muted">{cemacCount} · XAF</span>
+      </button>
+    </div>
+
+    {/* Detail card */}
+    <div class="iafs-detail bg-surface border border-border rounded-md p-4 min-h-[120px]"
+         data-detail
+         aria-live="polite"
+         aria-atomic="true">
+      <div class="flex items-baseline justify-between gap-3 mb-2">
+        <p class="text-xs font-mono text-dim uppercase tracking-wider" data-detail-eyebrow>
+          {fr ? "Aucun État sélectionné" : "No state selected"}
+        </p>
+        <button type="button"
+                class="iafs-detail-dismiss hidden text-xs font-mono text-axisA hover:underline cursor-pointer"
+                data-detail-dismiss>
+          {dismissLabel}
+        </button>
+      </div>
+      <p class="font-serif text-xl text-text mb-1" data-detail-name>—</p>
+      <p class="text-xs font-mono text-muted mb-2" data-detail-meta></p>
+      <p class="text-sm text-muted leading-snug" data-detail-status>
+        {fr
+          ? "Survolez ou cliquez sur un État pour voir sa zone monétaire et son statut de données."
+          : "Hover or click a state to see its monetary zone and data status."}
+      </p>
+    </div>
+  </div>
+
+  <p id={captionId} class="text-xs font-mono text-dim leading-snug">
+    {fr
+      ? "Les couleurs indiquent la zone monétaire (institutionnel), pas un score. Aucune donnée par pays n'est rendue."
+      : "Colors indicate monetary zone (institutional fact), not a score. No per-country data is rendered."}
+  </p>
 </figure>
 
 <style>
   .iafs-africa-map .cfa-state path {
-    transition: fill-opacity 200ms ease-out, stroke-width 200ms ease-out;
-    cursor: help;
+    transition: fill var(--motion-base) var(--ease-out),
+                stroke-width var(--motion-fast) var(--ease-out),
+                filter var(--motion-base) var(--ease-out);
+    cursor: pointer;
   }
   .iafs-africa-map .cfa-state path:hover,
-  .iafs-africa-map .cfa-state path:focus-visible {
-    fill-opacity: 0.75;
-    stroke-width: 1.5;
-    outline: none;
+  .iafs-africa-map .cfa-state path:focus-visible,
+  .iafs-africa-map .cfa-state[data-active="true"] path {
+    stroke-width: 3;
+    filter: brightness(1.2) drop-shadow(0 0 12px currentColor);
   }
-  .iafs-africa-map .cfa-state path:focus-visible {
-    filter: drop-shadow(0 0 0 #1B1B1F);
-    stroke-dasharray: 3 1.5;
+  .iafs-africa-map .cfa-state[data-zone="UEMOA"] path:hover,
+  .iafs-africa-map .cfa-state[data-zone="UEMOA"] path:focus-visible,
+  .iafs-africa-map .cfa-state[data-zone="UEMOA"][data-active="true"] path {
+    fill: rgb(107 142 255);
   }
-  @media (prefers-reduced-motion: reduce) {
-    .iafs-africa-map .cfa-state path {
-      transition: none;
-    }
+  .iafs-africa-map .cfa-state[data-zone="CEMAC"] path:hover,
+  .iafs-africa-map .cfa-state[data-zone="CEMAC"] path:focus-visible,
+  .iafs-africa-map .cfa-state[data-zone="CEMAC"][data-active="true"] path {
+    fill: rgb(255 185 74);
+  }
+
+  .iafs-africa-map .cfa-state[data-pulsing="true"] path {
+    animation: iafs-pulse 700ms var(--ease-out);
+  }
+  @keyframes iafs-pulse {
+    0%   { filter: brightness(1)   drop-shadow(0 0 0  currentColor); }
+    40%  { filter: brightness(1.6) drop-shadow(0 0 16px currentColor); }
+    100% { filter: brightness(1)   drop-shadow(0 0 0  currentColor); }
   }
 </style>
+
+<script is:inline>
+  (function () {
+    const root = document.querySelector("[data-africa-map]");
+    if (!root) return;
+    const states = root.querySelectorAll(".cfa-state");
+    const chips  = root.querySelectorAll("[data-zone-chip]");
+    const dEye   = root.querySelector("[data-detail-eyebrow]");
+    const dName  = root.querySelector("[data-detail-name]");
+    const dMeta  = root.querySelector("[data-detail-meta]");
+    const dStat  = root.querySelector("[data-detail-status]");
+    const dDismiss = root.querySelector("[data-detail-dismiss]");
+    const reduce = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+
+    const isFR = document.documentElement.lang === "fr";
+    const DEFAULT_EYEBROW = isFR ? "Aucun État sélectionné" : "No state selected";
+    const DEFAULT_STATUS  = isFR
+      ? "Survolez ou cliquez sur un État pour voir sa zone monétaire et son statut de données."
+      : "Hover or click a state to see its monetary zone and data status.";
+    const FORTHCOMING = isFR
+      ? "Données à venir. Aucun score n'est encore publié pour ce pays."
+      : "Data forthcoming. No score is yet published for this country.";
+
+    let locked = null;
+
+    function show(stateEl) {
+      const name = stateEl.getAttribute("data-name");
+      const iso  = stateEl.getAttribute("data-iso3");
+      const zone = stateEl.getAttribute("data-zone");
+      const cur  = stateEl.getAttribute("data-currency");
+      dEye.textContent  = iso + " · " + zone;
+      dName.textContent = name;
+      dMeta.textContent = (isFR ? "Zone monétaire " : "Monetary zone ") + zone + " · " + cur;
+      dStat.textContent = FORTHCOMING;
+      dDismiss.classList.toggle("hidden", !locked);
+    }
+    function reset() {
+      dEye.textContent  = DEFAULT_EYEBROW;
+      dName.textContent = "—";
+      dMeta.textContent = "";
+      dStat.textContent = DEFAULT_STATUS;
+      dDismiss.classList.add("hidden");
+    }
+
+    states.forEach((s) => {
+      const path = s.querySelector("path");
+      s.addEventListener("mouseenter", () => { if (!locked) show(s); });
+      s.addEventListener("mouseleave", () => { if (!locked) reset(); });
+      path.addEventListener("focus", () => { if (!locked) show(s); });
+      path.addEventListener("blur",  () => { if (!locked) reset(); });
+      path.addEventListener("click", (e) => {
+        e.preventDefault();
+        if (locked === s) { locked = null; s.removeAttribute("data-active"); reset(); return; }
+        if (locked) locked.removeAttribute("data-active");
+        locked = s; s.setAttribute("data-active", "true"); show(s);
+      });
+      path.addEventListener("keydown", (e) => {
+        if (e.key === "Enter" || e.key === " ") { e.preventDefault(); path.click(); }
+      });
+    });
+
+    dDismiss.addEventListener("click", () => {
+      if (locked) { locked.removeAttribute("data-active"); locked = null; reset(); }
+    });
+    document.addEventListener("keydown", (e) => {
+      if (e.key === "Escape" && locked) {
+        locked.removeAttribute("data-active"); locked = null; reset();
+      }
+    });
+
+    chips.forEach((chip) => {
+      chip.addEventListener("click", (e) => {
+        e.preventDefault();
+        const zone = chip.getAttribute("data-zone-chip");
+        const targets = root.querySelectorAll('.cfa-state[data-zone="' + zone + '"]');
+        if (reduce) {
+          targets.forEach((t) => t.setAttribute("data-active", "true"));
+          setTimeout(() => targets.forEach((t) => { if (t !== locked) t.removeAttribute("data-active"); }), 700);
+          return;
+        }
+        targets.forEach((t) => {
+          t.setAttribute("data-pulsing", "true");
+          setTimeout(() => t.removeAttribute("data-pulsing"), 750);
+        });
+      });
+    });
+  })();
+</script>

@@ -7,55 +7,62 @@ const { locale } = Astro.props;
 
 const headlineFR = ["Deux scores.", "Jamais un."];
 const headlineEN = ["Two scores.", "Never one."];
-const headline = locale === "fr" ? headlineFR : headlineEN;
+const headline   = locale === "fr" ? headlineFR : headlineEN;
 ---
 
-<section class="iafs-hero grid lg:grid-cols-12 gap-8 lg:gap-10 items-center pt-2 pb-12">
-  <div class="lg:col-span-7">
-    <AfricaMap locale={locale} />
-  </div>
-
-  <div class="lg:col-span-5 space-y-6">
-    <p class="font-mono text-xs uppercase tracking-[0.25em] text-oxblood" aria-label={t(locale, "two_scores_never_one")}>
+<section class="iafs-hero pt-4 pb-12 lg:pb-16">
+  {/* Headline — short, fast eye-lead */}
+  <header class="max-w-page mx-auto px-4 lg:px-6 mb-6 lg:mb-8 flex flex-col gap-3">
+    <p class="font-mono text-xs uppercase tracking-[0.25em] text-accent">
       {t(locale, "landing.hero.kicker")}
     </p>
 
-    <h1 class="font-serif text-5xl sm:text-6xl leading-[0.95] tracking-tight">
+    <h1 class="font-serif text-display max-w-[18ch]">
       <span class="block axis-A">{headline[0]}</span>
       <span class="block axis-B">{headline[1]}</span>
     </h1>
 
-    <p class="text-lg text-ink/80 max-w-prose leading-snug">
+    <p class="text-base text-muted max-w-prose leading-snug">
       {t(locale, "landing.hero.lede")}
     </p>
+  </header>
 
-    <dl class="grid grid-cols-2 gap-4 max-w-md text-sm">
-      <div class="border-l-2 border-axisA pl-3">
-        <dt class="font-mono uppercase text-[10px] tracking-widest axis-A">{t(locale, "axis_a")}</dt>
-        <dd class="text-ink/70 mt-1">{t(locale, "axis_a_gloss")}</dd>
-      </div>
-      <div class="border-l-2 border-axisB pl-3">
-        <dt class="font-mono uppercase text-[10px] tracking-widest axis-B">{t(locale, "axis_b")}</dt>
-        <dd class="text-ink/70 mt-1">{t(locale, "axis_b_gloss")}</dd>
-      </div>
-    </dl>
+  {/*
+    MAP — breaks out of the page max-width to use the FULL viewport width.
+    On the largest screens the map is genuinely huge (1600+ px), so the
+    CFA states are unmissable.
+  */}
+  <div class="mx-[calc(50%-50vw)] w-screen px-4 lg:px-6">
+    <div class="mx-auto" style="max-width: 1600px;">
+      <AfricaMap locale={locale} />
+    </div>
+  </div>
 
-    <div class="flex flex-wrap gap-3 pt-2">
-      <a
-        href={localePath(locale, "/country/ZZA")}
-        class="iafs-cta-primary inline-flex items-center gap-2 bg-ink text-paper px-5 py-2.5 font-mono text-sm uppercase tracking-wider hover:bg-oxblood transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-oxblood focus-visible:ring-offset-2 focus-visible:ring-offset-paper cursor-pointer"
-      >
+  {/* CTAs + axis legend — back inside the page width */}
+  <footer class="max-w-page mx-auto px-4 lg:px-6 mt-8 flex flex-col gap-6">
+    <div class="flex flex-wrap gap-3">
+      <a href={localePath(locale, "/country/ZZA")}
+         class="iafs-cta-primary inline-flex items-center gap-2 bg-text text-bg px-6 py-3 font-mono text-sm uppercase tracking-wider rounded-md hover:bg-axisA hover:text-text active:scale-[0.98] transition-all cursor-pointer">
         {t(locale, "landing.hero.cta_explore")}
         <svg width="14" height="14" viewBox="0 0 14 14" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="2">
           <path d="M2 7h10M8 3l4 4-4 4" stroke-linecap="square" stroke-linejoin="miter" />
         </svg>
       </a>
-      <a
-        href={localePath(locale, "/methodology")}
-        class="inline-flex items-center gap-2 border border-ink px-5 py-2.5 font-mono text-sm uppercase tracking-wider hover:bg-ink hover:text-paper transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ink focus-visible:ring-offset-2 focus-visible:ring-offset-paper cursor-pointer"
-      >
+      <a href={localePath(locale, "/methodology")}
+         class="inline-flex items-center gap-2 border border-border px-6 py-3 font-mono text-sm uppercase tracking-wider rounded-md text-text hover:border-text hover:bg-surface active:scale-[0.98] transition-all cursor-pointer">
         {t(locale, "landing.hero.cta_methodology")}
       </a>
     </div>
-  </div>
+
+    <dl class="grid grid-cols-1 sm:grid-cols-2 gap-4 max-w-3xl text-sm">
+      <div class="border-l-2 border-axisA pl-3">
+        <dt class="font-mono uppercase text-xs tracking-widest axis-A">{t(locale, "axis_a")}</dt>
+        <dd class="text-muted mt-1">{t(locale, "axis_a_gloss")}</dd>
+      </div>
+      <div class="border-l-2 border-axisB pl-3">
+        <dt class="font-mono uppercase text-xs tracking-widest axis-B">{t(locale, "axis_b")}</dt>
+        <dd class="text-muted mt-1">{t(locale, "axis_b_gloss")}</dd>
+      </div>
+    </dl>
+  </footer>
 </section>

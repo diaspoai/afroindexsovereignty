@@ -11,7 +11,7 @@ const tagClass = tag === "FACT" ? "tag-fact" : tag === "INTERPRETATION" ? "tag-i
 const typeClass = type === "HARD" ? "type-hard" : "type-interp";
 ---
 
-<span class={`inline-flex items-center gap-1 text-xs font-mono uppercase tracking-wider ${tagClass}`}
+<span class={`inline-flex items-center gap-1 text-xs font-mono uppercase tracking-wider text-muted ${tagClass}`}
       data-tag={tag}
       data-type={type}>
   <span aria-hidden="true">·</span>

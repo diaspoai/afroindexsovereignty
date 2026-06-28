@@ -1,10 +1,13 @@
 /**
  * One-shot build step. Reads world-atlas (Natural Earth-derived TopoJSON),
- * filters to African sovereign states, projects with Equal Earth, and emits
- * src/components/landing/_africa-paths.json — a deterministic map of
- * { iso3 -> { d: <svg-path>, name, isCfa, zone? } }, plus an overall viewBox.
+ * filters to African sovereign states, projects with Equal Earth FIT TO THE
+ * CFA-FRANC BOUNDING BOX (so the 12 CFA states fill the frame), and emits:
+ *   - the 12 CFA-state SVG paths (highlighted)
+ *   - a unified Africa silhouette (single MultiPolygon via topojson mergeArcs)
+ *     — used as a quiet continental backdrop, no per-country grey lines
  *
- * Re-run when world-atlas is updated. Output is committed (small, deterministic).
+ * Output: src/components/landing/_africa-paths.json
+ * Re-run when world-atlas updates. Output is committed (small, deterministic).
  *
  *   npm run gen:africa
  */
@@ -32,7 +35,7 @@ const AFRICA_NUM_TO_ISO3: Record<number, string> = {
   894: "ZMB",
 };
 
-/** The 12 CFA-franc states tracked by IAFS, with monetary-zone metadata. */
+/** The 12 CFA-franc states tracked by IAFS. */
 const CFA_STATES: Record<string, { zone: "UEMOA" | "CEMAC"; currency: "XOF" | "XAF" }> = {
   BEN: { zone: "UEMOA", currency: "XOF" }, BFA: { zone: "UEMOA", currency: "XOF" },
   CIV: { zone: "UEMOA", currency: "XOF" }, MLI: { zone: "UEMOA", currency: "XOF" },
@@ -42,60 +45,80 @@ const CFA_STATES: Record<string, { zone: "UEMOA" | "CEMAC"; currency: "XOF" | "X
   COG: { zone: "CEMAC", currency: "XAF" }, GAB: { zone: "CEMAC", currency: "XAF" },
 };
 
-const world = worldData as unknown as { objects: { countries: { geometries: { id?: string; properties?: { name?: string } }[] } } };
+const world = worldData as unknown as {
+  objects: { countries: { geometries: { id?: string; properties?: { name?: string } }[] } };
+};
 const fc = feature(world as never, world.objects.countries) as unknown as {
   features: { id: string; properties: { name: string }; geometry: unknown }[];
 };
 
+// All African country features, with iso3 attached.
 const africaFeatures = fc.features
   .filter((f) => AFRICA_NUM_TO_ISO3[parseInt(f.id, 10)])
   .map((f) => ({
     iso3: AFRICA_NUM_TO_ISO3[parseInt(f.id, 10)]!,
     name: f.properties.name,
     geometry: f.geometry,
+    rawId: parseInt(f.id, 10),
   }));
 
-const W = 600;
-const H = 700;
-const projection = geoEqualEarth().fitSize(
-  [W - 20, H - 20],
-  { type: "FeatureCollection", features: africaFeatures.map((f) => ({ type: "Feature", properties: {}, geometry: f.geometry as never })) } as never,
-);
-projection.translate([projection.translate()[0] + 10, projection.translate()[1] + 10]);
+// CFA-only sub-collection — used to FIT the projection.
+const cfaFeatures = africaFeatures.filter((f) => CFA_STATES[f.iso3]);
+const cfaFC = {
+  type: "FeatureCollection",
+  features: cfaFeatures.map((f) => ({ type: "Feature", properties: {}, geometry: f.geometry as never })),
+} as never;
+
+// Wide, cinematic frame — 16:10 roughly. CFA bounding box is ~1.35:1.
+const W = 1600;
+const H = 1000;
+const PADDING = 24;
+
+const projection = geoEqualEarth().fitSize([W - PADDING * 2, H - PADDING * 2], cfaFC);
+projection.translate([
+  projection.translate()[0] + PADDING,
+  projection.translate()[1] + PADDING,
+]);
 
 const path = geoPath(projection);
 
-interface Out {
+// Africa backdrop: render every African country as a path with the SAME fill
+// and NO stroke. Adjacent polygons abut, producing a visually unified silhouette
+// without per-country grey lines (which the maintainer rejected). Cheaper and
+// more robust than topojson mergeArcs.
+const backdropPaths: { d: string }[] = africaFeatures
+  .filter((f) => !CFA_STATES[f.iso3])
+  .map((f) => ({
+    d: path({ type: "Feature", properties: {}, geometry: f.geometry as never } as never) ?? "",
+  }))
+  .filter((p) => p.d.length > 0);
+
+interface Country {
   iso3: string;
   name: string;
   d: string;
-  isCfa: boolean;
-  zone?: "UEMOA" | "CEMAC";
-  currency?: "XOF" | "XAF";
+  zone: "UEMOA" | "CEMAC";
+  currency: "XOF" | "XAF";
 }
 
-const items: Out[] = africaFeatures.map((f) => {
-  const cfa = CFA_STATES[f.iso3];
+const cfaCountries: Country[] = cfaFeatures.map((f) => {
+  const meta = CFA_STATES[f.iso3]!;
   const d = path({ type: "Feature", properties: {}, geometry: f.geometry as never } as never) ?? "";
-  return cfa
-    ? { iso3: f.iso3, name: f.name, d, isCfa: true, zone: cfa.zone, currency: cfa.currency }
-    : { iso3: f.iso3, name: f.name, d, isCfa: false };
+  return { iso3: f.iso3, name: f.name, d, zone: meta.zone, currency: meta.currency };
 });
-
-// Sort: non-CFA first (drawn underneath), then CFA on top, so highlights win on overlap.
-items.sort((a, b) => Number(a.isCfa) - Number(b.isCfa));
 
 const payload = {
   viewBox: `0 0 ${W} ${H}`,
   width: W,
   height: H,
-  countries: items,
+  backdropPaths,
+  cfaCountries,
 };
 
 writeFileSync(OUT, JSON.stringify(payload, null, 0) + "\n", "utf-8");
-console.log(`gen-africa-paths: wrote ${items.length} country paths to ${OUT.replace(ROOT + "/", "")}`);
-console.log(`  CFA states found: ${items.filter((i) => i.isCfa).map((i) => i.iso3).sort().join(", ")}`);
-const missing = Object.keys(CFA_STATES).filter((iso) => !items.find((i) => i.iso3 === iso));
+console.log(`gen-africa-paths: wrote ${cfaCountries.length} CFA paths + ${backdropPaths.length} backdrop paths to ${OUT.replace(ROOT + "/", "")}`);
+console.log(`  CFA states found: ${cfaCountries.map((c) => c.iso3).sort().join(", ")}`);
+const missing = Object.keys(CFA_STATES).filter((iso) => !cfaCountries.find((c) => c.iso3 === iso));
 if (missing.length) {
   console.error(`  WARNING: missing CFA states: ${missing.join(", ")}`);
   process.exit(1);

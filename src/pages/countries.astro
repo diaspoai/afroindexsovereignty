@@ -6,10 +6,23 @@ const locale = "fr" as const;
 const countries = getCountries();
 ---
 <Base locale={locale} title={t(locale, "nav.countries")} pagePath="/countries">
-  <h1 class="text-3xl font-serif mb-4">{t(locale, "nav.countries")}</h1>
-  <ul class="grid sm:grid-cols-2 gap-3">
-    {countries.map((c) => (
-      <li><a class="underline font-serif text-xl" href={localePath(locale, `/country/${c.iso3}`)}>{c.name_fr} · <span class="font-mono text-sm">{c.iso3}</span></a></li>
-    ))}
-  </ul>
+  <section class="space-y-6 max-w-page mx-auto">
+    <header class="space-y-2">
+      <p class="font-mono text-xs uppercase tracking-[0.25em] text-accent">PAYS</p>
+      <h1 class="font-serif text-2xl">{t(locale, "nav.countries")}</h1>
+    </header>
+    <ul class="grid sm:grid-cols-2 gap-3">
+      {countries.map((c) => (
+        <li>
+          <a class="group flex items-baseline gap-3 bg-surface border border-border p-4 rounded-md
+                    hover:border-axisA hover:bg-surface2 focus-visible:border-axisA
+                    transition-colors cursor-pointer"
+             href={localePath(locale, `/country/${c.iso3}`)}>
+            <span class="font-serif text-lg text-text group-hover:text-axisA transition-colors">{c.name_fr}</span>
+            <span class="font-mono text-xs text-muted ml-auto">{c.iso3}</span>
+          </a>
+        </li>
+      ))}
+    </ul>
+  </section>
 </Base>

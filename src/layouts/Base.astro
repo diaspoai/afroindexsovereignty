@@ -15,48 +15,62 @@ const isDummy = methodology.mode === "dummy";
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="color-scheme" content="dark" />
+    <meta name="theme-color" content="#0A0B10" />
     <title>{title} — {t(locale, "site_title")}</title>
     <meta name="description" content={t(locale, "site_subtitle")} />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link rel="stylesheet"
+          href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500;600&family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" />
   </head>
-  <body class="min-h-screen flex flex-col">
+  <body class="min-h-screen flex flex-col bg-bg text-text">
     <a href="#main" class="skip-link">{locale === "fr" ? "Aller au contenu" : "Skip to content"}</a>
 
     {isDummy && (
-      <div role="status" class="bg-oxblood text-paper text-center text-xs py-1 px-2 font-mono">
+      <div role="status" class="bg-accent/15 border-b border-accent/30 text-text text-center text-xs py-2 px-3 font-mono">
+        <span class="text-accent font-medium uppercase tracking-wider mr-2">●</span>
         {t(locale, "dummy_banner")}
       </div>
     )}
 
-    <header class="border-b border-ink/10">
-      <div class="max-w-6xl mx-auto px-4 py-4 flex items-center justify-between gap-4 flex-wrap">
-        <a href={localePath(locale, "/")} class="flex flex-col leading-tight">
-          <span class="font-serif text-xl">{t(locale, "site_title")}</span>
-          <span class="text-xs text-ink/60">{t(locale, "site_subtitle")}</span>
+    <header class="border-b border-border bg-bg/95 backdrop-blur sticky top-0 z-30">
+      <div class="max-w-page mx-auto px-4 lg:px-6 py-4 flex items-center justify-between gap-4 flex-wrap">
+        <a href={localePath(locale, "/")} class="flex flex-col leading-tight group">
+          <span class="font-serif text-lg group-hover:text-axisA transition-colors">{t(locale, "site_title")}</span>
+          <span class="text-xs text-dim hidden sm:block">{t(locale, "site_subtitle")}</span>
         </a>
-        <nav aria-label="primary" class="flex flex-wrap items-center gap-4 text-sm">
-          <a href={localePath(locale, "/")}>{t(locale, "nav.map")}</a>
-          <a href={localePath(locale, "/plot")}>{t(locale, "nav.plot")}</a>
-          <a href={localePath(locale, "/countries")}>{t(locale, "nav.countries")}</a>
-          <a href={localePath(locale, "/events")}>{t(locale, "nav.events")}</a>
-          <a href={localePath(locale, "/methodology")}>{t(locale, "nav.methodology")}</a>
-          <a href={localePath(locale, "/download")}>{t(locale, "nav.download")}</a>
+        <nav aria-label="primary" class="flex flex-wrap items-center gap-1 text-sm">
+          {[
+            { href: "/",            label: t(locale, "nav.map") },
+            { href: "/plot",        label: t(locale, "nav.plot") },
+            { href: "/countries",   label: t(locale, "nav.countries") },
+            { href: "/events",      label: t(locale, "nav.events") },
+            { href: "/methodology", label: t(locale, "nav.methodology") },
+            { href: "/download",    label: t(locale, "nav.download") },
+          ].map((item) => (
+            <a href={localePath(locale, item.href)}
+               class="px-3 py-1.5 rounded-md text-muted hover:text-text hover:bg-surface transition-colors">
+              {item.label}
+            </a>
+          ))}
           <a href={localePath(other, pagePath)}
              aria-label={t(locale, "lang_switch_label")}
-             class="font-mono border border-ink/30 px-2 py-0.5 rounded">
+             class="ml-2 font-mono text-xs border border-border px-3 py-1.5 rounded-md text-muted hover:text-text hover:border-text transition-colors">
             {t(locale, "lang_switch")}
           </a>
         </nav>
       </div>
     </header>
 
-    <main id="main" class="flex-1 max-w-6xl w-full mx-auto px-4 py-8">
+    <main id="main" class="flex-1 max-w-page w-full mx-auto px-4 lg:px-6 py-6">
       <slot />
     </main>
 
-    <footer class="border-t border-ink/10 mt-12">
-      <div class="max-w-6xl mx-auto px-4 py-4 text-xs text-ink/60 flex justify-between flex-wrap gap-2">
+    <footer class="border-t border-border mt-16">
+      <div class="max-w-page mx-auto px-4 lg:px-6 py-6 text-xs text-dim flex justify-between flex-wrap gap-2">
         <span>{t(locale, "footer_license")}</span>
-        <span class="font-mono">schema v0.3.0 · {t(locale, "two_scores_never_one")}</span>
+        <span class="font-mono">schema v0.3.0 · <span class="text-muted">{t(locale, "two_scores_never_one")}</span></span>
       </div>
     </footer>
   </body>

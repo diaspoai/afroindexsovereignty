@@ -12,27 +12,32 @@ const points = countries.map((c) => {
 });
 ---
 <Base locale={locale} title={t(locale, "page.plot_title")} pagePath="/plot">
-  <section class="space-y-6">
-    <h1 class="text-3xl font-serif">{t(locale, "page.plot_title")}</h1>
-    <p class="max-w-prose text-ink/70">
-      <span class="axis-A font-semibold">{t(locale, "axis_a")}</span> vs
-      <span class="axis-B font-semibold">{t(locale, "axis_b")}</span>.
-      {t(locale, "two_scores_never_one")}
-    </p>
+  <section class="space-y-6 max-w-page mx-auto">
+    <header class="space-y-2">
+      <p class="font-mono text-xs uppercase tracking-[0.25em] text-accent">R2</p>
+      <h1 class="font-serif text-2xl">{t(locale, "page.plot_title")}</h1>
+      <p class="text-muted max-w-prose">
+        <span class="axis-A font-semibold">{t(locale, "axis_a")}</span> vs
+        <span class="axis-B font-semibold">{t(locale, "axis_b")}</span>.
+        {t(locale, "two_scores_never_one")}
+      </p>
+    </header>
 
-    <svg viewBox="0 0 400 400" class="border border-ink/15 bg-white/40 w-full max-w-md" role="img" aria-label={t(locale, "page.plot_title")}>
-      <line x1="0" y1="200" x2="400" y2="200" stroke="currentColor" stroke-width="0.5" />
-      <line x1="200" y1="0" x2="200" y2="400" stroke="currentColor" stroke-width="0.5" />
-      <text x="395" y="195" text-anchor="end" font-size="10" class="axis-A">A→</text>
-      <text x="205" y="12"  font-size="10" class="axis-B">B↑</text>
-      {points.map((p) => p.a !== null && p.b !== null && (
-        <g>
-          <circle cx={4 + p.a * 3.92} cy={400 - (4 + p.b * 3.92)} r="6" fill="currentColor" opacity="0.7" />
-          <text x={4 + p.a * 3.92 + 9} y={400 - (4 + p.b * 3.92) + 3} font-size="9" class="font-mono">{p.iso3}</text>
-        </g>
-      ))}
-    </svg>
+    <div class="bg-surface border border-border rounded-md p-4 inline-block">
+      <svg viewBox="0 0 400 400" class="w-full max-w-md" role="img" aria-label={t(locale, "page.plot_title")}>
+        <line x1="0" y1="200" x2="400" y2="200" stroke="rgb(42 45 58)" stroke-width="0.5" />
+        <line x1="200" y1="0" x2="200" y2="400" stroke="rgb(42 45 58)" stroke-width="0.5" />
+        <text x="395" y="195" text-anchor="end" font-size="10" fill="rgb(107 142 255)">A→</text>
+        <text x="205" y="12"  font-size="10" fill="rgb(255 185 74)">B↑</text>
+        {points.map((p) => p.a !== null && p.b !== null && (
+          <g>
+            <circle cx={4 + p.a * 3.92} cy={400 - (4 + p.b * 3.92)} r="6" fill="rgb(242 238 229)" opacity="0.85" />
+            <text x={4 + p.a * 3.92 + 9} y={400 - (4 + p.b * 3.92) + 3} font-size="9" font-family="monospace" fill="rgb(160 160 174)">{p.iso3}</text>
+          </g>
+        ))}
+      </svg>
+    </div>
 
-    <p class="text-xs text-ink/50 font-mono">R2 stub — DONNÉES FACTICES. Aucun axe combiné, jamais.</p>
+    <p class="text-xs text-dim font-mono">R2 stub — DONNÉES FACTICES. Aucun axe combiné, jamais.</p>
   </section>
 </Base>

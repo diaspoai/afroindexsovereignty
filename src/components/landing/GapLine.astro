@@ -1,11 +1,8 @@
 ---
 /**
  * "L'écart" — the gap thesis as a single full-width horizontal device.
- *
- * 1960 marker on the far left, present year on the far right, an oxblood
- * dashed line between them representing the gap between nominal independence
- * and substantive sovereignty. Draws once on scroll-into-view via
- * IntersectionObserver; respects prefers-reduced-motion (no animation in that case).
+ * Dark canvas. Coral accent for the gap stroke.
+ * Single on-scroll draw animation, respects prefers-reduced-motion.
  */
 import { t, type Locale } from "@site/lib/i18n";
 
@@ -14,77 +11,70 @@ const { locale } = Astro.props;
 
 const currentYear = new Date().getUTCFullYear();
 const yearsToShow = [1960, 1980, 2000, currentYear];
-const W = 1200, H = 90, PAD_X = 40;
+const W = 1200, H = 100, PAD_X = 40;
 const innerW = W - PAD_X * 2;
 const span = currentYear - 1960;
 const xFor = (y: number) => PAD_X + ((y - 1960) / span) * innerW;
 const labelY = H - 8;
-const lineY = 50;
+const lineY = 56;
 ---
 
-<section class="iafs-gapline py-10 border-y border-ink/10 my-6" data-gapline>
-  <div class="flex items-baseline justify-between flex-wrap gap-2 mb-4">
-    <h2 class="font-serif text-2xl">{t(locale, "landing.gap.title")}</h2>
-    <p class="font-mono text-[10px] uppercase tracking-widest text-ink/50">
+<section class="iafs-gapline py-12 border-y border-border my-8" data-gapline>
+  <header class="flex items-baseline justify-between flex-wrap gap-2 mb-6 max-w-page mx-auto">
+    <h2 class="font-serif text-xl">{t(locale, "landing.gap.title")}</h2>
+    <p class="font-mono text-xs uppercase tracking-widest text-dim">
       {t(locale, "landing.gap.subtitle")}
     </p>
+  </header>
+
+  <div class="max-w-page mx-auto">
+    <svg viewBox={`0 0 ${W} ${H}`} class="w-full h-auto" role="img" aria-label={t(locale, "landing.gap.title")}>
+      {/* baseline track — muted */}
+      <line x1={PAD_X} y1={lineY} x2={W - PAD_X} y2={lineY} stroke="rgb(42 45 58)" stroke-width="1" />
+
+      {/* THE GAP — coral, dashed; drawn left-to-right on scroll-into-view */}
+      <line
+        class="gap-stroke"
+        x1={PAD_X} y1={lineY}
+        x2={W - PAD_X} y2={lineY}
+        stroke="rgb(255 92 92)"
+        stroke-width="2.5"
+        stroke-dasharray="8 6"
+        stroke-linecap="round"
+      />
+
+      {yearsToShow.map((y) => (
+        <g>
+          <line x1={xFor(y)} y1={lineY - 8} x2={xFor(y)} y2={lineY + 8} stroke="rgb(160 160 174)" stroke-width="1" />
+          <text x={xFor(y)} y={labelY} text-anchor="middle" font-family="JetBrains Mono, monospace" font-size="12" fill="rgb(160 160 174)">{y}</text>
+        </g>
+      ))}
+
+      <text x={xFor(1960)} y={lineY - 16} text-anchor="start" font-family="Cormorant Garamond, serif" font-style="italic" font-size="14" fill="rgb(255 92 92)">
+        {t(locale, "baseline_label")}
+      </text>
+      <text x={xFor(currentYear)} y={lineY - 16} text-anchor="end" font-family="JetBrains Mono, monospace" font-size="11" fill="rgb(107 107 122)">
+        {t(locale, "landing.gap.today")}
+      </text>
+    </svg>
+
+    <p class="max-w-prose text-muted mt-6 leading-snug">
+      {t(locale, "landing.gap.caption")}
+    </p>
   </div>
-
-  <svg viewBox={`0 0 ${W} ${H}`} class="w-full h-auto" role="img" aria-label={t(locale, "landing.gap.title")}>
-    {/* baseline track */}
-    <line x1={PAD_X} y1={lineY} x2={W - PAD_X} y2={lineY} stroke="#1B1B1F" stroke-width="0.5" opacity="0.2" />
-
-    {/* THE GAP — dashed oxblood; the draw animation reveals it left-to-right */}
-    <line
-      class="gap-stroke"
-      x1={PAD_X} y1={lineY}
-      x2={W - PAD_X} y2={lineY}
-      stroke="#6B1E1E"
-      stroke-width="2"
-      stroke-dasharray="6 4"
-      stroke-linecap="round"
-    />
-
-    {/* tick marks for years */}
-    {yearsToShow.map((y) => (
-      <g>
-        <line x1={xFor(y)} y1={lineY - 6} x2={xFor(y)} y2={lineY + 6} stroke="#1B1B1F" stroke-width="0.75" />
-        <text x={xFor(y)} y={labelY} text-anchor="middle" font-family="JetBrains Mono, monospace" font-size="12" fill="#1B1B1F">{y}</text>
-      </g>
-    ))}
-
-    {/* the 1960 baseline label sits inline */}
-    <text x={xFor(1960)} y={lineY - 14} text-anchor="start" font-family="Cormorant Garamond, serif" font-style="italic" font-size="14" fill="#6B1E1E">
-      {t(locale, "baseline_label")}
-    </text>
-    <text x={xFor(currentYear)} y={lineY - 14} text-anchor="end" font-family="JetBrains Mono, monospace" font-size="11" fill="#1B1B1F" opacity="0.6">
-      {t(locale, "landing.gap.today")}
-    </text>
-  </svg>
-
-  <p class="max-w-prose text-ink/80 mt-4 leading-snug">
-    {t(locale, "landing.gap.caption")}
-  </p>
 </section>
 
 <style>
-  /* Pre-animation state: dasharray hidden via a long offset.
-     Once .visible is added by the observer, animate to 0 — single draw, ~700ms. */
   .iafs-gapline .gap-stroke {
     stroke-dashoffset: 1200;
     animation: none;
   }
   .iafs-gapline.visible .gap-stroke {
-    animation: iafs-draw 700ms cubic-bezier(0.4, 0, 0.2, 1) forwards;
+    animation: iafs-draw 700ms var(--ease-out) forwards;
   }
-  @keyframes iafs-draw {
-    to { stroke-dashoffset: 0; }
-  }
+  @keyframes iafs-draw { to { stroke-dashoffset: 0; } }
   @media (prefers-reduced-motion: reduce) {
-    .iafs-gapline .gap-stroke {
-      stroke-dashoffset: 0 !important;
-      animation: none !important;
-    }
+    .iafs-gapline .gap-stroke { stroke-dashoffset: 0 !important; animation: none !important; }
   }
 </style>
 
@@ -92,20 +82,12 @@ const lineY = 50;
   (function () {
     const reduce = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
     const targets = document.querySelectorAll(".iafs-gapline");
-    if (reduce) {
-      targets.forEach((t) => t.classList.add("visible"));
-      return;
-    }
-    if (!("IntersectionObserver" in window)) {
-      targets.forEach((t) => t.classList.add("visible"));
-      return;
+    if (reduce || !("IntersectionObserver" in window)) {
+      targets.forEach((t) => t.classList.add("visible")); return;
     }
     const io = new IntersectionObserver((entries) => {
       for (const e of entries) {
-        if (e.isIntersecting) {
-          e.target.classList.add("visible");
-          io.unobserve(e.target);
-        }
+        if (e.isIntersecting) { e.target.classList.add("visible"); io.unobserve(e.target); }
       }
     }, { threshold: 0.4 });
     targets.forEach((t) => io.observe(t));

@@ -7,18 +7,29 @@ const locale = "fr" as const;
 const events = getEvents().slice().sort((a, b) => (a.date < b.date ? 1 : -1));
 ---
 <Base locale={locale} title={t(locale, "page.events_title")} pagePath="/events">
-  <section class="space-y-6">
-    <h1 class="text-3xl font-serif">{t(locale, "page.events_title")}</h1>
+  <section class="space-y-6 max-w-page mx-auto">
+    <header class="space-y-2">
+      <p class="font-mono text-xs uppercase tracking-[0.25em] text-accent">R5</p>
+      <h1 class="font-serif text-2xl">{t(locale, "page.events_title")}</h1>
+    </header>
     <ol class="space-y-4">
       {events.map((e) => (
-        <li class="border-l-4 pl-3 py-1" style={`border-color: var(--tw-color); --tw-color: ${e.axis === "A" ? "#1F3A93" : "#B8860B"};`}>
-          <div class="text-xs font-mono text-ink/60">{e.date} · {e.country} · {e.axis}/{e.indicator_id} · {e.direction}</div>
-          <div class="font-serif text-lg">{e.title_fr}</div>
-          <div class="text-sm text-ink/80">{e.description_fr}</div>
-          <a class="text-xs font-mono underline" href={e.source_url} rel="noreferrer">source · {e.source_date}</a>
+        <li class="bg-surface border-l-4 pl-4 pr-4 py-3 rounded-r-md transition-colors hover:bg-surface2"
+            style={`--axis-color: ${e.axis === "A" ? "rgb(107 142 255)" : "rgb(255 185 74)"}; border-color: var(--axis-color);`}>
+          <div class="text-xs font-mono text-dim flex items-center gap-2 mb-1">
+            <span>{e.date}</span>
+            <span>·</span>
+            <span class={`axis-${e.axis}`}>{e.country} · {e.axis}/{e.indicator_id}</span>
+            <span>·</span>
+            <span class="text-muted">{e.direction === "+" ? "↑" : e.direction === "-" ? "↓" : "·"}</span>
+          </div>
+          <div class="font-serif text-lg text-text">{e.title_fr}</div>
+          <div class="text-sm text-muted mt-1">{e.description_fr}</div>
+          <a class="text-xs font-mono text-axisA hover:underline focus-visible:underline mt-2 inline-block"
+             href={e.source_url} rel="noreferrer">source · {e.source_date}</a>
         </li>
       ))}
     </ol>
-    <p class="text-xs text-ink/50 font-mono">R5 stub.</p>
+    <p class="text-xs text-dim font-mono">R5 stub.</p>
   </section>
 </Base>
