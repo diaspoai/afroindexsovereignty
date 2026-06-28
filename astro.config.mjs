@@ -1,11 +1,14 @@
 import { defineConfig } from "astro/config";
 import tailwind from "@astrojs/tailwind";
 
+import cloudflare from "@astrojs/cloudflare";
+
 // https://astro.build/config
 export default defineConfig({
   site: "https://afroindexsovereignty.org",
   trailingSlash: "never",
   integrations: [tailwind()],
+
   i18n: {
     defaultLocale: "fr",
     locales: ["fr", "en"],
@@ -13,9 +16,11 @@ export default defineConfig({
       prefixDefaultLocale: false,
     },
   },
+
   build: {
     inlineStylesheets: "auto",
   },
+
   vite: {
     resolve: {
       alias: {
@@ -24,4 +29,7 @@ export default defineConfig({
       },
     },
   },
+
+  output: "hybrid",
+  adapter: cloudflare()
 });
