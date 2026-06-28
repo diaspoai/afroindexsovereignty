@@ -19,11 +19,14 @@ jobs:
           cache: "npm"
 
       - name: Install
-        # Using `npm install` (not `npm ci`) to work around npm/cli#4828:
-        # macOS-generated package-lock.json doesn't list optional native
-        # rollup binaries needed on Linux. `npm install` resolves them at
-        # install time on the target platform.
-        run: npm install --no-audit --no-fund
+        # Working around npm/cli#4828: a package-lock.json generated on
+        # macOS does not record platform-specific optional native binaries
+        # (e.g. @rollup/rollup-linux-x64-gnu) that Linux needs. Removing
+        # the lockfile forces npm to re-resolve them fresh on Linux.
+        # Local dev keeps the lockfile for reproducibility; CI regenerates.
+        run: |
+          rm -f package-lock.json
+          npm install --no-audit --no-fund
 
       - name: validate (schema + cross-record)
         run: npm run validate
