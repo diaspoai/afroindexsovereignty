@@ -1,30 +1,53 @@
-import { readFileSync, readdirSync, existsSync } from "node:fs";
-import { join, dirname, resolve } from "node:path";
-import { fileURLToPath } from "node:url";
+/**
+ * Build-time data loader. All reads resolve at build time via Vite's static
+ * JSON imports + import.meta.glob — no Node.js fs at runtime, so this works
+ * under any bundler (Cloudflare Pages, Vercel, Netlify, local).
+ *
+ * The trajectory glob points at ../../built/trajectory which is produced by
+ * `npm run build:data` (validate + normalize) before `astro build` runs.
+ */
+import countriesJSON from "../../data/countries.json";
+import indicatorsJSON from "../../data/indicators.json";
+import methodologyJSON from "../../data/methodology.json";
+import eventsJSON from "../../data/events.json";
 
-const HERE = dirname(fileURLToPath(import.meta.url));
-const ROOT = resolve(HERE, "..", "..");
-const DATA = join(ROOT, "data");
-const BUILT = join(ROOT, "built");
+const scoreModules = import.meta.glob("../../data/scores/*.json", { eager: true }) as Record<string, { default: unknown[] }>;
+const trajectoryModules = import.meta.glob("../../built/trajectory/*.json", { eager: true }) as Record<string, { default: unknown }>;
 
-export function readJSON<T>(path: string): T {
-  return JSON.parse(readFileSync(path, "utf-8")) as T;
-}
-
-export function getCountries() { return readJSON<any[]>(join(DATA, "countries.json")); }
-export function getIndicators() { return readJSON<any[]>(join(DATA, "indicators.json")); }
-export function getMethodology() { return readJSON<any>(join(DATA, "methodology.json")); }
-export function getEvents() { return readJSON<any[]>(join(DATA, "events.json")); }
-export function getScores(iso3: string) { return readJSON<any[]>(join(DATA, "scores", `${iso3}.json`)); }
-export function getTrajectory(iso3: string) {
-  const p = join(BUILT, "trajectory", `${iso3}.json`);
-  if (!existsSync(p)) {
-    throw new Error(`Missing built/trajectory/${iso3}.json — run "npm run normalize -- --write" first.`);
+function indexByISO3<T>(modules: Record<string, { default: T }>): Record<string, T> {
+  const out: Record<string, T> = {};
+  for (const [path, mod] of Object.entries(modules)) {
+    const match = path.match(/\/([A-Z]{3})\.json$/);
+    if (match) out[match[1]!] = mod.default;
   }
-  return readJSON<any>(p);
+  return out;
 }
+
+const SCORES = indexByISO3(scoreModules);
+const TRAJECTORIES = indexByISO3(trajectoryModules);
+
+export function getCountries(): any[] { return countriesJSON as any[]; }
+export function getIndicators(): any[] { return indicatorsJSON as any[]; }
+export function getMethodology(): any { return methodologyJSON; }
+export function getEvents(): any[] { return eventsJSON as any[]; }
+
+export function getScores(iso3: string): any[] {
+  const v = SCORES[iso3];
+  if (!v) throw new Error(`No scores file for ${iso3} — expected data/scores/${iso3}.json`);
+  return v;
+}
+
+export function getTrajectory(iso3: string): any {
+  const v = TRAJECTORIES[iso3];
+  if (!v) {
+    throw new Error(
+      `No trajectory for ${iso3} — expected built/trajectory/${iso3}.json. ` +
+      `Run "npm run normalize -- --write" (or "npm run build:data") first.`
+    );
+  }
+  return v;
+}
+
 export function listTrajectories(): string[] {
-  const d = join(BUILT, "trajectory");
-  if (!existsSync(d)) return [];
-  return readdirSync(d).filter((f) => f.endsWith(".json")).map((f) => f.replace(/\.json$/, ""));
+  return Object.keys(TRAJECTORIES);
 }
