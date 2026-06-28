@@ -16,17 +16,12 @@ jobs:
       - uses: actions/setup-node@v4
         with:
           node-version: "22"
-          cache: "npm"
 
       - name: Install
-        # Working around npm/cli#4828: a package-lock.json generated on
-        # macOS does not record platform-specific optional native binaries
-        # (e.g. @rollup/rollup-linux-x64-gnu) that Linux needs. Removing
-        # the lockfile forces npm to re-resolve them fresh on Linux.
-        # Local dev keeps the lockfile for reproducibility; CI regenerates.
-        run: |
-          rm -f package-lock.json
-          npm install --no-audit --no-fund
+        # We do not commit a package-lock.json (see .npmrc) because
+        # npm/cli#4828 makes Mac-generated lockfiles omit Linux native
+        # binaries. Fresh resolution per install is platform-correct.
+        run: npm install --no-audit --no-fund
 
       - name: validate (schema + cross-record)
         run: npm run validate
