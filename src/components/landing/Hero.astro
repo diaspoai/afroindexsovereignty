@@ -10,9 +10,9 @@ const headlineEN = ["Two scores.", "Never one."];
 const headline   = locale === "fr" ? headlineFR : headlineEN;
 ---
 
-<section class="iafs-hero pt-6 pb-12 lg:pb-16">
-  {/* Headline strip ABOVE the map — eye-leading, fast read */}
-  <header class="max-w-page mx-auto mb-6 lg:mb-8 flex flex-col gap-3">
+<section class="iafs-hero pt-4 pb-12 lg:pb-16">
+  {/* Headline — short, fast eye-lead */}
+  <header class="max-w-page mx-auto px-4 lg:px-6 mb-6 lg:mb-8 flex flex-col gap-3">
     <p class="font-mono text-xs uppercase tracking-[0.25em] text-accent">
       {t(locale, "landing.hero.kicker")}
     </p>
@@ -27,13 +27,19 @@ const headline   = locale === "fr" ? headlineFR : headlineEN;
     </p>
   </header>
 
-  {/* The map — full container width, dominant */}
-  <div class="max-w-page mx-auto">
-    <AfricaMap locale={locale} />
+  {/*
+    MAP — breaks out of the page max-width to use the FULL viewport width.
+    On the largest screens the map is genuinely huge (1600+ px), so the
+    CFA states are unmissable.
+  */}
+  <div class="mx-[calc(50%-50vw)] w-screen px-4 lg:px-6">
+    <div class="mx-auto" style="max-width: 1600px;">
+      <AfricaMap locale={locale} />
+    </div>
   </div>
 
-  {/* CTAs + axis legend BELOW the map */}
-  <footer class="max-w-page mx-auto mt-8 flex flex-col gap-6">
+  {/* CTAs + axis legend — back inside the page width */}
+  <footer class="max-w-page mx-auto px-4 lg:px-6 mt-8 flex flex-col gap-6">
     <div class="flex flex-wrap gap-3">
       <a href={localePath(locale, "/country/ZZA")}
          class="iafs-cta-primary inline-flex items-center gap-2 bg-text text-bg px-6 py-3 font-mono text-sm uppercase tracking-wider rounded-md hover:bg-axisA hover:text-text active:scale-[0.98] transition-all cursor-pointer">
