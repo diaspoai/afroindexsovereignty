@@ -21,7 +21,7 @@ and must match the frozen schema below.
 ## Quickstart
 
 ```bash
-# Node 20+
+# Node 22+
 npm ci
 npm run validate
 npm run normalize -- --write   # materializes axis_scores + built/trajectory

@@ -38,7 +38,7 @@ Fill in exactly:
 | Variable | Value | Why |
 |---|---|---|
 | `IAFS_CURRENT_YEAR` | `2026` | Pins the trajectory end year so builds are reproducible; bump annually. |
-| `NODE_VERSION` | `20` | Matches `.nvmrc`. |
+| `NODE_VERSION` | `22` | Matches `.nvmrc`. Cloudflare's wrangler requires Node 22+. |
 
 Click **Save and Deploy**. First build takes ~2 minutes.
 

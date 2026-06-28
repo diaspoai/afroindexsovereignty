@@ -6,7 +6,7 @@
   "description": "Index of African Francophone Sovereignty — a public, bilingual, open-source two-axis index tracking the 12 CFA-franc states' sovereignty trajectory.",
   "license": "MIT",
   "engines": {
-    "node": ">=20.0.0"
+    "node": ">=22.0.0"
   },
   "scripts": {
     "validate": "tsx scripts/validate.ts",
