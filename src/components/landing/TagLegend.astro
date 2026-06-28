@@ -1,0 +1,18 @@
+---
+import { t, type Locale } from "@site/lib/i18n";
+interface Props { locale: Locale; }
+const { locale } = Astro.props;
+---
+
+<section class="iafs-taglegend space-y-3" aria-labelledby="taglegend-title">
+  <h3 id="taglegend-title" class="font-mono text-xs uppercase tracking-widest text-ink/60">
+    {t(locale, "landing.audit.legend_title")}
+  </h3>
+  <ul class="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-5 gap-3 text-sm">
+    <li class="flex items-center gap-2 tag-fact">{t(locale, "tag.FACT")}</li>
+    <li class="flex items-center gap-2 tag-interpretation">{t(locale, "tag.INTERPRETATION")}</li>
+    <li class="flex items-center gap-2 tag-contested">{t(locale, "tag.CONTESTED")}</li>
+    <li class="flex items-center gap-2"><span class="type-hard"></span>{t(locale, "tag.HARD")}</li>
+    <li class="flex items-center gap-2"><span class="type-interp"></span>{t(locale, "tag.INTERP")}</li>
+  </ul>
+</section>

@@ -37,5 +37,52 @@
     "events_title": "Event log",
     "methodology_title": "Methodology v0.3.0",
     "download_title": "Data"
+  },
+  "landing": {
+    "hero": {
+      "kicker": "Index — African Francophone Sovereignty",
+      "lede": "12 CFA-franc states. A sourced, anchored, revisable measure of their distance from the colonial orbit — from 1960 to today.",
+      "cta_explore": "Explore a country",
+      "cta_methodology": "Read the methodology"
+    },
+    "gap": {
+      "title": "The gap",
+      "subtitle": "1960 → today",
+      "today": "Today",
+      "caption": "The flag raised in 1960 does not measure substantive sovereignty. The gap between independence on paper and real autonomy is what this index makes legible — year by year, event by event, source by source."
+    },
+    "commitments": {
+      "title": "Three commitments",
+      "subtitle": "What this index does — and what it refuses to do.",
+      "option1": {
+        "number": "01",
+        "title": "Option 1 — France and the CFA, nothing else",
+        "body": "The index measures distance from the colonial orbit (France) and the CFA franc, and nothing else. It does not claim to be a global sovereignty ranking."
+      },
+      "capture": {
+        "number": "02",
+        "title": "Capture, not democracy",
+        "body": "Axis B measures capture — who decides, in practice — not distance from a Western democratic template. No Freedom House. No V-Dem."
+      },
+      "anchor": {
+        "number": "03",
+        "title": "Anchored, not relative",
+        "body": "Every indicator is anchored to published, frozen thresholds. A country's score moves only when its own data moves — never because a neighbor changed."
+      }
+    },
+    "miniviz": {
+      "title": "Feel the gap",
+      "subtitle": "A preview of the mechanism, on two placeholder countries. No real data shown.",
+      "explore": "Explore →"
+    },
+    "audit": {
+      "title": "Auditable, open, forkable",
+      "subtitle": "Data under CC-BY-4.0, code under MIT. The repository is the source of truth.",
+      "no_fabrication": "Every datapoint carries a resolvable source and a publication date. No fabrication. No interpolation.",
+      "repo_label": "GitHub repository",
+      "method_label": "Full methodology",
+      "events_label": "Event log",
+      "legend_title": "The tagging system"
+    }
   }
 }

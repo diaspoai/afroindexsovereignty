@@ -1,10 +1,10 @@
 import { test, expect } from "@playwright/test";
 import AxeBuilder from "@axe-core/playwright";
 
-test("R1 — FR home renders the cohort grid", async ({ page }) => {
+test("R1 — FR home renders the landing with the Africa map", async ({ page }) => {
   await page.goto("/");
-  await expect(page.getByRole("heading", { level: 1 })).toContainText(/Carte/i);
-  await expect(page.locator("ul li").first()).toBeVisible();
+  await expect(page.locator(".iafs-africa-map svg")).toBeVisible();
+  await expect(page.locator(".iafs-africa-map .cfa-state")).toHaveCount(12);
 });
 
 test("R8 — language switch lands on /en mirror", async ({ page }) => {

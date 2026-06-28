@@ -37,5 +37,52 @@
     "events_title": "Journal d'événements",
     "methodology_title": "Méthodologie v0.3.0",
     "download_title": "Données"
+  },
+  "landing": {
+    "hero": {
+      "kicker": "Indice — Souveraineté Afro-Francophone",
+      "lede": "12 États du franc CFA. Une mesure sourcée, ancrée et révisable de leur distance vis-à-vis de l'orbite coloniale — depuis 1960 jusqu'à aujourd'hui.",
+      "cta_explore": "Explorer un pays",
+      "cta_methodology": "Lire la méthodologie"
+    },
+    "gap": {
+      "title": "L'écart",
+      "subtitle": "1960 → aujourd'hui",
+      "today": "Aujourd'hui",
+      "caption": "Le drapeau hissé en 1960 ne mesure pas la souveraineté substantielle. L'écart entre l'indépendance sur le papier et l'autonomie réelle est la chose que cet indice rend lisible — année après année, événement après événement, source par source."
+    },
+    "commitments": {
+      "title": "Trois engagements",
+      "subtitle": "Ce que cet indice fait — et ce qu'il refuse de faire.",
+      "option1": {
+        "number": "01",
+        "title": "Option 1 — France et CFA, rien d'autre",
+        "body": "L'indice mesure la distance vis-à-vis de l'orbite coloniale (France) et du franc CFA, et pas autre chose. Il ne prétend pas être un classement mondial de la souveraineté."
+      },
+      "capture": {
+        "number": "02",
+        "title": "Capture, pas démocratie",
+        "body": "L'axe B mesure la capture — qui décide, en pratique — et non la distance vis-à-vis d'un modèle démocratique occidental. Aucun indice de Freedom House. Aucun V-Dem."
+      },
+      "anchor": {
+        "number": "03",
+        "title": "Ancrage absolu, pas relatif",
+        "body": "Chaque indicateur est ancré à des seuils publiés et figés. Le score d'un pays ne bouge que quand ses propres données bougent — jamais parce qu'un voisin a évolué."
+      }
+    },
+    "miniviz": {
+      "title": "Sentir l'écart",
+      "subtitle": "Aperçu du mécanisme avec deux pays factices. Aucune donnée réelle.",
+      "explore": "Explorer →"
+    },
+    "audit": {
+      "title": "Auditable, ouvert, forkable",
+      "subtitle": "Données sous CC-BY-4.0, code sous MIT. Le dépôt est la source de vérité.",
+      "no_fabrication": "Chaque donnée porte une source résolvable et une date de publication. Aucune fabrication. Aucune interpolation.",
+      "repo_label": "Dépôt GitHub",
+      "method_label": "Méthodologie complète",
+      "events_label": "Journal d'événements",
+      "legend_title": "Le système de balisage"
+    }
   }
 }

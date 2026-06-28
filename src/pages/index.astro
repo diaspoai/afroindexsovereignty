@@ -1,43 +1,89 @@
 ---
 import Base from "@site/layouts/Base.astro";
-import { getCountries, getTrajectory } from "@site/lib/data";
+import Hero from "@site/components/landing/Hero.astro";
+import GapLine from "@site/components/landing/GapLine.astro";
+import CommitmentCard from "@site/components/landing/CommitmentCard.astro";
+import MiniTrajectory from "@site/components/landing/MiniTrajectory.astro";
+import TagLegend from "@site/components/landing/TagLegend.astro";
 import { t, localePath } from "@site/lib/i18n";
+import { getCountries } from "@site/lib/data";
 
 const locale = "fr" as const;
 const countries = getCountries();
-const trajectories = countries.map((c) => ({ c, traj: getTrajectory(c.iso3) }));
 ---
 
-<Base locale={locale} title={t(locale, "page.map_title")} pagePath="/">
-  <section class="space-y-6">
-    <header class="space-y-2">
-      <h1 class="text-3xl font-serif">{t(locale, "page.map_title")}</h1>
-      <p class="max-w-prose text-ink/70">{t(locale, "site_subtitle")}</p>
-      <p class="font-mono text-xs uppercase tracking-widest text-oxblood" aria-label="non-fusion principle">
-        — {t(locale, "two_scores_never_one")} —
-      </p>
+<Base locale={locale} title={t(locale, "site_title")} pagePath="/">
+  <Hero locale={locale} />
+
+  <GapLine locale={locale} />
+
+  <section class="iafs-commitments py-12" aria-labelledby="commitments-title">
+    <header class="space-y-2 mb-8">
+      <h2 id="commitments-title" class="font-serif text-3xl">{t(locale, "landing.commitments.title")}</h2>
+      <p class="text-ink/70 max-w-prose">{t(locale, "landing.commitments.subtitle")}</p>
+    </header>
+    <div class="grid md:grid-cols-3 gap-4">
+      <CommitmentCard
+        locale={locale}
+        number={t(locale, "landing.commitments.option1.number")}
+        title={t(locale, "landing.commitments.option1.title")}
+        body={t(locale, "landing.commitments.option1.body")}
+        href="/methodology"
+        type="HARD"
+      />
+      <CommitmentCard
+        locale={locale}
+        number={t(locale, "landing.commitments.capture.number")}
+        title={t(locale, "landing.commitments.capture.title")}
+        body={t(locale, "landing.commitments.capture.body")}
+        href="/methodology"
+        type="INTERP"
+      />
+      <CommitmentCard
+        locale={locale}
+        number={t(locale, "landing.commitments.anchor.number")}
+        title={t(locale, "landing.commitments.anchor.title")}
+        body={t(locale, "landing.commitments.anchor.body")}
+        href="/methodology"
+        type="HARD"
+      />
+    </div>
+  </section>
+
+  <section class="iafs-miniviz py-12 border-t border-ink/10" aria-labelledby="miniviz-title">
+    <header class="space-y-2 mb-8">
+      <h2 id="miniviz-title" class="font-serif text-3xl">{t(locale, "landing.miniviz.title")}</h2>
+      <p class="text-ink/70 max-w-prose">{t(locale, "landing.miniviz.subtitle")}</p>
+    </header>
+    <div class="grid md:grid-cols-2 gap-4">
+      {countries.map((c) => (
+        <MiniTrajectory locale={locale} iso3={c.iso3} nameFR={c.name_fr} nameEN={c.name_en} />
+      ))}
+    </div>
+  </section>
+
+  <section class="iafs-audit py-12 border-t border-ink/10" aria-labelledby="audit-title">
+    <header class="space-y-2 mb-8 max-w-prose">
+      <h2 id="audit-title" class="font-serif text-3xl">{t(locale, "landing.audit.title")}</h2>
+      <p class="text-ink/70">{t(locale, "landing.audit.subtitle")}</p>
+      <p class="text-sm text-ink/60 italic">{t(locale, "landing.audit.no_fabrication")}</p>
     </header>
 
-    <ul class="grid sm:grid-cols-2 lg:grid-cols-3 gap-4">
-      {trajectories.map(({ c, traj }) => {
-        const last = traj.years[traj.years.length - 1];
-        return (
-          <li class="border border-ink/15 p-4 space-y-2 bg-white/40">
-            <a href={localePath(locale, `/country/${c.iso3}`)} class="font-serif text-xl block">
-              {c.name_fr}
-            </a>
-            <div class="flex items-baseline gap-4 text-sm font-mono">
-              <span class="axis-A">A·{last.axis_a.gap ? "—" : Math.round(last.axis_a.score)}</span>
-              <span class="axis-B">B·{last.axis_b.gap ? "—" : Math.round(last.axis_b.score)}</span>
-              <span class="text-ink/50 text-xs">{traj.independence_year} → {traj.current_year}</span>
-            </div>
-          </li>
-        );
-      })}
-    </ul>
+    <div class="grid sm:grid-cols-3 gap-3 mb-10">
+      <a href="https://github.com/diaspoai/afroindexsovereignty" class="border border-ink/15 p-4 hover:bg-white transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ink cursor-pointer">
+        <div class="font-mono text-xs uppercase tracking-widest text-ink/50">01</div>
+        <div class="font-serif text-lg mt-1">{t(locale, "landing.audit.repo_label")}</div>
+      </a>
+      <a href={localePath(locale, "/methodology")} class="border border-ink/15 p-4 hover:bg-white transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ink cursor-pointer">
+        <div class="font-mono text-xs uppercase tracking-widest text-ink/50">02</div>
+        <div class="font-serif text-lg mt-1">{t(locale, "landing.audit.method_label")}</div>
+      </a>
+      <a href={localePath(locale, "/events")} class="border border-ink/15 p-4 hover:bg-white transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ink cursor-pointer">
+        <div class="font-mono text-xs uppercase tracking-widest text-ink/50">03</div>
+        <div class="font-serif text-lg mt-1">{t(locale, "landing.audit.events_label")}</div>
+      </a>
+    </div>
 
-    <p class="text-xs text-ink/50 font-mono">
-      R1 carte stub — DONNÉES FACTICES. La carte SVG des 12 États remplacera cette grille.
-    </p>
+    <TagLegend locale={locale} />
   </section>
 </Base>

@@ -1,0 +1,120 @@
+---
+/**
+ * 2D Africa map with the 12 CFA-franc states highlighted.
+ * Pure SVG, no runtime JS — paths pre-projected at build time via
+ * scripts/gen-africa-paths.ts (Equal Earth, equal-area).
+ *
+ * Visual rules:
+ *   - non-CFA Africa: faint ink hairline, no fill (the basemap is quiet)
+ *   - 12 CFA states: translucent earth fill, bold ink outline
+ *   - UEMOA states get a subtle indigo tick; CEMAC ochre
+ *     (this is monetary zone, not axis — the two-axis non-fusion rule holds)
+ *   - hover/focus reveals an HTML tooltip via CSS (no JS), name + zone + "data forthcoming"
+ *
+ * Phase 2: states are NOT clickable (no real data yet — only ZZA/ZZB dummies live elsewhere).
+ * Hover tooltips identify scope without implying we have scores we don't.
+ */
+import paths from "./_africa-paths.json";
+import type { Locale } from "@site/lib/i18n";
+import { t } from "@site/lib/i18n";
+
+interface Props { locale: Locale; }
+const { locale } = Astro.props;
+
+const dataForthcoming = locale === "fr" ? "Données à venir" : "Data forthcoming";
+const cfaCount = paths.countries.filter((c) => c.isCfa).length;
+const captionId = "africa-map-caption";
+---
+
+<figure class="iafs-africa-map relative" aria-labelledby={captionId}>
+  <svg
+    viewBox={paths.viewBox}
+    role="img"
+    aria-labelledby={`${captionId}-title`}
+    class="w-full h-auto bg-paper"
+    preserveAspectRatio="xMidYMid meet"
+  >
+    <title id={`${captionId}-title`}>
+      {locale === "fr"
+        ? `Carte de l'Afrique — ${cfaCount} États du franc CFA mis en évidence`
+        : `Map of Africa — ${cfaCount} CFA-franc states highlighted`}
+    </title>
+
+    <g class="base">
+      {paths.countries.filter((c) => !c.isCfa).map((c) => (
+        <path
+          d={c.d}
+          fill="none"
+          stroke="#1B1B1F"
+          stroke-width="0.4"
+          stroke-opacity="0.18"
+          vector-effect="non-scaling-stroke"
+        />
+      ))}
+    </g>
+
+    <g class="cfa">
+      {paths.countries.filter((c) => c.isCfa).map((c) => (
+        <g class="cfa-state" data-iso3={c.iso3} data-zone={c.zone}>
+          <path
+            d={c.d}
+            fill="#C9A37A"
+            fill-opacity="0.45"
+            stroke="#1B1B1F"
+            stroke-width="0.9"
+            vector-effect="non-scaling-stroke"
+            tabindex="0"
+            role="button"
+            aria-label={`${c.name} (${c.zone}, ${c.currency}) — ${dataForthcoming}`}
+            aria-describedby={`tip-${c.iso3}`}
+          />
+        </g>
+      ))}
+    </g>
+  </svg>
+
+  {/* Tooltips — absolutely positioned via JS-free CSS hover, but the names also
+       live in aria-label so screen readers get them. */}
+  <ul class="sr-only" id="cfa-states-list" aria-label={locale === "fr" ? "États du franc CFA" : "CFA-franc states"}>
+    {paths.countries.filter((c) => c.isCfa).map((c) => (
+      <li id={`tip-${c.iso3}`}>{c.name} · {c.zone} · {c.currency} · {dataForthcoming}</li>
+    ))}
+  </ul>
+
+  <figcaption id={captionId} class="mt-3 text-xs font-mono text-ink/60 flex items-center gap-4 flex-wrap">
+    <span class="inline-flex items-center gap-1.5">
+      <span class="inline-block w-3 h-3 bg-earth/45 border border-ink"></span>
+      {locale === "fr" ? "État du franc CFA" : "CFA-franc state"} ({cfaCount})
+    </span>
+    <span class="inline-flex items-center gap-1.5 axis-A">
+      <span class="inline-block w-2 h-2 rounded-full bg-axisA"></span>
+      UEMOA (XOF)
+    </span>
+    <span class="inline-flex items-center gap-1.5 axis-B">
+      <span class="inline-block w-2 h-2 rounded-full bg-axisB"></span>
+      CEMAC (XAF)
+    </span>
+  </figcaption>
+</figure>
+
+<style>
+  .iafs-africa-map .cfa-state path {
+    transition: fill-opacity 200ms ease-out, stroke-width 200ms ease-out;
+    cursor: help;
+  }
+  .iafs-africa-map .cfa-state path:hover,
+  .iafs-africa-map .cfa-state path:focus-visible {
+    fill-opacity: 0.75;
+    stroke-width: 1.5;
+    outline: none;
+  }
+  .iafs-africa-map .cfa-state path:focus-visible {
+    filter: drop-shadow(0 0 0 #1B1B1F);
+    stroke-dasharray: 3 1.5;
+  }
+  @media (prefers-reduced-motion: reduce) {
+    .iafs-africa-map .cfa-state path {
+      transition: none;
+    }
+  }
+</style>
