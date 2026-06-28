@@ -1,0 +1,91 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://iafs/schemas/indicator.schema.json",
+  "title": "Indicator",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "id", "axis", "name_fr", "name_en", "type", "weight",
+    "cadence", "history_mode", "earliest_sourced_year", "anchor", "source_class"
+  ],
+  "properties": {
+    "id": { "enum": ["A1","A2","A3","A4","A5","A6","B1","B2","B3","B4","B5"] },
+    "axis": { "enum": ["A","B"] },
+    "name_fr": { "type": "string", "minLength": 1 },
+    "name_en": { "type": "string", "minLength": 1 },
+    "type": { "enum": ["HARD","INTERP"] },
+    "weight": { "type": "number", "exclusiveMinimum": 0 },
+    "cadence": { "enum": ["annual","event"] },
+    "history_mode": {
+      "enum": ["step_function","annual_series"],
+      "description": "A1/A4/A5/B1 are step_function (institutional/event indicators reaching deep history); the rest are annual_series."
+    },
+    "earliest_sourced_year": {
+      "type": "integer",
+      "minimum": 1900,
+      "maximum": 2030,
+      "description": "No score may be recorded for this indicator before this year."
+    },
+    "source_class": { "type": "string", "minLength": 1 },
+    "anchor": {
+      "oneOf": [
+        {
+          "type": "object",
+          "additionalProperties": false,
+          "required": ["kind","raw_at_100","raw_at_0","clamp"],
+          "properties": {
+            "kind": { "const": "linear" },
+            "raw_at_100": { "type": "number" },
+            "raw_at_0": { "type": "number" },
+            "clamp": { "const": true }
+          }
+        },
+        {
+          "type": "object",
+          "additionalProperties": false,
+          "required": ["kind","levels"],
+          "properties": {
+            "kind": { "const": "ordinal" },
+            "levels": {
+              "type": "array",
+              "minItems": 2,
+              "items": {
+                "type": "object",
+                "additionalProperties": false,
+                "required": ["raw","score","label_fr","label_en"],
+                "properties": {
+                  "raw": { "type": ["string","number"] },
+                  "score": { "type": "number", "minimum": 0, "maximum": 100 },
+                  "label_fr": { "type": "string" },
+                  "label_en": { "type": "string" }
+                }
+              }
+            }
+          }
+        },
+        {
+          "type": "object",
+          "additionalProperties": false,
+          "required": ["kind","levels"],
+          "properties": {
+            "kind": { "const": "interp_rubric" },
+            "levels": {
+              "type": "array",
+              "minItems": 2,
+              "items": {
+                "type": "object",
+                "additionalProperties": false,
+                "required": ["score","description_fr","description_en"],
+                "properties": {
+                  "score": { "type": "number", "minimum": 0, "maximum": 100 },
+                  "description_fr": { "type": "string" },
+                  "description_en": { "type": "string" }
+                }
+              }
+            }
+          }
+        }
+      ]
+    }
+  }
+}

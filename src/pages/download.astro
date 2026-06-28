@@ -1,0 +1,18 @@
+---
+import Base from "@site/layouts/Base.astro";
+import { t } from "@site/lib/i18n";
+const locale = "fr" as const;
+---
+<Base locale={locale} title={t(locale, "page.download_title")} pagePath="/download">
+  <section class="space-y-4 max-w-prose">
+    <h1 class="text-3xl font-serif">{t(locale, "page.download_title")}</h1>
+    <p>Toutes les données sous <strong>CC-BY-4.0</strong>. Le dépôt est la source de vérité.</p>
+    <ul class="list-disc pl-6 text-sm font-mono space-y-1">
+      <li><a class="underline" href="https://github.com/diaspoai/afroindexsovereignty">Dépôt GitHub</a></li>
+      <li><code>data/countries.json</code> · <code>data/indicators.json</code> · <code>data/methodology.json</code></li>
+      <li><code>data/scores/&lt;ISO3&gt;.json</code> · <code>data/axis_scores/&lt;ISO3&gt;.json</code> · <code>data/events.json</code></li>
+      <li><code>schemas/*.json</code> — contrat figé v0.3.0</li>
+    </ul>
+    <p class="text-xs text-ink/50 font-mono">R7 stub.</p>
+  </section>
+</Base>

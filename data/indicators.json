@@ -1,0 +1,190 @@
+[
+  {
+    "id": "A1",
+    "axis": "A",
+    "name_fr": "Arrangement monétaire CFA (le franc)",
+    "name_en": "CFA monetary arrangement (the franc)",
+    "type": "HARD",
+    "weight": 1.5,
+    "cadence": "event",
+    "history_mode": "step_function",
+    "earliest_sourced_year": 1960,
+    "source_class": "Treaty texts, BEAC/BCEAO",
+    "anchor": {
+      "kind": "ordinal",
+      "levels": [
+        { "raw": "own_sovereign_currency", "score": 100, "label_fr": "Monnaie souveraine", "label_en": "Own sovereign currency" },
+        { "raw": "peg_reserves_repatriated_no_french_board", "score": 40, "label_fr": "Peg, réserves rapatriées, sans conseil français", "label_en": "Peg with reserves repatriated, no French board (post-2020 UEMOA)" },
+        { "raw": "full_peg_french_guarantee_board_legacy", "score": 20, "label_fr": "Peg complet avec garantie française et héritage du conseil", "label_en": "Full peg with French guarantee, board legacy (CEMAC)" }
+      ]
+    }
+  },
+  {
+    "id": "A2",
+    "axis": "A",
+    "name_fr": "Part commerciale française",
+    "name_en": "French trade share",
+    "type": "HARD",
+    "weight": 1.0,
+    "cadence": "annual",
+    "history_mode": "annual_series",
+    "earliest_sourced_year": 1980,
+    "source_class": "UN Comtrade",
+    "anchor": { "kind": "linear", "raw_at_100": 0, "raw_at_0": 40, "clamp": true }
+  },
+  {
+    "id": "A3",
+    "axis": "A",
+    "name_fr": "Dépendance financière française",
+    "name_en": "French financial dependence",
+    "type": "HARD",
+    "weight": 1.0,
+    "cadence": "annual",
+    "history_mode": "annual_series",
+    "earliest_sourced_year": 1995,
+    "source_class": "AFD, World Bank, OECD",
+    "anchor": { "kind": "linear", "raw_at_100": 0, "raw_at_0": 50, "clamp": true }
+  },
+  {
+    "id": "A4",
+    "axis": "A",
+    "name_fr": "Dépendance militaire française",
+    "name_en": "French military dependence",
+    "type": "HARD",
+    "weight": 1.0,
+    "cadence": "event",
+    "history_mode": "step_function",
+    "earliest_sourced_year": 1960,
+    "source_class": "SIPRI, open-source",
+    "anchor": {
+      "kind": "ordinal",
+      "levels": [
+        { "raw": "no_french_presence", "score": 100, "label_fr": "Aucune présence française", "label_en": "No French presence" },
+        { "raw": "training_mission_only", "score": 70, "label_fr": "Mission de formation uniquement", "label_en": "Training mission only" },
+        { "raw": "french_troops_present", "score": 40, "label_fr": "Troupes françaises présentes", "label_en": "French troops present" },
+        { "raw": "permanent_french_base", "score": 20, "label_fr": "Base française permanente", "label_en": "Permanent French base" }
+      ]
+    }
+  },
+  {
+    "id": "A5",
+    "axis": "A",
+    "name_fr": "Posture diplomatique envers Paris",
+    "name_en": "Diplomatic posture toward Paris",
+    "type": "HARD",
+    "weight": 1.0,
+    "cadence": "event",
+    "history_mode": "step_function",
+    "earliest_sourced_year": 1960,
+    "source_class": "Event log, primary statements",
+    "anchor": {
+      "kind": "ordinal",
+      "levels": [
+        { "raw": "ties_severed_or_quit_french_bloc", "score": 100, "label_fr": "Rupture / quitté le bloc aligné sur la France", "label_en": "Ties severed / quit French-aligned bloc" },
+        { "raw": "ambassador_expelled_cooperation_suspended", "score": 70, "label_fr": "Ambassadeur expulsé / coopération suspendue", "label_en": "Ambassador expelled / cooperation suspended" },
+        { "raw": "normal_ties", "score": 40, "label_fr": "Relations normales", "label_en": "Normal ties" },
+        { "raw": "defense_clientelist_pact_active", "score": 20, "label_fr": "Pacte clientéliste / défense actif", "label_en": "Defense / clientelist pact active" }
+      ]
+    }
+  },
+  {
+    "id": "A6",
+    "axis": "A",
+    "name_fr": "Coïncidence de vote ONU avec la France",
+    "name_en": "UN voting coincidence with France",
+    "type": "HARD",
+    "weight": 1.0,
+    "cadence": "annual",
+    "history_mode": "annual_series",
+    "earliest_sourced_year": 1970,
+    "source_class": "UN voting records",
+    "anchor": { "kind": "linear", "raw_at_100": 0, "raw_at_0": 100, "clamp": true }
+  },
+  {
+    "id": "B1",
+    "axis": "B",
+    "name_fr": "Concentration du pouvoir",
+    "name_en": "Power concentration",
+    "type": "HARD",
+    "weight": 1.0,
+    "cadence": "event",
+    "history_mode": "step_function",
+    "earliest_sourced_year": 1960,
+    "source_class": "National records, event log",
+    "anchor": {
+      "kind": "ordinal",
+      "levels": [
+        { "raw": "term_limits_regular_turnover", "score": 100, "label_fr": "Limites de mandat + alternance régulière", "label_en": "Enforced term limits + regular turnover" },
+        { "raw": "long_tenure_no_dissolution", "score": 60, "label_fr": "Long mandat sans dissolution de l'opposition", "label_en": "Long tenure, opposition not dissolved" },
+        { "raw": "opposition_dissolved_or_40plus_years", "score": 20, "label_fr": "Opposition dissoute ou mandat de 40+ ans", "label_en": "Opposition dissolved or 40+ year tenure" },
+        { "raw": "dynastic_succession_or_assets_seized", "score": 0, "label_fr": "Succession dynastique ou saisie des biens", "label_en": "Dynastic succession or party-assets seized" }
+      ]
+    }
+  },
+  {
+    "id": "B2",
+    "axis": "B",
+    "name_fr": "Concentration du contrôle économique (capture par l'élite)",
+    "name_en": "Economic-control concentration (elite capture)",
+    "type": "INTERP",
+    "weight": 0.5,
+    "cadence": "annual",
+    "history_mode": "annual_series",
+    "earliest_sourced_year": 2000,
+    "source_class": "Mixed (analyst rubric)",
+    "anchor": {
+      "kind": "interp_rubric",
+      "levels": [
+        { "score": 100, "description_fr": "Aucune concentration documentée", "description_en": "No documented concentration" },
+        { "score": 60, "description_fr": "Présence d'entreprises liées au régime", "description_en": "Regime-connected firms present" },
+        { "score": 20, "description_fr": "Capture des rentes par un clan dirigeant", "description_en": "Ruling-clan capture of resource rents" }
+      ]
+    }
+  },
+  {
+    "id": "B3",
+    "axis": "B",
+    "name_fr": "Auto-direction fiscale",
+    "name_en": "Fiscal self-direction",
+    "type": "HARD",
+    "weight": 1.0,
+    "cadence": "annual",
+    "history_mode": "annual_series",
+    "earliest_sourced_year": 1995,
+    "source_class": "World Bank, OECD",
+    "anchor": { "kind": "linear", "raw_at_100": 0, "raw_at_0": 50, "clamp": true }
+  },
+  {
+    "id": "B4",
+    "axis": "B",
+    "name_fr": "Propriété des secteurs stratégiques (capture étrangère)",
+    "name_en": "Strategic-sector ownership (foreign capture)",
+    "type": "INTERP",
+    "weight": 0.5,
+    "cadence": "annual",
+    "history_mode": "annual_series",
+    "earliest_sourced_year": 2000,
+    "source_class": "Mixed (analyst rubric)",
+    "anchor": {
+      "kind": "interp_rubric",
+      "levels": [
+        { "score": 100, "description_fr": "Propriété nationale / étatique des secteurs clés", "description_en": "Domestic / state ownership of key sectors" },
+        { "score": 60, "description_fr": "Propriété étrangère minoritaire des secteurs clés", "description_en": "Minority foreign ownership of key sectors" },
+        { "score": 20, "description_fr": "Propriété étrangère majoritaire des secteurs clés", "description_en": "Majority foreign ownership of key sectors" }
+      ]
+    }
+  },
+  {
+    "id": "B5",
+    "axis": "B",
+    "name_fr": "Auto-suffisance alimentaire",
+    "name_en": "Food self-sufficiency",
+    "type": "HARD",
+    "weight": 1.0,
+    "cadence": "annual",
+    "history_mode": "annual_series",
+    "earliest_sourced_year": 1990,
+    "source_class": "FAO",
+    "anchor": { "kind": "linear", "raw_at_100": 0, "raw_at_0": 100, "clamp": true }
+  }
+]

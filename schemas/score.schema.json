@@ -1,0 +1,74 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://iafs/schemas/score.schema.json",
+  "title": "Score",
+  "description": "Source-of-truth score record. Discriminated union: kind=annual covers exactly one year; kind=step holds from effective_year until the next step. Forbidden fields (interpolated, extrapolated, imputed, estimated_from, back_filled) MUST NOT appear — A8.2.",
+  "oneOf": [
+    { "$ref": "#/$defs/ScoreAnnual" },
+    { "$ref": "#/$defs/ScoreStep" }
+  ],
+  "$defs": {
+    "common": {
+      "type": "object",
+      "properties": {
+        "country": { "type": "string", "pattern": "^(BEN|BFA|CIV|MLI|NER|SEN|TGO|CMR|CAF|TCD|COG|GAB|ZZ[A-Z])$" },
+        "indicator_id": { "enum": ["A1","A2","A3","A4","A5","A6","B1","B2","B3","B4","B5"] },
+        "axis": { "enum": ["A","B"] },
+        "raw_value": { "type": ["number","string"] },
+        "normalized_score": { "type": "number", "minimum": 0, "maximum": 100 },
+        "type": { "enum": ["HARD","INTERP"] },
+        "tag": { "enum": ["FACT","INTERPRETATION","CONTESTED"] },
+        "source_url": { "type": "string", "format": "uri", "minLength": 1 },
+        "source_date": { "type": "string", "format": "date" },
+        "event_ref": { "type": "string" },
+        "note_fr": { "type": "string" },
+        "note_en": { "type": "string" },
+        "review_log_id": { "type": "string" }
+      }
+    },
+    "ScoreAnnual": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["kind","country","indicator_id","axis","year","raw_value","normalized_score","type","tag","source_url","source_date"],
+      "properties": {
+        "kind": { "const": "annual" },
+        "country": { "type": "string", "pattern": "^(BEN|BFA|CIV|MLI|NER|SEN|TGO|CMR|CAF|TCD|COG|GAB|ZZ[A-Z])$" },
+        "indicator_id": { "enum": ["A1","A2","A3","A4","A5","A6","B1","B2","B3","B4","B5"] },
+        "axis": { "enum": ["A","B"] },
+        "year": { "type": "integer", "minimum": 1900, "maximum": 2100 },
+        "raw_value": { "type": ["number","string"] },
+        "normalized_score": { "type": "number", "minimum": 0, "maximum": 100 },
+        "type": { "enum": ["HARD","INTERP"] },
+        "tag": { "enum": ["FACT","INTERPRETATION","CONTESTED"] },
+        "source_url": { "type": "string", "format": "uri", "minLength": 1 },
+        "source_date": { "type": "string", "format": "date" },
+        "event_ref": { "type": "string" },
+        "note_fr": { "type": "string" },
+        "note_en": { "type": "string" },
+        "review_log_id": { "type": "string" }
+      }
+    },
+    "ScoreStep": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["kind","country","indicator_id","axis","effective_year","raw_value","normalized_score","type","tag","source_url","source_date"],
+      "properties": {
+        "kind": { "const": "step" },
+        "country": { "type": "string", "pattern": "^(BEN|BFA|CIV|MLI|NER|SEN|TGO|CMR|CAF|TCD|COG|GAB|ZZ[A-Z])$" },
+        "indicator_id": { "enum": ["A1","A2","A3","A4","A5","A6","B1","B2","B3","B4","B5"] },
+        "axis": { "enum": ["A","B"] },
+        "effective_year": { "type": "integer", "minimum": 1900, "maximum": 2100 },
+        "raw_value": { "type": ["number","string"] },
+        "normalized_score": { "type": "number", "minimum": 0, "maximum": 100 },
+        "type": { "enum": ["HARD","INTERP"] },
+        "tag": { "enum": ["FACT","INTERPRETATION","CONTESTED"] },
+        "source_url": { "type": "string", "format": "uri", "minLength": 1 },
+        "source_date": { "type": "string", "format": "date" },
+        "event_ref": { "type": "string" },
+        "note_fr": { "type": "string" },
+        "note_en": { "type": "string" },
+        "review_log_id": { "type": "string" }
+      }
+    }
+  }
+}

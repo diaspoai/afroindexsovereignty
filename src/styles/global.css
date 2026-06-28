@@ -1,0 +1,51 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  color-scheme: light;
+}
+
+html, body {
+  background-color: theme("colors.paper");
+  color: theme("colors.ink");
+  font-family: theme("fontFamily.sans");
+  -webkit-font-smoothing: antialiased;
+}
+
+h1, h2, h3 {
+  font-family: theme("fontFamily.serif");
+  font-weight: 500;
+  letter-spacing: -0.01em;
+}
+
+/* Tag visual language — shape carries meaning, NOT color alone (C6). */
+.tag-fact::before        { content: "▪"; margin-right: 0.4em; }
+.tag-interpretation::before { content: "▨"; margin-right: 0.4em; font-style: italic; }
+.tag-contested::before   { content: "▫*"; margin-right: 0.4em; }
+.type-hard::before       { content: "●"; margin-right: 0.3em; font-size: 0.7em; }
+.type-interp::before     { content: "○"; margin-right: 0.3em; font-size: 0.7em; }
+
+.axis-A { color: theme("colors.axisA"); }
+.axis-B { color: theme("colors.axisB"); }
+
+/* Trajectory rendering — gap years are visually distinct from sourced years. */
+.trajectory-gap {
+  stroke-dasharray: 2 4;
+  opacity: 0.35;
+}
+.trajectory-baseline {
+  stroke: theme("colors.oxblood");
+  stroke-dasharray: 4 4;
+  stroke-width: 1;
+}
+
+/* Skip-link for a11y */
+.skip-link {
+  position: absolute; left: -9999px;
+}
+.skip-link:focus {
+  left: 1rem; top: 1rem; background: theme("colors.ink");
+  color: theme("colors.paper"); padding: 0.5rem 1rem;
+  z-index: 50;
+}

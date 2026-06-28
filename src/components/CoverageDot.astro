@@ -1,0 +1,15 @@
+---
+interface Props { coverage: number; label?: string; }
+const { coverage, label } = Astro.props;
+const pct = Math.round(coverage * 100);
+const ringDashes = coverage < 0.20 ? "3 3" : "1 0";
+---
+<span class="inline-flex items-center gap-1 text-xs font-mono"
+      title={label ?? `coverage ${pct}%`}
+      data-coverage={pct}>
+  <svg width="12" height="12" viewBox="0 0 12 12" aria-hidden="true">
+    <circle cx="6" cy="6" r="5" fill="none" stroke="currentColor" stroke-width="1" stroke-dasharray={ringDashes} />
+    <circle cx="6" cy="6" r={Math.max(0.5, 4 * coverage)} fill="currentColor" />
+  </svg>
+  <span>{pct}%</span>
+</span>

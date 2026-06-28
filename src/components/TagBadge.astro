@@ -1,0 +1,21 @@
+---
+import { t, type Locale } from "@site/lib/i18n";
+
+interface Props {
+  tag: "FACT" | "INTERPRETATION" | "CONTESTED";
+  type: "HARD" | "INTERP";
+  locale: Locale;
+}
+const { tag, type, locale } = Astro.props;
+const tagClass = tag === "FACT" ? "tag-fact" : tag === "INTERPRETATION" ? "tag-interpretation" : "tag-contested";
+const typeClass = type === "HARD" ? "type-hard" : "type-interp";
+---
+
+<span class={`inline-flex items-center gap-1 text-xs font-mono uppercase tracking-wider ${tagClass}`}
+      data-tag={tag}
+      data-type={type}>
+  <span aria-hidden="true">·</span>
+  <span>{t(locale, `tag.${tag}`)}</span>
+  <span class={typeClass} aria-hidden="true"></span>
+  <span class="sr-only">{t(locale, `tag.${type}`)}</span>
+</span>

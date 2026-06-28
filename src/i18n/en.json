@@ -1,0 +1,41 @@
+{
+  "site_title": "IAFS — Index of African Francophone Sovereignty",
+  "site_subtitle": "12 CFA-franc states, from independence to today.",
+  "two_scores_never_one": "Two scores. Never one.",
+  "axis_a": "External Autonomy",
+  "axis_a_gloss": "Distance from the colonial orbit (France) and the CFA franc.",
+  "axis_b": "Internal Self-Determination (non-capture)",
+  "axis_b_gloss": "Power held by the political community rather than by an elite or an external patron. Not a democracy index.",
+  "baseline_label": "Independence on paper",
+  "baseline_gloss": "The flag raised in 1960 does not measure substantive sovereignty. The gap is the thing to read.",
+  "coverage": "Coverage",
+  "coverage_gloss": "Share of indicators with sourced data in that year.",
+  "gap_legend": "No sourced data — no score",
+  "dummy_banner": "DUMMY DATA — no real country data is rendered. Schema v0.3.0.",
+  "nav": {
+    "map": "Map",
+    "plot": "A×B plot",
+    "countries": "Countries",
+    "events": "Event log",
+    "methodology": "Methodology",
+    "download": "Download data"
+  },
+  "tag": {
+    "FACT": "FACT",
+    "INTERPRETATION": "INTERPRETATION",
+    "CONTESTED": "CONTESTED",
+    "HARD": "HARD",
+    "INTERP": "INTERP."
+  },
+  "lang_switch": "FR",
+  "lang_switch_label": "Français",
+  "footer_license": "Data licensed CC-BY-4.0 · Code licensed MIT",
+  "page": {
+    "map_title": "Map of the 12 states",
+    "plot_title": "Axis A × Axis B plot",
+    "country_title": "Country profile",
+    "events_title": "Event log",
+    "methodology_title": "Methodology v0.3.0",
+    "download_title": "Data"
+  }
+}

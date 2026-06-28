@@ -1,0 +1,44 @@
+{
+  "name": "iafs",
+  "version": "0.3.0",
+  "private": true,
+  "type": "module",
+  "description": "Index of African Francophone Sovereignty — a public, bilingual, open-source two-axis index tracking the 12 CFA-franc states' sovereignty trajectory.",
+  "license": "MIT",
+  "engines": {
+    "node": ">=20.0.0"
+  },
+  "scripts": {
+    "validate": "tsx scripts/validate.ts",
+    "normalize": "tsx scripts/normalize.ts",
+    "build:data": "npm run validate && npm run normalize",
+    "test": "vitest run",
+    "test:evals": "vitest run --dir evals",
+    "test:unit": "vitest run --dir scripts",
+    "dev": "astro dev",
+    "build": "npm run build:data && astro build",
+    "preview": "astro preview",
+    "lint:composite": "bash .claude/hooks/forbid-composite.sh --scan",
+    "e2e": "playwright test",
+    "ci": "npm run validate && npm run normalize && npm run test && npm run build && npm run e2e"
+  },
+  "dependencies": {
+    "@astrojs/tailwind": "^5.1.0",
+    "astro": "^4.16.0",
+    "d3": "^7.9.0",
+    "tailwindcss": "^3.4.0"
+  },
+  "devDependencies": {
+    "@axe-core/playwright": "^4.10.0",
+    "@playwright/test": "^1.48.0",
+    "@types/d3": "^7.4.3",
+    "@types/node": "^20.12.0",
+    "ajv": "^8.17.0",
+    "ajv-formats": "^3.0.1",
+    "axe-core": "^4.10.0",
+    "json-schema-to-typescript": "^15.0.0",
+    "tsx": "^4.19.0",
+    "typescript": "^5.6.0",
+    "vitest": "^2.1.0"
+  }
+}

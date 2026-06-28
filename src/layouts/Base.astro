@@ -1,0 +1,63 @@
+---
+import "@site/styles/global.css";
+import { t, otherLocale, localePath, type Locale } from "@site/lib/i18n";
+import { getMethodology } from "@site/lib/data";
+
+interface Props { locale: Locale; title: string; pagePath: string; }
+const { locale, title, pagePath } = Astro.props;
+const other = otherLocale(locale);
+const methodology = getMethodology();
+const isDummy = methodology.mode === "dummy";
+---
+
+<!doctype html>
+<html lang={locale}>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>{title} — {t(locale, "site_title")}</title>
+    <meta name="description" content={t(locale, "site_subtitle")} />
+  </head>
+  <body class="min-h-screen flex flex-col">
+    <a href="#main" class="skip-link">{locale === "fr" ? "Aller au contenu" : "Skip to content"}</a>
+
+    {isDummy && (
+      <div role="status" class="bg-oxblood text-paper text-center text-xs py-1 px-2 font-mono">
+        {t(locale, "dummy_banner")}
+      </div>
+    )}
+
+    <header class="border-b border-ink/10">
+      <div class="max-w-6xl mx-auto px-4 py-4 flex items-center justify-between gap-4 flex-wrap">
+        <a href={localePath(locale, "/")} class="flex flex-col leading-tight">
+          <span class="font-serif text-xl">{t(locale, "site_title")}</span>
+          <span class="text-xs text-ink/60">{t(locale, "site_subtitle")}</span>
+        </a>
+        <nav aria-label="primary" class="flex flex-wrap items-center gap-4 text-sm">
+          <a href={localePath(locale, "/")}>{t(locale, "nav.map")}</a>
+          <a href={localePath(locale, "/plot")}>{t(locale, "nav.plot")}</a>
+          <a href={localePath(locale, "/countries")}>{t(locale, "nav.countries")}</a>
+          <a href={localePath(locale, "/events")}>{t(locale, "nav.events")}</a>
+          <a href={localePath(locale, "/methodology")}>{t(locale, "nav.methodology")}</a>
+          <a href={localePath(locale, "/download")}>{t(locale, "nav.download")}</a>
+          <a href={localePath(other, pagePath)}
+             aria-label={t(locale, "lang_switch_label")}
+             class="font-mono border border-ink/30 px-2 py-0.5 rounded">
+            {t(locale, "lang_switch")}
+          </a>
+        </nav>
+      </div>
+    </header>
+
+    <main id="main" class="flex-1 max-w-6xl w-full mx-auto px-4 py-8">
+      <slot />
+    </main>
+
+    <footer class="border-t border-ink/10 mt-12">
+      <div class="max-w-6xl mx-auto px-4 py-4 text-xs text-ink/60 flex justify-between flex-wrap gap-2">
+        <span>{t(locale, "footer_license")}</span>
+        <span class="font-mono">schema v0.3.0 · {t(locale, "two_scores_never_one")}</span>
+      </div>
+    </footer>
+  </body>
+</html>

@@ -1,0 +1,28 @@
+# deps
+node_modules/
+
+# build output
+dist/
+.astro/
+built/
+test-results/
+playwright-report/
+
+# logs / env / caches
+*.log
+.env
+.env.*
+.DS_Store
+**/.DS_Store
+.vitest-cache/
+coverage/
+
+# evidence receipts — only PR-bound directories tracked; bulk cache ignored
+evidence/.cache/
+
+# editor
+.vscode/
+.idea/
+
+# misc
+*.tsbuildinfo

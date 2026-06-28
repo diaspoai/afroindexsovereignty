@@ -1,0 +1,22 @@
+[
+  {
+    "iso3": "ZZA",
+    "zone": "DUMMY",
+    "currency": "DUMMY",
+    "name_fr": "Pays-Test A (DONNÉES FACTICES)",
+    "name_en": "Test Country A (DUMMY DATA)",
+    "independence_year": 1960,
+    "independence_footnote_fr": "DONNÉES FACTICES — placeholder pour valider le schéma.",
+    "independence_footnote_en": "DUMMY DATA — placeholder used to validate the schema."
+  },
+  {
+    "iso3": "ZZB",
+    "zone": "DUMMY",
+    "currency": "DUMMY",
+    "name_fr": "Pays-Test B (DONNÉES FACTICES)",
+    "name_en": "Test Country B (DUMMY DATA)",
+    "independence_year": 1960,
+    "independence_footnote_fr": "DONNÉES FACTICES — scénario de réunification 1961 simulé.",
+    "independence_footnote_en": "DUMMY DATA — simulated 1961 reunification scenario."
+  }
+]

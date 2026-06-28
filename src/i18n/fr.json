@@ -1,0 +1,41 @@
+{
+  "site_title": "IAFS — Indice Afro de Souveraineté",
+  "site_subtitle": "Index of African Francophone Sovereignty — 12 États du franc CFA, de l'indépendance à aujourd'hui.",
+  "two_scores_never_one": "Deux scores. Jamais un.",
+  "axis_a": "Autonomie externe",
+  "axis_a_gloss": "Distance vis-à-vis de l'orbite coloniale (France) et du franc CFA.",
+  "axis_b": "Auto-détermination interne (non-capture)",
+  "axis_b_gloss": "Pouvoir détenu par la communauté politique plutôt que par une élite ou un patron externe. N'est pas un indice de démocratie.",
+  "baseline_label": "Indépendance sur le papier",
+  "baseline_gloss": "Le drapeau hissé en 1960 ne mesure pas la souveraineté substantielle. L'écart est la chose à lire.",
+  "coverage": "Couverture",
+  "coverage_gloss": "Part des indicateurs avec données sourcées cette année-là.",
+  "gap_legend": "Aucune donnée sourcée — pas de score",
+  "dummy_banner": "DONNÉES FACTICES — aucune donnée réelle de pays n'est rendue. Schéma v0.3.0.",
+  "nav": {
+    "map": "Carte",
+    "plot": "Plan A×B",
+    "countries": "Pays",
+    "events": "Journal d'événements",
+    "methodology": "Méthodologie",
+    "download": "Télécharger les données"
+  },
+  "tag": {
+    "FACT": "FAIT",
+    "INTERPRETATION": "INTERPRÉTATION",
+    "CONTESTED": "CONTESTÉ",
+    "HARD": "DUR",
+    "INTERP": "INTERP."
+  },
+  "lang_switch": "EN",
+  "lang_switch_label": "English",
+  "footer_license": "Données sous CC-BY-4.0 · Code sous MIT",
+  "page": {
+    "map_title": "Carte des 12 États",
+    "plot_title": "Plan Axe A × Axe B",
+    "country_title": "Profil pays",
+    "events_title": "Journal d'événements",
+    "methodology_title": "Méthodologie v0.3.0",
+    "download_title": "Données"
+  }
+}

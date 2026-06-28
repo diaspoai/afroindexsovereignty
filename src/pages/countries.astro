@@ -1,0 +1,15 @@
+---
+import Base from "@site/layouts/Base.astro";
+import { getCountries } from "@site/lib/data";
+import { t, localePath } from "@site/lib/i18n";
+const locale = "fr" as const;
+const countries = getCountries();
+---
+<Base locale={locale} title={t(locale, "nav.countries")} pagePath="/countries">
+  <h1 class="text-3xl font-serif mb-4">{t(locale, "nav.countries")}</h1>
+  <ul class="grid sm:grid-cols-2 gap-3">
+    {countries.map((c) => (
+      <li><a class="underline font-serif text-xl" href={localePath(locale, `/country/${c.iso3}`)}>{c.name_fr} · <span class="font-mono text-sm">{c.iso3}</span></a></li>
+    ))}
+  </ul>
+</Base>

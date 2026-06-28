@@ -1,0 +1,43 @@
+name: CI
+
+on:
+  pull_request:
+  push:
+    branches: [main]
+
+jobs:
+  ci:
+    runs-on: ubuntu-latest
+    env:
+      IAFS_CURRENT_YEAR: "2026"
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: "20"
+          cache: "npm"
+
+      - name: Install
+        run: npm ci
+
+      - name: validate (schema + cross-record)
+        run: npm run validate
+
+      - name: normalize (verify stored axis_scores match recomputed)
+        run: npm run normalize
+
+      - name: evals (01–08)
+        run: npm run test
+
+      - name: forbid-composite (defense in depth)
+        run: npm run lint:composite
+
+      - name: build site
+        run: npm run build
+
+      - name: install Playwright browsers
+        run: npx playwright install --with-deps chromium
+
+      - name: E2E + a11y
+        run: npm run e2e

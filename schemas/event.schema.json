@@ -1,0 +1,22 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://iafs/schemas/event.schema.json",
+  "title": "Event",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["id","country","date","axis","indicator_id","title_fr","title_en","description_fr","description_en","direction","source_url","source_date"],
+  "properties": {
+    "id": { "type": "string", "pattern": "^[a-z0-9][a-z0-9\\-]{1,80}$" },
+    "country": { "type": "string", "pattern": "^(BEN|BFA|CIV|MLI|NER|SEN|TGO|CMR|CAF|TCD|COG|GAB|ZZ[A-Z])$" },
+    "date": { "type": "string", "format": "date" },
+    "axis": { "enum": ["A","B"] },
+    "indicator_id": { "enum": ["A1","A2","A3","A4","A5","A6","B1","B2","B3","B4","B5"] },
+    "title_fr": { "type": "string", "minLength": 1 },
+    "title_en": { "type": "string", "minLength": 1 },
+    "description_fr": { "type": "string", "minLength": 1 },
+    "description_en": { "type": "string", "minLength": 1 },
+    "direction": { "enum": ["+","-","0"] },
+    "source_url": { "type": "string", "format": "uri" },
+    "source_date": { "type": "string", "format": "date" }
+  }
+}

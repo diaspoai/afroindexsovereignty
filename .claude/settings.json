@@ -1,0 +1,14 @@
+{
+  "$schema": "https://docs.claude.com/claude-code/settings.schema.json",
+  "hooks": {
+    "PreToolUse": [
+      {
+        "matcher": "Edit|Write",
+        "hooks": [
+          { "type": "command", "command": "bash .claude/hooks/pre-edit-data-guard.sh" },
+          { "type": "command", "command": "bash .claude/hooks/forbid-composite.sh" }
+        ]
+      }
+    ]
+  }
+}

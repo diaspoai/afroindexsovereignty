@@ -1,0 +1,43 @@
+---
+import Base from "@site/layouts/Base.astro";
+import { getCountries, getTrajectory } from "@site/lib/data";
+import { t, localePath } from "@site/lib/i18n";
+
+const locale = "fr" as const;
+const countries = getCountries();
+const trajectories = countries.map((c) => ({ c, traj: getTrajectory(c.iso3) }));
+---
+
+<Base locale={locale} title={t(locale, "page.map_title")} pagePath="/">
+  <section class="space-y-6">
+    <header class="space-y-2">
+      <h1 class="text-3xl font-serif">{t(locale, "page.map_title")}</h1>
+      <p class="max-w-prose text-ink/70">{t(locale, "site_subtitle")}</p>
+      <p class="font-mono text-xs uppercase tracking-widest text-oxblood" aria-label="non-fusion principle">
+        — {t(locale, "two_scores_never_one")} —
+      </p>
+    </header>
+
+    <ul class="grid sm:grid-cols-2 lg:grid-cols-3 gap-4">
+      {trajectories.map(({ c, traj }) => {
+        const last = traj.years[traj.years.length - 1];
+        return (
+          <li class="border border-ink/15 p-4 space-y-2 bg-white/40">
+            <a href={localePath(locale, `/country/${c.iso3}`)} class="font-serif text-xl block">
+              {c.name_fr}
+            </a>
+            <div class="flex items-baseline gap-4 text-sm font-mono">
+              <span class="axis-A">A·{last.axis_a.gap ? "—" : Math.round(last.axis_a.score)}</span>
+              <span class="axis-B">B·{last.axis_b.gap ? "—" : Math.round(last.axis_b.score)}</span>
+              <span class="text-ink/50 text-xs">{traj.independence_year} → {traj.current_year}</span>
+            </div>
+          </li>
+        );
+      })}
+    </ul>
+
+    <p class="text-xs text-ink/50 font-mono">
+      R1 carte stub — DONNÉES FACTICES. La carte SVG des 12 États remplacera cette grille.
+    </p>
+  </section>
+</Base>

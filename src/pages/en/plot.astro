@@ -1,0 +1,38 @@
+---
+import Base from "@site/layouts/Base.astro";
+import { getCountries, getTrajectory } from "@site/lib/data";
+import { t } from "@site/lib/i18n";
+
+const locale = "en" as const;
+const countries = getCountries();
+const points = countries.map((c) => {
+  const traj = getTrajectory(c.iso3);
+  const last = traj.years[traj.years.length - 1];
+  return { iso3: c.iso3, name: c.name_en, a: last.axis_a.score, b: last.axis_b.score };
+});
+---
+<Base locale={locale} title={t(locale, "page.plot_title")} pagePath="/plot">
+  <section class="space-y-6">
+    <h1 class="text-3xl font-serif">{t(locale, "page.plot_title")}</h1>
+    <p class="max-w-prose text-ink/70">
+      <span class="axis-A font-semibold">{t(locale, "axis_a")}</span> vs
+      <span class="axis-B font-semibold">{t(locale, "axis_b")}</span>.
+      {t(locale, "two_scores_never_one")}
+    </p>
+
+    <svg viewBox="0 0 400 400" class="border border-ink/15 bg-white/40 w-full max-w-md" role="img" aria-label={t(locale, "page.plot_title")}>
+      <line x1="0" y1="200" x2="400" y2="200" stroke="currentColor" stroke-width="0.5" />
+      <line x1="200" y1="0" x2="200" y2="400" stroke="currentColor" stroke-width="0.5" />
+      <text x="395" y="195" text-anchor="end" font-size="10" class="axis-A">A→</text>
+      <text x="205" y="12"  font-size="10" class="axis-B">B↑</text>
+      {points.map((p) => p.a !== null && p.b !== null && (
+        <g>
+          <circle cx={4 + p.a * 3.92} cy={400 - (4 + p.b * 3.92)} r="6" fill="currentColor" opacity="0.7" />
+          <text x={4 + p.a * 3.92 + 9} y={400 - (4 + p.b * 3.92) + 3} font-size="9" class="font-mono">{p.iso3}</text>
+        </g>
+      ))}
+    </svg>
+
+    <p class="text-xs text-ink/50 font-mono">R2 stub — DUMMY DATA. No combined axis, ever.</p>
+  </section>
+</Base>

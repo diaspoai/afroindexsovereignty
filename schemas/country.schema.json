@@ -1,0 +1,28 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://iafs/schemas/country.schema.json",
+  "title": "Country",
+  "description": "One of the 12 CFA-franc states, OR a clearly-labeled dummy placeholder (iso3 in the ZZ* reserved range).",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["iso3", "zone", "currency", "name_fr", "name_en", "independence_year"],
+  "properties": {
+    "iso3": {
+      "type": "string",
+      "pattern": "^(BEN|BFA|CIV|MLI|NER|SEN|TGO|CMR|CAF|TCD|COG|GAB|ZZ[A-Z])$",
+      "description": "ISO-3166-1 alpha-3 for the 12 real states, or ZZ* reserved for dummy data."
+    },
+    "zone": { "enum": ["UEMOA", "CEMAC", "DUMMY"] },
+    "currency": { "enum": ["XOF", "XAF", "DUMMY"] },
+    "name_fr": { "type": "string", "minLength": 1 },
+    "name_en": { "type": "string", "minLength": 1 },
+    "independence_year": {
+      "type": "integer",
+      "minimum": 1900,
+      "maximum": 2030,
+      "description": "Year of nominal independence (baseline t=0). Almost all CFA-zone states = 1960."
+    },
+    "independence_footnote_fr": { "type": "string" },
+    "independence_footnote_en": { "type": "string" }
+  }
+}

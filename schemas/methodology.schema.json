@@ -1,0 +1,31 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://iafs/schemas/methodology.schema.json",
+  "title": "Methodology",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["version","anchor_set_id","coverage_threshold","licenses","mode"],
+  "properties": {
+    "version": { "type": "string", "pattern": "^[0-9]+\\.[0-9]+\\.[0-9]+$" },
+    "anchor_set_id": { "type": "string" },
+    "coverage_threshold": {
+      "type": "number",
+      "minimum": 0,
+      "maximum": 1,
+      "description": "Below this, axis_score is set to null and the year renders as a gap. Default 0.20."
+    },
+    "mode": {
+      "enum": ["dummy","real"],
+      "description": "dummy = whitelist example.invalid hosts in source-resolution eval; real = strict."
+    },
+    "licenses": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["data","code"],
+      "properties": {
+        "data": { "const": "CC-BY-4.0" },
+        "code": { "const": "MIT" }
+      }
+    }
+  }
+}

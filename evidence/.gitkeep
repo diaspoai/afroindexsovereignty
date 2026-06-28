@@ -1,0 +1,4 @@
+# Anti-fabrication evidence-receipt directory.
+# Per-PR receipts land in evidence/<sha>/<ISO3>-<indicator>-<year>.json.
+# Real-mode CI re-fetches the cited source and asserts the receipt's
+# content_sha256 + Wayback URL match.

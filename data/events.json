@@ -1,0 +1,58 @@
+[
+  {
+    "id": "zza-uemoa-reform-2020",
+    "country": "ZZA",
+    "date": "2020-05-21",
+    "axis": "A",
+    "indicator_id": "A1",
+    "title_fr": "DONNÉES FACTICES — Réforme du franc CFA (style UEMOA)",
+    "title_en": "DUMMY — CFA franc reform (UEMOA-style)",
+    "description_fr": "DONNÉES FACTICES : rapatriement des réserves, retrait du conseil français.",
+    "description_en": "DUMMY: reserve repatriation, French board withdrawal.",
+    "direction": "+",
+    "source_url": "https://example.invalid/dummy/zza/a1/uemoa-reform-2020",
+    "source_date": "2020-05-21"
+  },
+  {
+    "id": "zza-base-handover-2023",
+    "country": "ZZA",
+    "date": "2023-09-10",
+    "axis": "A",
+    "indicator_id": "A4",
+    "title_fr": "DONNÉES FACTICES — Remise de la base militaire française",
+    "title_en": "DUMMY — French military base handover",
+    "description_fr": "DONNÉES FACTICES : passage d'une base permanente à une mission de formation.",
+    "description_en": "DUMMY: shift from permanent base to training mission.",
+    "direction": "+",
+    "source_url": "https://example.invalid/dummy/zza/a4/2023",
+    "source_date": "2023-09-10"
+  },
+  {
+    "id": "zza-severance-2026",
+    "country": "ZZA",
+    "date": "2026-06-01",
+    "axis": "A",
+    "indicator_id": "A5",
+    "title_fr": "DONNÉES FACTICES — Rupture des relations diplomatiques",
+    "title_en": "DUMMY — Diplomatic severance",
+    "description_fr": "DONNÉES FACTICES : rupture des relations avec Paris.",
+    "description_en": "DUMMY: severance of ties with Paris.",
+    "direction": "+",
+    "source_url": "https://example.invalid/dummy/zza/a5/2026",
+    "source_date": "2026-06-01"
+  },
+  {
+    "id": "zza-dissolution-2024",
+    "country": "ZZA",
+    "date": "2024-11-05",
+    "axis": "B",
+    "indicator_id": "B1",
+    "title_fr": "DONNÉES FACTICES — Dissolution des partis politiques",
+    "title_en": "DUMMY — Dissolution of political parties",
+    "description_fr": "DONNÉES FACTICES : dissolution et saisie des biens des partis d'opposition.",
+    "description_en": "DUMMY: dissolution and asset-seizure of opposition parties.",
+    "direction": "-",
+    "source_url": "https://example.invalid/dummy/zza/b1/2024",
+    "source_date": "2024-11-05"
+  }
+]
