@@ -49,6 +49,18 @@ Operating manual: `docs/IAFS_SDLC_v0.1.md`.
 - If coverage is below `methodology.coverage_threshold` (default 0.20), the
   axis_score for that year is `null` and the UI renders a visible gap.
 
+## Workflow (PR-only — no exceptions)
+
+- **Never commit or push directly to `main`.** Every change — code, data,
+  CI tweak, doc, dep bump — goes through a pull request.
+- Default branching: `git checkout -b <type>/<short-slug>`, push, then
+  `gh pr create --base main` with the PR template filled in.
+- Wait for CI green + maintainer approval before merging.
+- Branch protection on `main` enforces this technically (required PR +
+  required CI check + no force-pushes).
+- The only exception is an explicit, in-message authorization from the
+  maintainer to merge directly. Even then, prefer a PR.
+
 ## How to verify (set the bar at the eval, not the demo)
 
 A country is "done" only when it passes the full eval suite:
