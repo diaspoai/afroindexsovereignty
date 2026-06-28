@@ -17,12 +17,17 @@ const traj = getTrajectory(country.iso3);
 ---
 
 <Base locale={locale} title={country.name_fr} pagePath={`/country/${country.iso3}`}>
-  <article class="space-y-8">
-    <header class="space-y-1">
-      <h1 class="text-4xl font-serif">{country.name_fr}</h1>
-      <p class="text-sm font-mono text-ink/60">{country.iso3} · {country.zone} · {country.currency} · {t(locale, "baseline_label")} {country.independence_year}</p>
+  <article class="space-y-8 max-w-page mx-auto">
+    <header class="space-y-2 border-b border-border pb-6">
+      <p class="font-mono text-xs uppercase tracking-[0.25em] text-accent">
+        DONNÉES FACTICES · {country.iso3}
+      </p>
+      <h1 class="font-serif text-2xl">{country.name_fr}</h1>
+      <p class="text-sm font-mono text-muted">
+        {country.zone} · {country.currency} · {t(locale, "baseline_label")} {country.independence_year}
+      </p>
       {country.independence_footnote_fr && (
-        <p class="text-xs text-ink/60 italic max-w-prose">{country.independence_footnote_fr}</p>
+        <p class="text-xs text-dim italic max-w-prose mt-2">{country.independence_footnote_fr}</p>
       )}
     </header>
 
@@ -32,34 +37,42 @@ const traj = getTrajectory(country.iso3);
               current_year={traj.current_year}
               years={traj.years} />
 
-    <section class="space-y-3">
-      <h2 class="text-2xl font-serif">Indicateurs</h2>
-      <table class="text-sm w-full">
-        <thead><tr class="text-left text-xs uppercase border-b border-ink/20">
-          <th class="py-1 pr-3">id</th><th class="pr-3">indicateur</th><th class="pr-3">année</th><th class="pr-3">brut</th><th class="pr-3">score</th><th>provenance</th>
-        </tr></thead>
-        <tbody>
-          {scores.map((s) => {
-            const ind = indicators.find((i) => i.id === s.indicator_id);
-            const yr = s.kind === "annual" ? s.year : s.effective_year;
-            return (
-              <tr class="border-b border-ink/10 align-top">
-                <td class="font-mono py-1 pr-3"><span class={`axis-${s.axis}`}>{s.indicator_id}</span></td>
-                <td class="pr-3">{ind?.name_fr}</td>
-                <td class="font-mono pr-3">{yr}{s.kind==="step" && "+"}</td>
-                <td class="font-mono pr-3">{String(s.raw_value)}</td>
-                <td class="font-mono pr-3">{s.normalized_score}</td>
-                <td class="text-xs">
-                  <a class="underline" href={s.source_url} rel="noreferrer">{s.source_date}</a>
-                  <br/>
-                  <TagBadge tag={s.tag} type={s.type} locale={locale} />
-                </td>
-              </tr>
-            );
-          })}
-        </tbody>
-      </table>
-      <p class="text-xs text-ink/50 font-mono">R3 + R4 + R9 stub.</p>
+    <section class="space-y-4">
+      <h2 class="text-xl font-serif">Indicateurs</h2>
+      <div class="overflow-x-auto bg-surface border border-border rounded-md">
+        <table class="text-sm w-full">
+          <thead>
+            <tr class="text-left text-xs uppercase border-b border-border text-muted">
+              <th class="py-3 px-3">id</th>
+              <th class="py-3 px-3">indicateur</th>
+              <th class="py-3 px-3">année</th>
+              <th class="py-3 px-3">brut</th>
+              <th class="py-3 px-3">score</th>
+              <th class="py-3 px-3">provenance</th>
+            </tr>
+          </thead>
+          <tbody>
+            {scores.map((s) => {
+              const ind = indicators.find((i) => i.id === s.indicator_id);
+              const yr = s.kind === "annual" ? s.year : s.effective_year;
+              return (
+                <tr class="border-b border-border last:border-b-0 align-top hover:bg-surface2 transition-colors">
+                  <td class="font-mono py-3 px-3"><span class={`axis-${s.axis}`}>{s.indicator_id}</span></td>
+                  <td class="px-3 text-text">{ind?.name_fr}</td>
+                  <td class="font-mono px-3 text-muted">{yr}{s.kind==="step" && "+"}</td>
+                  <td class="font-mono px-3 text-muted">{String(s.raw_value)}</td>
+                  <td class="font-mono px-3 text-text">{s.normalized_score}</td>
+                  <td class="text-xs px-3">
+                    <a class="text-axisA hover:underline focus-visible:underline" href={s.source_url} rel="noreferrer">{s.source_date}</a>
+                    <br/>
+                    <TagBadge tag={s.tag} type={s.type} locale={locale} />
+                  </td>
+                </tr>
+              );
+            })}
+          </tbody>
+        </table>
+      </div>
     </section>
   </article>
 </Base>

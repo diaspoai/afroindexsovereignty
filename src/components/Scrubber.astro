@@ -1,16 +1,14 @@
 ---
 /**
- * R9 — The Sovereignty Scrubber.
+ * R9 — The Sovereignty Scrubber. Dark palette v2.
  *
- * Hydrated client island. Builds a per-axis SVG trajectory from independence_year
- * to current_year, with:
- *   - A vertical dashed BASELINE line at independence_year, labeled.
- *   - Two paths (Axis A indigo, Axis B ochre). Gap years break the path (M command).
- *   - data-gap and data-coverage attributes on every year marker for eval 08.
- *   - A year scrubber (range input) that highlights the chosen year on both axes
- *     and surfaces the step-changes / coverage for that year.
+ * Per-axis trajectory from independence_year → current_year:
+ *   - vertical dashed accent BASELINE line at independence_year, labeled
+ *   - two paths (Axis A indigo, Axis B amber); gap years break the path
+ *   - data-gap / data-coverage attrs on year markers for eval 08
+ *   - year scrubber input updates a cursor + axis readouts
  *
- * Inputs come from built/trajectory/<ISO3>.json via the parent country page.
+ * Inputs from built/trajectory/<ISO3>.json via the parent country page.
  */
 import type { Locale } from "@site/lib/i18n";
 import { t } from "@site/lib/i18n";
@@ -30,6 +28,17 @@ interface Props {
   years: Year[];
 }
 const { locale, iso3, independence_year, current_year, years } = Astro.props;
+
+// Token colors (CSS custom-property values mirrored here for inline SVG strings)
+const C = {
+  text:   "rgb(242 238 229)",
+  muted:  "rgb(160 160 174)",
+  dim:    "rgb(107 107 122)",
+  border: "rgb(42 45 58)",
+  axisA:  "rgb(107 142 255)",
+  axisB:  "rgb(255 185 74)",
+  accent: "rgb(255 92 92)",
+};
 
 const W = 900, H = 320, PAD_L = 50, PAD_R = 20, PAD_T = 24, PAD_B = 40;
 const innerW = W - PAD_L - PAD_R;
@@ -62,24 +71,24 @@ const data = { iso3, independence_year, current_year, years };
     <h2 class="text-xl font-serif">
       {iso3} · {independence_year}—{current_year}
     </h2>
-    <p class="font-mono text-xs uppercase tracking-widest text-oxblood">— {t(locale, "two_scores_never_one")} —</p>
+    <p class="font-mono text-xs uppercase tracking-widest text-accent">— {t(locale, "two_scores_never_one")} —</p>
   </div>
 
-  <svg viewBox={`0 0 ${W} ${H}`} class="w-full border border-ink/15 bg-white/40" role="img"
+  <svg viewBox={`0 0 ${W} ${H}`} class="w-full bg-surface border border-border rounded-md" role="img"
        aria-label={`${iso3} trajectory ${independence_year}-${current_year}`}>
     {/* axes frame */}
-    <line x1={PAD_L} y1={PAD_T} x2={PAD_L} y2={H - PAD_B} stroke="#1B1B1F" stroke-width="0.5" />
-    <line x1={PAD_L} y1={H - PAD_B} x2={W - PAD_R} y2={H - PAD_B} stroke="#1B1B1F" stroke-width="0.5" />
+    <line x1={PAD_L} y1={PAD_T} x2={PAD_L} y2={H - PAD_B} stroke={C.border} stroke-width="0.5" />
+    <line x1={PAD_L} y1={H - PAD_B} x2={W - PAD_R} y2={H - PAD_B} stroke={C.border} stroke-width="0.5" />
     {[0, 25, 50, 75, 100].map((v) => (
       <g>
-        <line x1={PAD_L - 4} y1={yFor(v)} x2={W - PAD_R} y2={yFor(v)} stroke="#1B1B1F" stroke-width="0.2" stroke-dasharray="2 4" />
-        <text x={PAD_L - 8} y={yFor(v) + 3} text-anchor="end" font-size="9" font-family="monospace">{v}</text>
+        <line x1={PAD_L - 4} y1={yFor(v)} x2={W - PAD_R} y2={yFor(v)} stroke={C.border} stroke-width="0.3" stroke-dasharray="2 4" />
+        <text x={PAD_L - 8} y={yFor(v) + 3} text-anchor="end" font-size="9" font-family="monospace" fill={C.muted}>{v}</text>
       </g>
     ))}
 
     {/* baseline marker — the gap thesis made visible */}
     <line class="trajectory-baseline" x1={xFor(independence_year)} y1={PAD_T} x2={xFor(independence_year)} y2={H - PAD_B} />
-    <text x={xFor(independence_year) + 4} y={PAD_T + 12} font-size="10" font-family="monospace" fill="#6B1E1E">
+    <text x={xFor(independence_year) + 4} y={PAD_T + 12} font-size="10" font-family="monospace" fill={C.accent}>
       {t(locale, "baseline_label")}
     </text>
 
@@ -88,14 +97,14 @@ const data = { iso3, independence_year, current_year, years };
       .filter((y) => y <= current_year)
       .map((y) => (
         <g>
-          <line x1={xFor(y)} y1={H - PAD_B} x2={xFor(y)} y2={H - PAD_B + 3} stroke="#1B1B1F" stroke-width="0.5" />
-          <text x={xFor(y)} y={H - PAD_B + 14} text-anchor="middle" font-size="9" font-family="monospace">{y}</text>
+          <line x1={xFor(y)} y1={H - PAD_B} x2={xFor(y)} y2={H - PAD_B + 3} stroke={C.muted} stroke-width="0.5" />
+          <text x={xFor(y)} y={H - PAD_B + 14} text-anchor="middle" font-size="9" font-family="monospace" fill={C.muted}>{y}</text>
         </g>
       ))}
 
     {/* trajectory paths */}
-    <path d={pathA} fill="none" stroke="#1F3A93" stroke-width="1.5" data-axis="A" />
-    <path d={pathB} fill="none" stroke="#B8860B" stroke-width="1.5" data-axis="B" />
+    <path d={pathA} fill="none" stroke={C.axisA} stroke-width="2" data-axis="A" />
+    <path d={pathB} fill="none" stroke={C.axisB} stroke-width="2" data-axis="B" />
 
     {/* per-year markers (data-gap, data-coverage) — read by eval 08 */}
     {years.map((y) => (
@@ -106,39 +115,40 @@ const data = { iso3, independence_year, current_year, years };
          data-coverage-a={y.axis_a.coverage}
          data-coverage-b={y.axis_b.coverage}>
         {y.axis_a.score !== null && (
-          <circle cx={xFor(y.year)} cy={yFor(y.axis_a.score)} r="2" fill="#1F3A93" />
+          <circle cx={xFor(y.year)} cy={yFor(y.axis_a.score)} r="2.5" fill={C.axisA} />
         )}
         {y.axis_b.score !== null && (
-          <circle cx={xFor(y.year)} cy={yFor(y.axis_b.score)} r="2" fill="#B8860B" />
+          <circle cx={xFor(y.year)} cy={yFor(y.axis_b.score)} r="2.5" fill={C.axisB} />
         )}
       </g>
     ))}
 
-    {/* step-change vertical pips on axis A or B */}
+    {/* step-change vertical pips on top edge */}
     {steps.map((s) => (
       <line x1={xFor(s.year)} y1={PAD_T - 4} x2={xFor(s.year)} y2={PAD_T - 12}
-            stroke={s.axis === "A" ? "#1F3A93" : "#B8860B"} stroke-width="1.5"
+            stroke={s.axis === "A" ? C.axisA : C.axisB} stroke-width="1.5"
             data-step={s.indicator_id} data-event-ref={s.event_ref ?? ""} />
     ))}
 
-    {/* scrubber cursor (updated by client JS) */}
-    <line id={`cursor-${iso3}`} x1={xFor(current_year)} y1={PAD_T} x2={xFor(current_year)} y2={H - PAD_B} stroke="#1B1B1F" stroke-width="0.5" opacity="0.4" />
+    {/* scrubber cursor */}
+    <line id={`cursor-${iso3}`} x1={xFor(current_year)} y1={PAD_T} x2={xFor(current_year)} y2={H - PAD_B}
+          stroke={C.text} stroke-width="0.5" opacity="0.4" />
   </svg>
 
   <div class="flex items-center gap-3 flex-wrap">
-    <label class="text-xs font-mono" for={`year-${iso3}`}>year</label>
+    <label class="text-xs font-mono text-muted" for={`year-${iso3}`}>year</label>
     <input id={`year-${iso3}`} type="range" min={independence_year} max={current_year} value={current_year}
-           class="flex-1 min-w-[200px]" aria-label="year scrubber" />
+           class="flex-1 min-w-[200px] accent-axisA" aria-label="year scrubber" />
     <output id={`out-${iso3}`} class="font-mono text-sm">{current_year}</output>
   </div>
 
   <dl id={`readout-${iso3}`} class="grid grid-cols-2 gap-3 text-sm font-mono">
-    <div><dt class="text-xs uppercase axis-A">{t(locale, "axis_a")}</dt><dd data-out="a">—</dd></div>
-    <div><dt class="text-xs uppercase axis-B">{t(locale, "axis_b")}</dt><dd data-out="b">—</dd></div>
+    <div><dt class="text-xs uppercase axis-A">{t(locale, "axis_a")}</dt><dd class="text-text" data-out="a">—</dd></div>
+    <div><dt class="text-xs uppercase axis-B">{t(locale, "axis_b")}</dt><dd class="text-text" data-out="b">—</dd></div>
   </dl>
 
-  <p class="text-xs text-ink/60 max-w-prose">
-    <span class="inline-block w-3 h-0.5 bg-ink/30 align-middle mr-1"></span>
+  <p class="text-xs text-muted max-w-prose">
+    <span class="inline-block w-3 h-0.5 bg-border align-middle mr-1"></span>
     {t(locale, "gap_legend")}.
     <br/>
     {t(locale, "baseline_gloss")}
@@ -162,7 +172,6 @@ const data = { iso3, independence_year, current_year, years };
       const PAD_L = 50, PAD_R = 20, W = 900;
       const innerW = W - PAD_L - PAD_R;
       const xFor = (y) => PAD_L + ((y - data.independence_year) / span) * innerW;
-      function fmt(v, gap) { return gap || v === null ? "— (gap)" : Math.round(v) + "  · cov " + Math.round((v.coverage ?? 0) * 100) + "%"; }
       function update(y) {
         out.textContent = String(y);
         cursor.setAttribute("x1", xFor(y));

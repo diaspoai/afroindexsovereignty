@@ -4,7 +4,7 @@ const { coverage, label } = Astro.props;
 const pct = Math.round(coverage * 100);
 const ringDashes = coverage < 0.20 ? "3 3" : "1 0";
 ---
-<span class="inline-flex items-center gap-1 text-xs font-mono"
+<span class="inline-flex items-center gap-1 text-xs font-mono text-muted"
       title={label ?? `coverage ${pct}%`}
       data-coverage={pct}>
   <svg width="12" height="12" viewBox="0 0 12 12" aria-hidden="true">
