@@ -173,9 +173,11 @@ The `<sha>` is the short SHA of the commit that introduced the receipt; for fres
 
 If any assertion fails, validate exits non-zero **before** eval 06 even runs.
 
-**Real-mode eval 06 additionally asserts** (the heavier check):
-- CI re-fetches each `source_url`, computes a fresh `content_sha256`, and confirms it matches the receipt's `content_sha256`
-- The `wayback_url` actually resolves
+**Real-mode eval 06 additionally asserts** (the heavier check, implemented in `evals/06_anti_fabrication.test.ts`):
+- CI re-fetches each `source_url`, computes a fresh `content_sha256`, and confirms it matches the receipt's `content_sha256` (catches source drift AND fabricated receipts — a faked receipt pointing at a real URL would produce a different hash on re-fetch)
+- The `wayback_url` is HEAD-probed and must return 2xx/3xx
+- All receipts processed in parallel; up to 5-minute test timeout to allow many sources
+- Offline escape hatch: `IAFS_SKIP_NETWORK_EVALS=1` skips the network step with a logged warning (CI never sets this)
 
 In dummy mode (`mode: "dummy"` in `methodology.json`), receipts are **not required** and the example.invalid restriction is lifted.
 
