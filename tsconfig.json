@@ -27,6 +27,7 @@
   "include": [
     "scripts/**/*.ts",
     "evals/**/*.ts",
+    "tools/**/*.ts",
     "src/**/*.ts",
     "src/**/*.astro"
   ],
