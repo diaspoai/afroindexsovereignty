@@ -8,6 +8,8 @@ import {
 import { normalizeRaw, getYear } from "./lib/normalize-core.ts";
 import { FORBIDDEN_FIELDS } from "./lib/types.ts";
 import type { Indicator, Score } from "./lib/types.ts";
+import { checkRealMode } from "./lib/realmode-guard.ts";
+import { loadReceipts } from "./lib/receipts.ts";
 
 const ajv = new Ajv2020({ strict: false, allErrors: true });
 addFormats(ajv);
@@ -25,6 +27,7 @@ const vScore = compile("score.schema.json");
 const vAxisScore = compile("axis_score.schema.json");
 const vEvent = compile("event.schema.json");
 const vMethodology = compile("methodology.schema.json");
+const vReceipt = compile("receipt.schema.json");
 
 function fmtErrors(name: string, errs: typeof vScore.errors): string {
   return `${name}: ${JSON.stringify(errs?.slice(0, 3))}`;
@@ -147,9 +150,26 @@ for (const fileName of listAxisScoreFiles()) {
   }
 }
 
+// ── Real-mode startup guard (kaizen step 3) ────────────────────────────────
+// When methodology.mode === "real", every score + event must have a matching
+// evidence receipt, no example.invalid URLs allowed. Fails BEFORE eval 06.
+const receiptEntries = loadReceipts();
+for (const { path: rp, receipt } of receiptEntries) {
+  if (!vReceipt(receipt)) fail(fmtErrors(`receipt ${rp.replace(/.*\/evidence\//, "evidence/")}`, vReceipt.errors));
+}
+const allScores = listScoreFiles().flatMap((f) => loadScoresFor(f.replace(/\.json$/, "")));
+const realModeErrors = checkRealMode({
+  methodology,
+  scores: allScores,
+  events,
+  receipts: receiptEntries.map((r) => r.receipt),
+});
+for (const e of realModeErrors) fail(e);
+
 if (errors.length) {
   console.error(`validate: ${errors.length} error(s)`);
   for (const e of errors) console.error(`  · ${e}`);
   process.exit(1);
 }
-console.log(`validate: OK (${countries.length} countries, ${indicators.length} indicators, ${events.length} events, ${listScoreFiles().length} score files)`);
+const receiptSummary = receiptEntries.length > 0 ? `, ${receiptEntries.length} receipts` : "";
+console.log(`validate: OK (${countries.length} countries, ${indicators.length} indicators, ${events.length} events, ${listScoreFiles().length} score files${receiptSummary}, mode=${methodology.mode})`);

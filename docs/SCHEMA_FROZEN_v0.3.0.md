@@ -141,6 +141,44 @@ One record per `(country, axis, year)` for every year from `independence_year` t
 }
 ```
 
+## 5b. Receipt (`evidence/<git-short-sha>/<ISO3>-<indicator>-<year>.json`)
+
+Evidence receipts are produced by the **source-verification skill** and are
+**mandatory in real mode**. They are the artifact the trajectory-eval (06,
+anti-fabrication) and the real-mode startup guard both consume.
+
+```ts
+{
+  score_ref: "BFA/A2/2024" | "event/bfa-severance-2026",
+  source_url: string,                    // exactly matches the score/event's source_url
+  fetched_at: string,                    // ISO date-time of the fetch
+  http_status: 100..599,                 // recorded HTTP status
+  content_sha256: string,                // 64-char hex sha256 of fetched body
+  content_excerpt?: string,              // short verbatim excerpt that supports the raw_value
+  wayback_url: string,                   // https://web.archive.org/web/... — permanent snapshot
+}
+```
+
+Path convention:
+- Score receipts: `evidence/<sha>/<ISO3>-<indicator>-<year>.json` (year = `effective_year` for step records)
+- Event receipts: `evidence/<sha>/event-<event-id>.json`
+
+The `<sha>` is the short SHA of the commit that introduced the receipt; for fresh PRs it's the PR's head SHA. The real-mode guard scans `evidence/**/*.json` and picks the **newest receipt by `fetched_at`** when multiple match the same `score_ref` — older receipts remain as audit history.
+
+**Real-mode validate.ts asserts:**
+1. No `source_url` uses `example.invalid` (those are dummy-only)
+2. Every Score has a receipt with matching `score_ref` AND `source_url`
+3. Every Event has a receipt with matching `score_ref` AND `source_url`
+4. Each receipt conforms to `schemas/receipt.schema.json` (`additionalProperties: false`)
+
+If any assertion fails, validate exits non-zero **before** eval 06 even runs.
+
+**Real-mode eval 06 additionally asserts** (the heavier check):
+- CI re-fetches each `source_url`, computes a fresh `content_sha256`, and confirms it matches the receipt's `content_sha256`
+- The `wayback_url` actually resolves
+
+In dummy mode (`mode: "dummy"` in `methodology.json`), receipts are **not required** and the example.invalid restriction is lifted.
+
 ## 6. Methodology (`data/methodology.json`)
 
 ```ts
