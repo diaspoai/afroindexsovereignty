@@ -2,25 +2,32 @@ import { describe, it, expect } from "vitest";
 import { existsSync, readdirSync, readFileSync } from "node:fs";
 import { join } from "node:path";
 import { loadCountries, loadMethodology, loadScoresFor, REPO_ROOT } from "../scripts/lib/io.ts";
+import { loadReceipts } from "../scripts/lib/receipts.ts";
+import { verifyReceiptAgainstFresh } from "../scripts/lib/anti-fabrication-verify.ts";
+import { freshFetch, waybackProbe } from "../scripts/lib/fetcher.ts";
 
 /**
  * Anti-fabrication / trajectory eval.
  *
- * Mechanism (per IAFS_SDLC_v0.1.md §4 + the schema proposal):
- *   For every score in a PR, the source-verification skill writes an evidence
- *   receipt under evidence/<SHA>/<ISO3>-<indicator>-<year>.json containing:
- *     { score_ref, source_url, fetched_at, http_status, content_sha256,
- *       content_excerpt, wayback_url }
- *   CI then re-fetches the source and asserts the hash + Wayback URL match.
+ * The project's credibility line.
  *
- * Dummy mode behavior:
- *   In methodology.mode === "dummy", no live fetch is performed. The eval
- *   instead asserts the receipt directory STRUCTURE the real-mode CI will
- *   require — i.e., the system is wired and ready, but receipt content is not
- *   enforced for dummy URLs (since example.invalid does not resolve).
+ * Dummy mode (methodology.mode === "dummy"):
+ *   - example.invalid URLs are whitelisted; no network calls.
+ *   - We only verify the harness is wired and receipt files (if present)
+ *     parse against the schema.
  *
- * Real mode (future): enforce receipt presence + matching content_sha256
- *   against a fresh fetch + Wayback URL resolution.
+ * Real mode (methodology.mode === "real"):
+ *   - Every receipt under evidence/**\/*.json is verified by re-fetching
+ *     its source_url and probing its wayback_url.
+ *   - Fresh sha256 must match the receipt's content_sha256 (catches both
+ *     source-drift AND fabricated receipts — a faked receipt would point
+ *     to a URL whose actual content hashes differently).
+ *   - Wayback snapshot must resolve (2xx/3xx).
+ *
+ * Escape hatch for offline local dev:
+ *   IAFS_SKIP_NETWORK_EVALS=1 skips the network-bound checks in real mode
+ *   with a logged warning. CI never sets this; CI always runs the network
+ *   verification when in real mode.
  */
 describe("eval 06: anti-fabrication", () => {
   const methodology = loadMethodology();
@@ -55,8 +62,34 @@ describe("eval 06: anti-fabrication", () => {
     }
   });
 
-  it("real-mode receipt enforcement is unreachable in dummy mode (placeholder until first real country lands)", () => {
+  it("real-mode: re-fetches every receipt's source + probes wayback snapshot", async () => {
     if (methodology.mode !== "real") return;
-    expect.fail("Real-mode receipt enforcement must be implemented before flipping methodology.mode='real'");
-  });
+
+    const skip = process.env.IAFS_SKIP_NETWORK_EVALS === "1";
+    if (skip) {
+      // Offline local-dev escape hatch. CI never sets this.
+      // eslint-disable-next-line no-console
+      console.warn("eval 06: IAFS_SKIP_NETWORK_EVALS=1 — skipping network verification (CI does not honor this).");
+      return;
+    }
+
+    const receipts = loadReceipts().map((r) => r.receipt);
+    expect(receipts.length, "real mode requires at least one receipt").toBeGreaterThan(0);
+
+    const allErrors: string[] = [];
+    // Run each receipt's fresh-fetch + wayback-probe in parallel,
+    // collect verification errors.
+    const verifications = await Promise.all(
+      receipts.map(async (receipt) => {
+        const [fresh_fetch, wayback_probe] = await Promise.all([
+          freshFetch(receipt.source_url),
+          waybackProbe(receipt.wayback_url),
+        ]);
+        return verifyReceiptAgainstFresh({ receipt, fresh_fetch, wayback_probe });
+      }),
+    );
+    for (const errs of verifications) allErrors.push(...errs);
+
+    expect(allErrors, `anti-fabrication: ${allErrors.length} drift/missing-snapshot error(s):\n  · ${allErrors.join("\n  · ")}`).toEqual([]);
+  }, 5 * 60 * 1000); // up to 5 min for fetching many sources in CI
 });
