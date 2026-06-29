@@ -32,19 +32,26 @@ interface Args {
   url: string;
   "sha-dir"?: string;
   excerpt?: string;
+  "verify-via"?: string;
   "dry-run"?: boolean;
 }
 
 const args = parseArgs<Args>({
-  usage: "Usage: npm run research:capture -- --score-ref <ref> --url <url> [--excerpt <text>] [--sha-dir <sha>] [--dry-run]",
+  usage: "Usage: npm run research:capture -- --score-ref <ref> --url <url> [--excerpt <text>] [--sha-dir <sha>] [--verify-via live|wayback] [--dry-run]",
   schema: {
-    "score-ref": { type: "string", required: true },
-    "url":       { type: "string", required: true },
-    "sha-dir":   { type: "string" },
-    "excerpt":   { type: "string" },
-    "dry-run":   { type: "boolean" },
+    "score-ref":  { type: "string", required: true },
+    "url":        { type: "string", required: true },
+    "sha-dir":    { type: "string" },
+    "excerpt":    { type: "string" },
+    "verify-via": { type: "string" },
+    "dry-run":    { type: "boolean" },
   },
 });
+
+const verifyVia = (args["verify-via"] ?? "live") as "live" | "wayback";
+if (verifyVia !== "live" && verifyVia !== "wayback") {
+  die(`--verify-via must be "live" or "wayback" (got "${verifyVia}")`);
+}
 
 // score_ref pattern: ISO3/IND/YEAR OR event/<slug>
 const SCORE_RE = /^([A-Z]{3})\/([AB][1-6])\/(\d{4})$/;
@@ -65,24 +72,49 @@ const sha = args["sha-dir"] ?? gitShortSha();
 const dir = join(REPO_ROOT, "evidence", sha);
 const outPath = join(dir, filename);
 
+// 1. Always grab the live source first (sanity check that the URL works)
 ok(`capture: fetching ${args.url}`);
-const fresh = await freshFetch(args.url);
-if (fresh.fetch_error || fresh.http_status < 200 || fresh.http_status >= 400) {
-  die(`source re-fetch failed (status ${fresh.http_status}): ${fresh.fetch_error ?? "non-2xx"}`);
+const live = await freshFetch(args.url);
+if (live.fetch_error || live.http_status < 200 || live.http_status >= 400) {
+  die(`source live-fetch failed (status ${live.http_status}): ${live.fetch_error ?? "non-2xx"}`);
 }
-ok(`capture: HTTP ${fresh.http_status} · sha256 ${fresh.content_sha256.slice(0, 12)}…`);
+ok(`capture: live HTTP ${live.http_status} · sha256 ${live.content_sha256.slice(0, 12)}…`);
 
-const waybackUrl = await submitWayback(args.url);
+// 2. Always capture a Wayback snapshot. Insert the `id_` modifier so the
+//    URL serves the RAW archived content without Wayback's banner/wrapper
+//    (which varies between requests and would cause sha256 drift).
+const rawWaybackUrl = await submitWayback(args.url);
+const waybackUrl = waybackIdMode(rawWaybackUrl);
 ok(`capture: wayback ${waybackUrl}`);
+
+// 3. Choose what to hash for the receipt:
+//    verify_via=live    → hash the live source (eval 06 re-fetches live)
+//    verify_via=wayback → fetch & hash the snapshot (eval 06 re-fetches wayback)
+let hashedHttpStatus: number;
+let contentSha256: string;
+if (verifyVia === "wayback") {
+  ok(`capture: hashing wayback snapshot (verify_via=wayback)`);
+  const snap = await freshFetch(waybackUrl);
+  if (snap.fetch_error || snap.http_status < 200 || snap.http_status >= 400) {
+    die(`wayback snapshot fetch failed (status ${snap.http_status}): ${snap.fetch_error ?? "non-2xx"}. Snapshot may need a few seconds to settle; retry shortly.`);
+  }
+  hashedHttpStatus = snap.http_status;
+  contentSha256 = snap.content_sha256;
+  ok(`capture: wayback HTTP ${snap.http_status} · sha256 ${snap.content_sha256.slice(0, 12)}…`);
+} else {
+  hashedHttpStatus = live.http_status;
+  contentSha256 = live.content_sha256;
+}
 
 const receipt = {
   score_ref: args["score-ref"],
   source_url: args.url,
   fetched_at: new Date().toISOString().replace(/\.\d{3}Z$/, "Z"),
-  http_status: fresh.http_status,
-  content_sha256: fresh.content_sha256,
+  http_status: hashedHttpStatus,
+  content_sha256: contentSha256,
   ...(args.excerpt ? { content_excerpt: args.excerpt } : {}),
   wayback_url: waybackUrl,
+  ...(verifyVia === "wayback" ? { verify_via: "wayback" as const } : {}),
 };
 
 if (args["dry-run"]) {
@@ -98,6 +130,25 @@ if (existsSync(outPath)) {
 }
 writeFileSync(outPath, JSON.stringify(receipt, null, 2) + "\n", "utf-8");
 ok(`\ncapture: wrote ${outPath.replace(REPO_ROOT + "/", "")}`);
+
+/**
+ * Convert a normal Wayback URL like
+ *   https://web.archive.org/web/20260629020816/https://example.com
+ * into the raw-content variant
+ *   https://web.archive.org/web/20260629020816id_/https://example.com
+ *
+ * The `id_` modifier tells Wayback to serve the original archived content
+ * with no Wayback banner/wrapper injected — critical for stable sha256
+ * verification (the wrapper varies between requests).
+ *
+ * If the URL doesn't match the expected pattern (e.g. fallback to a
+ * non-canonical snapshot URL), return it unchanged.
+ */
+export function waybackIdMode(waybackUrl: string): string {
+  const m = waybackUrl.match(/^(https?:\/\/web\.archive\.org\/web\/\d{14})(\/.+)$/);
+  if (!m) return waybackUrl;
+  return `${m[1]}id_${m[2]}`;
+}
 
 /**
  * Try to save a new snapshot. On failure (rate limit, blocked, etc.),

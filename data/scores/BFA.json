@@ -1,0 +1,32 @@
+[
+  {
+    "kind": "step",
+    "country": "BFA",
+    "indicator_id": "A1",
+    "axis": "A",
+    "effective_year": 1960,
+    "raw_value": "full_peg_french_guarantee_board_legacy",
+    "normalized_score": 20,
+    "type": "HARD",
+    "tag": "FACT",
+    "source_url": "https://en.wikipedia.org/wiki/Central_Bank_of_West_African_States",
+    "source_date": "2026-06-29",
+    "note_fr": "Burkina Faso (Haute-Volta à l'époque) est membre fondateur de l'UMOA — traité du 12 mai 1962. Régime du compte d'opérations au Trésor français, gouvernance BCEAO sous influence française dominante, mise en commun des réserves. État institutionnel inchangé jusqu'à la réforme de 2020.",
+    "note_en": "Burkina Faso (then Haute-Volta) was a founding member of UMOA — treaty signed 12 May 1962. Operations Account at the French Treasury, dominant French influence over BCEAO governance, reserve-pooling obligation. Institutional state unchanged until the 2020 reform."
+  },
+  {
+    "kind": "step",
+    "country": "BFA",
+    "indicator_id": "A1",
+    "axis": "A",
+    "effective_year": 2020,
+    "raw_value": "peg_reserves_repatriated_no_french_board",
+    "normalized_score": 40,
+    "type": "HARD",
+    "tag": "FACT",
+    "source_url": "https://www.diplomatie.gouv.fr/en/the-ministry-in-action/contributing-to-sustainable-balanced-globalization/combating-global-social-inequality/africa-a-priority-for-french-official-development-assistance/franc-zone",
+    "source_date": "2026-06-29",
+    "note_fr": "Accord de coopération monétaire France–UEMOA du 21 décembre 2019 (signé lors de la visite présidentielle française en Côte d'Ivoire); fermeture du compte d'opérations au Trésor français en janvier 2020; retrait des représentants français des organes de gouvernance de la BCEAO. La France conserve la garantie de convertibilité.",
+    "note_en": "France–UEMOA monetary cooperation agreement of 21 December 2019 (signed during French presidential visit to Côte d'Ivoire); closure of the Operations Account at the French Treasury in January 2020; withdrawal of French representatives from BCEAO governance bodies. France retains the convertibility guarantee."
+  }
+]

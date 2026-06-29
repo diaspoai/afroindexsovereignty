@@ -1,22 +1,12 @@
 [
   {
-    "iso3": "ZZA",
-    "zone": "DUMMY",
-    "currency": "DUMMY",
-    "name_fr": "Pays-Test A (DONNÉES FACTICES)",
-    "name_en": "Test Country A (DUMMY DATA)",
+    "iso3": "BFA",
+    "zone": "UEMOA",
+    "currency": "XOF",
+    "name_fr": "Burkina Faso",
+    "name_en": "Burkina Faso",
     "independence_year": 1960,
-    "independence_footnote_fr": "DONNÉES FACTICES — placeholder pour valider le schéma.",
-    "independence_footnote_en": "DUMMY DATA — placeholder used to validate the schema."
-  },
-  {
-    "iso3": "ZZB",
-    "zone": "DUMMY",
-    "currency": "DUMMY",
-    "name_fr": "Pays-Test B (DONNÉES FACTICES)",
-    "name_en": "Test Country B (DUMMY DATA)",
-    "independence_year": 1960,
-    "independence_footnote_fr": "DONNÉES FACTICES — scénario de réunification 1961 simulé.",
-    "independence_footnote_en": "DUMMY DATA — simulated 1961 reunification scenario."
+    "independence_footnote_fr": "Indépendance du 5 août 1960 (alors Haute-Volta; renommée Burkina Faso le 4 août 1984). Membre fondateur de l'UMOA — traité du 12 mai 1962.",
+    "independence_footnote_en": "Independence 5 August 1960 (then Upper Volta; renamed Burkina Faso on 4 August 1984). Founding member of UMOA — treaty signed 12 May 1962."
   }
 ]

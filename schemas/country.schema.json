@@ -9,11 +9,11 @@
   "properties": {
     "iso3": {
       "type": "string",
-      "pattern": "^(BEN|BFA|CIV|MLI|NER|SEN|TGO|CMR|CAF|TCD|COG|GAB|ZZ[A-Z])$",
-      "description": "ISO-3166-1 alpha-3 for the 12 real states, or ZZ* reserved for dummy data."
+      "pattern": "^(BEN|BFA|CIV|MLI|NER|SEN|TGO|CMR|CAF|TCD|COG|GAB)$",
+      "description": "ISO-3166-1 alpha-3 for one of the 12 CFA-franc states."
     },
-    "zone": { "enum": ["UEMOA", "CEMAC", "DUMMY"] },
-    "currency": { "enum": ["XOF", "XAF", "DUMMY"] },
+    "zone": { "enum": ["UEMOA", "CEMAC"] },
+    "currency": { "enum": ["XOF", "XAF"] },
     "name_fr": { "type": "string", "minLength": 1 },
     "name_en": { "type": "string", "minLength": 1 },
     "independence_year": {

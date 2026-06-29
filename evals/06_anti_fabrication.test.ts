@@ -79,8 +79,25 @@ describe("eval 06: anti-fabrication", () => {
     const allErrors: string[] = [];
     // Run each receipt's fresh-fetch + wayback-probe in parallel,
     // collect verification errors.
+    //
+    // verify_via:
+    //   "live" (default) — fresh-fetch source_url and hash it; probe wayback
+    //     URL separately (HEAD) to confirm the snapshot still resolves
+    //   "wayback" — fresh-fetch the wayback URL itself (immutable snapshot);
+    //     no separate probe needed (the fetch IS the probe)
     const verifications = await Promise.all(
       receipts.map(async (receipt) => {
+        const via = receipt.verify_via ?? "live";
+        if (via === "wayback") {
+          const fresh_fetch = await freshFetch(receipt.wayback_url);
+          // Synthesize a successful wayback_probe — the fetch already proves it resolves
+          const wayback_probe = {
+            wayback_url: receipt.wayback_url,
+            http_status: fresh_fetch.http_status,
+            ...(fresh_fetch.fetch_error ? { probe_error: fresh_fetch.fetch_error } : {}),
+          };
+          return verifyReceiptAgainstFresh({ receipt, fresh_fetch, wayback_probe });
+        }
         const [fresh_fetch, wayback_probe] = await Promise.all([
           freshFetch(receipt.source_url),
           waybackProbe(receipt.wayback_url),
