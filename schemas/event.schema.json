@@ -7,7 +7,7 @@
   "required": ["id","country","date","axis","indicator_id","title_fr","title_en","description_fr","description_en","direction","source_url","source_date"],
   "properties": {
     "id": { "type": "string", "pattern": "^[a-z0-9][a-z0-9\\-]{1,80}$" },
-    "country": { "type": "string", "pattern": "^(BEN|BFA|CIV|MLI|NER|SEN|TGO|CMR|CAF|TCD|COG|GAB|ZZ[A-Z])$" },
+    "country": { "type": "string", "pattern": "^(BEN|BFA|CIV|MLI|NER|SEN|TGO|CMR|CAF|TCD|COG|GAB)$" },
     "date": { "type": "string", "format": "date" },
     "axis": { "enum": ["A","B"] },
     "indicator_id": { "enum": ["A1","A2","A3","A4","A5","A6","B1","B2","B3","B4","B5"] },

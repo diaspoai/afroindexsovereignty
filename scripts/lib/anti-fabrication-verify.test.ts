@@ -118,4 +118,29 @@ describe("verifyReceiptAgainstFresh", () => {
     });
     expect(errs[0]).toContain("event/bfa-severance-2026");
   });
+
+  // verify_via is consumed by eval 06 (caller), not the verifier itself —
+  // the verifier just compares the fresh_fetch hash to receipt.content_sha256
+  // regardless of which URL was fetched. These cases prove the verifier is
+  // verify_via-agnostic: same hash → ok, different hash → error, no matter
+  // which URL the caller chose to re-fetch.
+  it("verify_via='wayback': verifier accepts the snapshot-hash flow when caller fetched wayback", () => {
+    // Caller fetched receipt.wayback_url and got HASH_A; receipt also stores HASH_A.
+    const errs = verifyReceiptAgainstFresh({
+      receipt: receipt({ verify_via: "wayback" }),
+      fresh_fetch: fresh({ source_url: "https://web.archive.org/web/.../foo", content_sha256: HASH_A }),
+      wayback_probe: wayback({ http_status: 200 }),
+    });
+    expect(errs).toEqual([]);
+  });
+
+  it("verify_via='wayback': drift on the snapshot still fires", () => {
+    const errs = verifyReceiptAgainstFresh({
+      receipt: receipt({ verify_via: "wayback", content_sha256: HASH_A }),
+      fresh_fetch: fresh({ source_url: "https://web.archive.org/web/.../foo", content_sha256: HASH_B }),
+      wayback_probe: wayback({ http_status: 200 }),
+    });
+    expect(errs.length).toBe(1);
+    expect(errs[0]).toContain("content_sha256 drift");
+  });
 });

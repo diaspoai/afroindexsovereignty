@@ -24,6 +24,12 @@ describe("eval 03: source-resolution", () => {
     expect(host.endsWith("example.invalid"), `${ctx}: dummy mode requires example.invalid host, got ${host}`).toBe(true);
   }
 
+  function assertRealUrl(u: string, ctx: string) {
+    expect(u.startsWith("https://"), `${ctx}: source_url must be https`).toBe(true);
+    const host = new URL(u).host;
+    expect(host.endsWith("example.invalid"), `${ctx}: real mode forbids example.invalid host`).toBe(false);
+  }
+
   function assertDate(d: string, ctx: string) {
     expect(d, `${ctx}: source_date must be ISO date`).toMatch(/^\d{4}-\d{2}-\d{2}$/);
     expect(d <= today, `${ctx}: source_date ${d} is in the future`).toBe(true);
@@ -42,8 +48,12 @@ describe("eval 03: source-resolution", () => {
           assertDummyUrl(s.source_url, ctx);
           assertDate(s.source_date, ctx);
         } else {
-          // Real-mode network resolution lives here; placeholder until real data lands.
-          expect.fail("real-mode source-resolution not yet wired — flip methodology.mode back to dummy or implement live fetcher");
+          // Real mode: assert source_url is a well-formed https URL and
+          // source_date is a valid ISO date ≤ today. URL-resolution itself
+          // is checked deeper by eval 06 (re-fetch + sha256 + Wayback). No
+          // duplicate network calls here.
+          assertRealUrl(s.source_url, ctx);
+          assertDate(s.source_date, ctx);
         }
       }
     }
@@ -56,7 +66,8 @@ describe("eval 03: source-resolution", () => {
         assertDummyUrl(e.source_url, ctx);
         assertDate(e.source_date, ctx);
       } else {
-        expect.fail("real-mode source-resolution not yet wired");
+        assertRealUrl(e.source_url, ctx);
+        assertDate(e.source_date, ctx);
       }
     }
   });

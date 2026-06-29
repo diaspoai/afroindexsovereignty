@@ -1,6 +1,7 @@
 ---
 import AfricaMap from "./AfricaMap.astro";
 import { t, type Locale, localePath } from "@site/lib/i18n";
+import { getCountries } from "@site/lib/data";
 
 interface Props { locale: Locale; }
 const { locale } = Astro.props;
@@ -8,6 +9,10 @@ const { locale } = Astro.props;
 const headlineFR = ["Deux scores.", "Jamais un."];
 const headlineEN = ["Two scores.", "Never one."];
 const headline   = locale === "fr" ? headlineFR : headlineEN;
+
+// Hero CTA points at the first available country profile (or /countries if empty).
+const countries = getCountries();
+const firstCountryHref = countries.length > 0 ? `/country/${countries[0].iso3}` : "/countries";
 ---
 
 <section class="iafs-hero pt-4 pb-12 lg:pb-16">
@@ -41,7 +46,7 @@ const headline   = locale === "fr" ? headlineFR : headlineEN;
   {/* CTAs + axis legend — back inside the page width */}
   <footer class="max-w-page mx-auto px-4 lg:px-6 mt-8 flex flex-col gap-6">
     <div class="flex flex-wrap gap-3">
-      <a href={localePath(locale, "/country/ZZA")}
+      <a href={localePath(locale, firstCountryHref)}
          class="iafs-cta-primary inline-flex items-center gap-2 bg-text text-bg px-6 py-3 font-mono text-sm uppercase tracking-wider rounded-md hover:bg-axisA hover:text-text active:scale-[0.98] transition-all cursor-pointer">
         {t(locale, "landing.hero.cta_explore")}
         <svg width="14" height="14" viewBox="0 0 14 14" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="2">

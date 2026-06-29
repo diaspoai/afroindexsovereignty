@@ -21,36 +21,37 @@ test("R2 — A×B plot shows two axes, never combined", async ({ page }) => {
   expect(html).not.toMatch(/sovereignty_score|composite_score|combined_score/i);
 });
 
-test("R3 + R9 — ZZA country page renders scrubber with trajectory paths", async ({ page }) => {
-  await page.goto("/country/ZZA");
+test("R3 + R9 — country page renders scrubber with both axis paths", async ({ page }) => {
+  await page.goto("/country/BFA");
   const svgPaths = page.locator("[data-scrubber] svg path[data-axis]");
   await expect(svgPaths).toHaveCount(2);
   const axes = await svgPaths.evaluateAll((els) => els.map((e) => e.getAttribute("data-axis")));
   expect(axes.sort()).toEqual(["A", "B"]);
 });
 
-test("R9 — trajectory paths break at gap years (no continuous line across nulls)", async ({ page }) => {
-  await page.goto("/country/ZZB");
+test("R9 — gap rendering: axes with no data render with NO line, not a faked one", async ({ page }) => {
+  await page.goto("/country/BFA");
+  // BFA currently has only A1 scores → Axis B has zero data → path 'd' must be empty
+  // (no M commands at all). Honesty rule: never draw a line where there's no data.
   const dB = await page.locator("[data-scrubber] svg path[data-axis='B']").getAttribute("d");
-  expect(dB, "axis-B path attribute").toBeTruthy();
-  const moveCount = (dB!.match(/M/g) ?? []).length;
-  expect(moveCount, `axis-B path 'd' must restart at every gap, got d=${dB}`).toBeGreaterThanOrEqual(2);
+  expect(dB ?? "", "axis-B has no data → 'd' attribute must be empty").toBe("");
 });
 
 test("R9 — baseline line is rendered and labeled", async ({ page }) => {
-  await page.goto("/country/ZZA");
+  await page.goto("/country/BFA");
   await expect(page.locator(".trajectory-baseline")).toBeAttached();
   await expect(page.getByText(/Indépendance sur le papier/i).first()).toBeVisible();
 });
 
 test("R9 — gap year markers carry data-gap attribute", async ({ page }) => {
-  await page.goto("/country/ZZB");
-  const gaps = page.locator("[data-scrubber] g.year-marker[data-gap-a='true'], [data-scrubber] g.year-marker[data-gap-b='true']");
-  expect(await gaps.count(), "ZZB axis-B has 1960–2009 as gap years").toBeGreaterThan(0);
+  await page.goto("/country/BFA");
+  // BFA's axis B has no data → every year-marker carries data-gap-b="true"
+  const gaps = page.locator("[data-scrubber] g.year-marker[data-gap-b='true']");
+  expect(await gaps.count(), "BFA axis-B has no data → every year is a gap").toBeGreaterThan(0);
 });
 
 test("R9 — scrubber updates the readout", async ({ page }) => {
-  await page.goto("/country/ZZA");
+  await page.goto("/country/BFA");
   const range = page.locator("input[type='range']").first();
   await range.evaluate((el: HTMLInputElement) => { el.value = "1990"; el.dispatchEvent(new Event("input", { bubbles: true })); });
   await expect(page.locator("output").first()).toHaveText("1990");
@@ -64,14 +65,14 @@ test("a11y — home has no critical axe violations", async ({ page }) => {
 });
 
 test("a11y — country page has no critical axe violations", async ({ page }) => {
-  await page.goto("/country/ZZA");
+  await page.goto("/country/BFA");
   const results = await new AxeBuilder({ page }).withTags(["wcag2a", "wcag2aa"]).analyze();
   const critical = results.violations.filter((v) => v.impact === "critical");
   expect(critical, JSON.stringify(critical, null, 2)).toEqual([]);
 });
 
 test("no-composite — built site never renders a fused-score string", async ({ page }) => {
-  for (const path of ["/", "/plot", "/country/ZZA", "/country/ZZB", "/events", "/methodology", "/download"]) {
+  for (const path of ["/", "/plot", "/country/BFA", "/events", "/methodology", "/download"]) {
     await page.goto(path);
     const html = await page.content();
     for (const tok of ["sovereignty_score","composite_score","combined_score","overall_score","total_score","fused_score"]) {

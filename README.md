@@ -10,13 +10,19 @@ operating manual: [`docs/IAFS_SDLC_v0.1.md`](docs/IAFS_SDLC_v0.1.md).
 
 ## Status
 
-**Phase 2 scaffold (schema v0.3.0).** No real country data is present. The
-repository ships with clearly-labeled dummy countries (`ZZA`, `ZZB`) so the full
-pipeline — validate → normalize → evals → site build → E2E — runs end-to-end on
-honest sparse + step-function multi-decade data.
+**Schema v0.3.0 · `mode: "real"`.** The first real country, **Burkina Faso**,
+is now in the codebase with sourced A1 (CFA monetary arrangement) step records
+covering 1960 → 2020. Two evidence receipts under `evidence/<sha>/` re-verify
+every CI run via the anti-fabrication eval (06):
 
-Real Gabon / Burkina Faso data lands via a separate sourced research workflow
-and must match the frozen schema below.
+- Live re-fetch + sha256 for stable government sources
+- Wayback snapshot (`id_` raw mode) re-fetch + sha256 for mutable sources
+  (Wikipedia, news) — see [ADR 0006](docs/decisions/0006-receipts-may-verify-via-wayback.md)
+
+The dummy data scaffolding (`ZZA`, `ZZB`, `example.invalid` URLs) was
+removed when real data landed. To add another country or another indicator,
+use `tools/research/{init-country,add-score,capture}` — see
+[`tools/research/README.md`](tools/research/README.md).
 
 ## Quickstart
 

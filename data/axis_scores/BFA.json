@@ -1,2224 +1,27 @@
 [
   {
-    "country": "ZZB",
+    "country": "BFA",
     "axis": "A",
     "year": 1960,
     "axis_score": 20,
-    "coverage": 0.5385,
+    "coverage": 0.2308,
     "contributing_indicators": [
-      "A1",
-      "A4",
-      "A5"
+      "A1"
     ],
     "missing_indicators": [
-      "A2",
-      "A3",
-      "A6"
-    ],
-    "below_coverage_threshold": false,
-    "is_baseline_year": true
-  },
-  {
-    "country": "ZZB",
-    "axis": "B",
-    "year": 1960,
-    "axis_score": null,
-    "coverage": 0,
-    "contributing_indicators": [],
-    "missing_indicators": [
-      "B1",
-      "B2",
-      "B3",
-      "B4",
-      "B5"
-    ],
-    "below_coverage_threshold": true,
-    "is_baseline_year": true
-  },
-  {
-    "country": "ZZB",
-    "axis": "A",
-    "year": 1961,
-    "axis_score": 20,
-    "coverage": 0.5385,
-    "contributing_indicators": [
-      "A1",
-      "A4",
-      "A5"
-    ],
-    "missing_indicators": [
-      "A2",
-      "A3",
-      "A6"
-    ],
-    "below_coverage_threshold": false,
-    "is_baseline_year": false
-  },
-  {
-    "country": "ZZB",
-    "axis": "B",
-    "year": 1961,
-    "axis_score": null,
-    "coverage": 0,
-    "contributing_indicators": [],
-    "missing_indicators": [
-      "B1",
-      "B2",
-      "B3",
-      "B4",
-      "B5"
-    ],
-    "below_coverage_threshold": true,
-    "is_baseline_year": false
-  },
-  {
-    "country": "ZZB",
-    "axis": "A",
-    "year": 1962,
-    "axis_score": 20,
-    "coverage": 0.5385,
-    "contributing_indicators": [
-      "A1",
-      "A4",
-      "A5"
-    ],
-    "missing_indicators": [
-      "A2",
-      "A3",
-      "A6"
-    ],
-    "below_coverage_threshold": false,
-    "is_baseline_year": false
-  },
-  {
-    "country": "ZZB",
-    "axis": "B",
-    "year": 1962,
-    "axis_score": null,
-    "coverage": 0,
-    "contributing_indicators": [],
-    "missing_indicators": [
-      "B1",
-      "B2",
-      "B3",
-      "B4",
-      "B5"
-    ],
-    "below_coverage_threshold": true,
-    "is_baseline_year": false
-  },
-  {
-    "country": "ZZB",
-    "axis": "A",
-    "year": 1963,
-    "axis_score": 20,
-    "coverage": 0.5385,
-    "contributing_indicators": [
-      "A1",
-      "A4",
-      "A5"
-    ],
-    "missing_indicators": [
-      "A2",
-      "A3",
-      "A6"
-    ],
-    "below_coverage_threshold": false,
-    "is_baseline_year": false
-  },
-  {
-    "country": "ZZB",
-    "axis": "B",
-    "year": 1963,
-    "axis_score": null,
-    "coverage": 0,
-    "contributing_indicators": [],
-    "missing_indicators": [
-      "B1",
-      "B2",
-      "B3",
-      "B4",
-      "B5"
-    ],
-    "below_coverage_threshold": true,
-    "is_baseline_year": false
-  },
-  {
-    "country": "ZZB",
-    "axis": "A",
-    "year": 1964,
-    "axis_score": 20,
-    "coverage": 0.5385,
-    "contributing_indicators": [
-      "A1",
-      "A4",
-      "A5"
-    ],
-    "missing_indicators": [
-      "A2",
-      "A3",
-      "A6"
-    ],
-    "below_coverage_threshold": false,
-    "is_baseline_year": false
-  },
-  {
-    "country": "ZZB",
-    "axis": "B",
-    "year": 1964,
-    "axis_score": null,
-    "coverage": 0,
-    "contributing_indicators": [],
-    "missing_indicators": [
-      "B1",
-      "B2",
-      "B3",
-      "B4",
-      "B5"
-    ],
-    "below_coverage_threshold": true,
-    "is_baseline_year": false
-  },
-  {
-    "country": "ZZB",
-    "axis": "A",
-    "year": 1965,
-    "axis_score": 20,
-    "coverage": 0.5385,
-    "contributing_indicators": [
-      "A1",
-      "A4",
-      "A5"
-    ],
-    "missing_indicators": [
-      "A2",
-      "A3",
-      "A6"
-    ],
-    "below_coverage_threshold": false,
-    "is_baseline_year": false
-  },
-  {
-    "country": "ZZB",
-    "axis": "B",
-    "year": 1965,
-    "axis_score": null,
-    "coverage": 0,
-    "contributing_indicators": [],
-    "missing_indicators": [
-      "B1",
-      "B2",
-      "B3",
-      "B4",
-      "B5"
-    ],
-    "below_coverage_threshold": true,
-    "is_baseline_year": false
-  },
-  {
-    "country": "ZZB",
-    "axis": "A",
-    "year": 1966,
-    "axis_score": 20,
-    "coverage": 0.5385,
-    "contributing_indicators": [
-      "A1",
-      "A4",
-      "A5"
-    ],
-    "missing_indicators": [
-      "A2",
-      "A3",
-      "A6"
-    ],
-    "below_coverage_threshold": false,
-    "is_baseline_year": false
-  },
-  {
-    "country": "ZZB",
-    "axis": "B",
-    "year": 1966,
-    "axis_score": null,
-    "coverage": 0,
-    "contributing_indicators": [],
-    "missing_indicators": [
-      "B1",
-      "B2",
-      "B3",
-      "B4",
-      "B5"
-    ],
-    "below_coverage_threshold": true,
-    "is_baseline_year": false
-  },
-  {
-    "country": "ZZB",
-    "axis": "A",
-    "year": 1967,
-    "axis_score": 20,
-    "coverage": 0.5385,
-    "contributing_indicators": [
-      "A1",
-      "A4",
-      "A5"
-    ],
-    "missing_indicators": [
-      "A2",
-      "A3",
-      "A6"
-    ],
-    "below_coverage_threshold": false,
-    "is_baseline_year": false
-  },
-  {
-    "country": "ZZB",
-    "axis": "B",
-    "year": 1967,
-    "axis_score": null,
-    "coverage": 0,
-    "contributing_indicators": [],
-    "missing_indicators": [
-      "B1",
-      "B2",
-      "B3",
-      "B4",
-      "B5"
-    ],
-    "below_coverage_threshold": true,
-    "is_baseline_year": false
-  },
-  {
-    "country": "ZZB",
-    "axis": "A",
-    "year": 1968,
-    "axis_score": 20,
-    "coverage": 0.5385,
-    "contributing_indicators": [
-      "A1",
-      "A4",
-      "A5"
-    ],
-    "missing_indicators": [
-      "A2",
-      "A3",
-      "A6"
-    ],
-    "below_coverage_threshold": false,
-    "is_baseline_year": false
-  },
-  {
-    "country": "ZZB",
-    "axis": "B",
-    "year": 1968,
-    "axis_score": null,
-    "coverage": 0,
-    "contributing_indicators": [],
-    "missing_indicators": [
-      "B1",
-      "B2",
-      "B3",
-      "B4",
-      "B5"
-    ],
-    "below_coverage_threshold": true,
-    "is_baseline_year": false
-  },
-  {
-    "country": "ZZB",
-    "axis": "A",
-    "year": 1969,
-    "axis_score": 20,
-    "coverage": 0.5385,
-    "contributing_indicators": [
-      "A1",
-      "A4",
-      "A5"
-    ],
-    "missing_indicators": [
-      "A2",
-      "A3",
-      "A6"
-    ],
-    "below_coverage_threshold": false,
-    "is_baseline_year": false
-  },
-  {
-    "country": "ZZB",
-    "axis": "B",
-    "year": 1969,
-    "axis_score": null,
-    "coverage": 0,
-    "contributing_indicators": [],
-    "missing_indicators": [
-      "B1",
-      "B2",
-      "B3",
-      "B4",
-      "B5"
-    ],
-    "below_coverage_threshold": true,
-    "is_baseline_year": false
-  },
-  {
-    "country": "ZZB",
-    "axis": "A",
-    "year": 1970,
-    "axis_score": 20,
-    "coverage": 0.5385,
-    "contributing_indicators": [
-      "A1",
-      "A4",
-      "A5"
-    ],
-    "missing_indicators": [
-      "A2",
-      "A3",
-      "A6"
-    ],
-    "below_coverage_threshold": false,
-    "is_baseline_year": false
-  },
-  {
-    "country": "ZZB",
-    "axis": "B",
-    "year": 1970,
-    "axis_score": null,
-    "coverage": 0,
-    "contributing_indicators": [],
-    "missing_indicators": [
-      "B1",
-      "B2",
-      "B3",
-      "B4",
-      "B5"
-    ],
-    "below_coverage_threshold": true,
-    "is_baseline_year": false
-  },
-  {
-    "country": "ZZB",
-    "axis": "A",
-    "year": 1971,
-    "axis_score": 20,
-    "coverage": 0.5385,
-    "contributing_indicators": [
-      "A1",
-      "A4",
-      "A5"
-    ],
-    "missing_indicators": [
-      "A2",
-      "A3",
-      "A6"
-    ],
-    "below_coverage_threshold": false,
-    "is_baseline_year": false
-  },
-  {
-    "country": "ZZB",
-    "axis": "B",
-    "year": 1971,
-    "axis_score": null,
-    "coverage": 0,
-    "contributing_indicators": [],
-    "missing_indicators": [
-      "B1",
-      "B2",
-      "B3",
-      "B4",
-      "B5"
-    ],
-    "below_coverage_threshold": true,
-    "is_baseline_year": false
-  },
-  {
-    "country": "ZZB",
-    "axis": "A",
-    "year": 1972,
-    "axis_score": 20,
-    "coverage": 0.5385,
-    "contributing_indicators": [
-      "A1",
-      "A4",
-      "A5"
-    ],
-    "missing_indicators": [
-      "A2",
-      "A3",
-      "A6"
-    ],
-    "below_coverage_threshold": false,
-    "is_baseline_year": false
-  },
-  {
-    "country": "ZZB",
-    "axis": "B",
-    "year": 1972,
-    "axis_score": null,
-    "coverage": 0,
-    "contributing_indicators": [],
-    "missing_indicators": [
-      "B1",
-      "B2",
-      "B3",
-      "B4",
-      "B5"
-    ],
-    "below_coverage_threshold": true,
-    "is_baseline_year": false
-  },
-  {
-    "country": "ZZB",
-    "axis": "A",
-    "year": 1973,
-    "axis_score": 20,
-    "coverage": 0.5385,
-    "contributing_indicators": [
-      "A1",
-      "A4",
-      "A5"
-    ],
-    "missing_indicators": [
-      "A2",
-      "A3",
-      "A6"
-    ],
-    "below_coverage_threshold": false,
-    "is_baseline_year": false
-  },
-  {
-    "country": "ZZB",
-    "axis": "B",
-    "year": 1973,
-    "axis_score": null,
-    "coverage": 0,
-    "contributing_indicators": [],
-    "missing_indicators": [
-      "B1",
-      "B2",
-      "B3",
-      "B4",
-      "B5"
-    ],
-    "below_coverage_threshold": true,
-    "is_baseline_year": false
-  },
-  {
-    "country": "ZZB",
-    "axis": "A",
-    "year": 1974,
-    "axis_score": 20,
-    "coverage": 0.5385,
-    "contributing_indicators": [
-      "A1",
-      "A4",
-      "A5"
-    ],
-    "missing_indicators": [
-      "A2",
-      "A3",
-      "A6"
-    ],
-    "below_coverage_threshold": false,
-    "is_baseline_year": false
-  },
-  {
-    "country": "ZZB",
-    "axis": "B",
-    "year": 1974,
-    "axis_score": null,
-    "coverage": 0,
-    "contributing_indicators": [],
-    "missing_indicators": [
-      "B1",
-      "B2",
-      "B3",
-      "B4",
-      "B5"
-    ],
-    "below_coverage_threshold": true,
-    "is_baseline_year": false
-  },
-  {
-    "country": "ZZB",
-    "axis": "A",
-    "year": 1975,
-    "axis_score": 20,
-    "coverage": 0.5385,
-    "contributing_indicators": [
-      "A1",
-      "A4",
-      "A5"
-    ],
-    "missing_indicators": [
-      "A2",
-      "A3",
-      "A6"
-    ],
-    "below_coverage_threshold": false,
-    "is_baseline_year": false
-  },
-  {
-    "country": "ZZB",
-    "axis": "B",
-    "year": 1975,
-    "axis_score": null,
-    "coverage": 0,
-    "contributing_indicators": [],
-    "missing_indicators": [
-      "B1",
-      "B2",
-      "B3",
-      "B4",
-      "B5"
-    ],
-    "below_coverage_threshold": true,
-    "is_baseline_year": false
-  },
-  {
-    "country": "ZZB",
-    "axis": "A",
-    "year": 1976,
-    "axis_score": 20,
-    "coverage": 0.5385,
-    "contributing_indicators": [
-      "A1",
-      "A4",
-      "A5"
-    ],
-    "missing_indicators": [
-      "A2",
-      "A3",
-      "A6"
-    ],
-    "below_coverage_threshold": false,
-    "is_baseline_year": false
-  },
-  {
-    "country": "ZZB",
-    "axis": "B",
-    "year": 1976,
-    "axis_score": null,
-    "coverage": 0,
-    "contributing_indicators": [],
-    "missing_indicators": [
-      "B1",
-      "B2",
-      "B3",
-      "B4",
-      "B5"
-    ],
-    "below_coverage_threshold": true,
-    "is_baseline_year": false
-  },
-  {
-    "country": "ZZB",
-    "axis": "A",
-    "year": 1977,
-    "axis_score": 20,
-    "coverage": 0.5385,
-    "contributing_indicators": [
-      "A1",
-      "A4",
-      "A5"
-    ],
-    "missing_indicators": [
-      "A2",
-      "A3",
-      "A6"
-    ],
-    "below_coverage_threshold": false,
-    "is_baseline_year": false
-  },
-  {
-    "country": "ZZB",
-    "axis": "B",
-    "year": 1977,
-    "axis_score": null,
-    "coverage": 0,
-    "contributing_indicators": [],
-    "missing_indicators": [
-      "B1",
-      "B2",
-      "B3",
-      "B4",
-      "B5"
-    ],
-    "below_coverage_threshold": true,
-    "is_baseline_year": false
-  },
-  {
-    "country": "ZZB",
-    "axis": "A",
-    "year": 1978,
-    "axis_score": 20,
-    "coverage": 0.5385,
-    "contributing_indicators": [
-      "A1",
-      "A4",
-      "A5"
-    ],
-    "missing_indicators": [
-      "A2",
-      "A3",
-      "A6"
-    ],
-    "below_coverage_threshold": false,
-    "is_baseline_year": false
-  },
-  {
-    "country": "ZZB",
-    "axis": "B",
-    "year": 1978,
-    "axis_score": null,
-    "coverage": 0,
-    "contributing_indicators": [],
-    "missing_indicators": [
-      "B1",
-      "B2",
-      "B3",
-      "B4",
-      "B5"
-    ],
-    "below_coverage_threshold": true,
-    "is_baseline_year": false
-  },
-  {
-    "country": "ZZB",
-    "axis": "A",
-    "year": 1979,
-    "axis_score": 20,
-    "coverage": 0.5385,
-    "contributing_indicators": [
-      "A1",
-      "A4",
-      "A5"
-    ],
-    "missing_indicators": [
-      "A2",
-      "A3",
-      "A6"
-    ],
-    "below_coverage_threshold": false,
-    "is_baseline_year": false
-  },
-  {
-    "country": "ZZB",
-    "axis": "B",
-    "year": 1979,
-    "axis_score": null,
-    "coverage": 0,
-    "contributing_indicators": [],
-    "missing_indicators": [
-      "B1",
-      "B2",
-      "B3",
-      "B4",
-      "B5"
-    ],
-    "below_coverage_threshold": true,
-    "is_baseline_year": false
-  },
-  {
-    "country": "ZZB",
-    "axis": "A",
-    "year": 1980,
-    "axis_score": 20,
-    "coverage": 0.5385,
-    "contributing_indicators": [
-      "A1",
-      "A4",
-      "A5"
-    ],
-    "missing_indicators": [
-      "A2",
-      "A3",
-      "A6"
-    ],
-    "below_coverage_threshold": false,
-    "is_baseline_year": false
-  },
-  {
-    "country": "ZZB",
-    "axis": "B",
-    "year": 1980,
-    "axis_score": null,
-    "coverage": 0,
-    "contributing_indicators": [],
-    "missing_indicators": [
-      "B1",
-      "B2",
-      "B3",
-      "B4",
-      "B5"
-    ],
-    "below_coverage_threshold": true,
-    "is_baseline_year": false
-  },
-  {
-    "country": "ZZB",
-    "axis": "A",
-    "year": 1981,
-    "axis_score": 20,
-    "coverage": 0.5385,
-    "contributing_indicators": [
-      "A1",
-      "A4",
-      "A5"
-    ],
-    "missing_indicators": [
-      "A2",
-      "A3",
-      "A6"
-    ],
-    "below_coverage_threshold": false,
-    "is_baseline_year": false
-  },
-  {
-    "country": "ZZB",
-    "axis": "B",
-    "year": 1981,
-    "axis_score": null,
-    "coverage": 0,
-    "contributing_indicators": [],
-    "missing_indicators": [
-      "B1",
-      "B2",
-      "B3",
-      "B4",
-      "B5"
-    ],
-    "below_coverage_threshold": true,
-    "is_baseline_year": false
-  },
-  {
-    "country": "ZZB",
-    "axis": "A",
-    "year": 1982,
-    "axis_score": 20,
-    "coverage": 0.5385,
-    "contributing_indicators": [
-      "A1",
-      "A4",
-      "A5"
-    ],
-    "missing_indicators": [
-      "A2",
-      "A3",
-      "A6"
-    ],
-    "below_coverage_threshold": false,
-    "is_baseline_year": false
-  },
-  {
-    "country": "ZZB",
-    "axis": "B",
-    "year": 1982,
-    "axis_score": null,
-    "coverage": 0,
-    "contributing_indicators": [],
-    "missing_indicators": [
-      "B1",
-      "B2",
-      "B3",
-      "B4",
-      "B5"
-    ],
-    "below_coverage_threshold": true,
-    "is_baseline_year": false
-  },
-  {
-    "country": "ZZB",
-    "axis": "A",
-    "year": 1983,
-    "axis_score": 20,
-    "coverage": 0.5385,
-    "contributing_indicators": [
-      "A1",
-      "A4",
-      "A5"
-    ],
-    "missing_indicators": [
-      "A2",
-      "A3",
-      "A6"
-    ],
-    "below_coverage_threshold": false,
-    "is_baseline_year": false
-  },
-  {
-    "country": "ZZB",
-    "axis": "B",
-    "year": 1983,
-    "axis_score": null,
-    "coverage": 0,
-    "contributing_indicators": [],
-    "missing_indicators": [
-      "B1",
-      "B2",
-      "B3",
-      "B4",
-      "B5"
-    ],
-    "below_coverage_threshold": true,
-    "is_baseline_year": false
-  },
-  {
-    "country": "ZZB",
-    "axis": "A",
-    "year": 1984,
-    "axis_score": 20,
-    "coverage": 0.5385,
-    "contributing_indicators": [
-      "A1",
-      "A4",
-      "A5"
-    ],
-    "missing_indicators": [
-      "A2",
-      "A3",
-      "A6"
-    ],
-    "below_coverage_threshold": false,
-    "is_baseline_year": false
-  },
-  {
-    "country": "ZZB",
-    "axis": "B",
-    "year": 1984,
-    "axis_score": null,
-    "coverage": 0,
-    "contributing_indicators": [],
-    "missing_indicators": [
-      "B1",
-      "B2",
-      "B3",
-      "B4",
-      "B5"
-    ],
-    "below_coverage_threshold": true,
-    "is_baseline_year": false
-  },
-  {
-    "country": "ZZB",
-    "axis": "A",
-    "year": 1985,
-    "axis_score": 20,
-    "coverage": 0.5385,
-    "contributing_indicators": [
-      "A1",
-      "A4",
-      "A5"
-    ],
-    "missing_indicators": [
-      "A2",
-      "A3",
-      "A6"
-    ],
-    "below_coverage_threshold": false,
-    "is_baseline_year": false
-  },
-  {
-    "country": "ZZB",
-    "axis": "B",
-    "year": 1985,
-    "axis_score": null,
-    "coverage": 0,
-    "contributing_indicators": [],
-    "missing_indicators": [
-      "B1",
-      "B2",
-      "B3",
-      "B4",
-      "B5"
-    ],
-    "below_coverage_threshold": true,
-    "is_baseline_year": false
-  },
-  {
-    "country": "ZZB",
-    "axis": "A",
-    "year": 1986,
-    "axis_score": 20,
-    "coverage": 0.5385,
-    "contributing_indicators": [
-      "A1",
-      "A4",
-      "A5"
-    ],
-    "missing_indicators": [
-      "A2",
-      "A3",
-      "A6"
-    ],
-    "below_coverage_threshold": false,
-    "is_baseline_year": false
-  },
-  {
-    "country": "ZZB",
-    "axis": "B",
-    "year": 1986,
-    "axis_score": null,
-    "coverage": 0,
-    "contributing_indicators": [],
-    "missing_indicators": [
-      "B1",
-      "B2",
-      "B3",
-      "B4",
-      "B5"
-    ],
-    "below_coverage_threshold": true,
-    "is_baseline_year": false
-  },
-  {
-    "country": "ZZB",
-    "axis": "A",
-    "year": 1987,
-    "axis_score": 20,
-    "coverage": 0.5385,
-    "contributing_indicators": [
-      "A1",
-      "A4",
-      "A5"
-    ],
-    "missing_indicators": [
-      "A2",
-      "A3",
-      "A6"
-    ],
-    "below_coverage_threshold": false,
-    "is_baseline_year": false
-  },
-  {
-    "country": "ZZB",
-    "axis": "B",
-    "year": 1987,
-    "axis_score": null,
-    "coverage": 0,
-    "contributing_indicators": [],
-    "missing_indicators": [
-      "B1",
-      "B2",
-      "B3",
-      "B4",
-      "B5"
-    ],
-    "below_coverage_threshold": true,
-    "is_baseline_year": false
-  },
-  {
-    "country": "ZZB",
-    "axis": "A",
-    "year": 1988,
-    "axis_score": 20,
-    "coverage": 0.5385,
-    "contributing_indicators": [
-      "A1",
-      "A4",
-      "A5"
-    ],
-    "missing_indicators": [
-      "A2",
-      "A3",
-      "A6"
-    ],
-    "below_coverage_threshold": false,
-    "is_baseline_year": false
-  },
-  {
-    "country": "ZZB",
-    "axis": "B",
-    "year": 1988,
-    "axis_score": null,
-    "coverage": 0,
-    "contributing_indicators": [],
-    "missing_indicators": [
-      "B1",
-      "B2",
-      "B3",
-      "B4",
-      "B5"
-    ],
-    "below_coverage_threshold": true,
-    "is_baseline_year": false
-  },
-  {
-    "country": "ZZB",
-    "axis": "A",
-    "year": 1989,
-    "axis_score": 20,
-    "coverage": 0.5385,
-    "contributing_indicators": [
-      "A1",
-      "A4",
-      "A5"
-    ],
-    "missing_indicators": [
-      "A2",
-      "A3",
-      "A6"
-    ],
-    "below_coverage_threshold": false,
-    "is_baseline_year": false
-  },
-  {
-    "country": "ZZB",
-    "axis": "B",
-    "year": 1989,
-    "axis_score": null,
-    "coverage": 0,
-    "contributing_indicators": [],
-    "missing_indicators": [
-      "B1",
-      "B2",
-      "B3",
-      "B4",
-      "B5"
-    ],
-    "below_coverage_threshold": true,
-    "is_baseline_year": false
-  },
-  {
-    "country": "ZZB",
-    "axis": "A",
-    "year": 1990,
-    "axis_score": 20,
-    "coverage": 0.5385,
-    "contributing_indicators": [
-      "A1",
-      "A4",
-      "A5"
-    ],
-    "missing_indicators": [
-      "A2",
-      "A3",
-      "A6"
-    ],
-    "below_coverage_threshold": false,
-    "is_baseline_year": false
-  },
-  {
-    "country": "ZZB",
-    "axis": "B",
-    "year": 1990,
-    "axis_score": null,
-    "coverage": 0,
-    "contributing_indicators": [],
-    "missing_indicators": [
-      "B1",
-      "B2",
-      "B3",
-      "B4",
-      "B5"
-    ],
-    "below_coverage_threshold": true,
-    "is_baseline_year": false
-  },
-  {
-    "country": "ZZB",
-    "axis": "A",
-    "year": 1991,
-    "axis_score": 20,
-    "coverage": 0.5385,
-    "contributing_indicators": [
-      "A1",
-      "A4",
-      "A5"
-    ],
-    "missing_indicators": [
-      "A2",
-      "A3",
-      "A6"
-    ],
-    "below_coverage_threshold": false,
-    "is_baseline_year": false
-  },
-  {
-    "country": "ZZB",
-    "axis": "B",
-    "year": 1991,
-    "axis_score": null,
-    "coverage": 0,
-    "contributing_indicators": [],
-    "missing_indicators": [
-      "B1",
-      "B2",
-      "B3",
-      "B4",
-      "B5"
-    ],
-    "below_coverage_threshold": true,
-    "is_baseline_year": false
-  },
-  {
-    "country": "ZZB",
-    "axis": "A",
-    "year": 1992,
-    "axis_score": 20,
-    "coverage": 0.5385,
-    "contributing_indicators": [
-      "A1",
-      "A4",
-      "A5"
-    ],
-    "missing_indicators": [
-      "A2",
-      "A3",
-      "A6"
-    ],
-    "below_coverage_threshold": false,
-    "is_baseline_year": false
-  },
-  {
-    "country": "ZZB",
-    "axis": "B",
-    "year": 1992,
-    "axis_score": null,
-    "coverage": 0,
-    "contributing_indicators": [],
-    "missing_indicators": [
-      "B1",
-      "B2",
-      "B3",
-      "B4",
-      "B5"
-    ],
-    "below_coverage_threshold": true,
-    "is_baseline_year": false
-  },
-  {
-    "country": "ZZB",
-    "axis": "A",
-    "year": 1993,
-    "axis_score": 20,
-    "coverage": 0.5385,
-    "contributing_indicators": [
-      "A1",
-      "A4",
-      "A5"
-    ],
-    "missing_indicators": [
-      "A2",
-      "A3",
-      "A6"
-    ],
-    "below_coverage_threshold": false,
-    "is_baseline_year": false
-  },
-  {
-    "country": "ZZB",
-    "axis": "B",
-    "year": 1993,
-    "axis_score": null,
-    "coverage": 0,
-    "contributing_indicators": [],
-    "missing_indicators": [
-      "B1",
-      "B2",
-      "B3",
-      "B4",
-      "B5"
-    ],
-    "below_coverage_threshold": true,
-    "is_baseline_year": false
-  },
-  {
-    "country": "ZZB",
-    "axis": "A",
-    "year": 1994,
-    "axis_score": 20,
-    "coverage": 0.5385,
-    "contributing_indicators": [
-      "A1",
-      "A4",
-      "A5"
-    ],
-    "missing_indicators": [
-      "A2",
-      "A3",
-      "A6"
-    ],
-    "below_coverage_threshold": false,
-    "is_baseline_year": false
-  },
-  {
-    "country": "ZZB",
-    "axis": "B",
-    "year": 1994,
-    "axis_score": null,
-    "coverage": 0,
-    "contributing_indicators": [],
-    "missing_indicators": [
-      "B1",
-      "B2",
-      "B3",
-      "B4",
-      "B5"
-    ],
-    "below_coverage_threshold": true,
-    "is_baseline_year": false
-  },
-  {
-    "country": "ZZB",
-    "axis": "A",
-    "year": 1995,
-    "axis_score": 20,
-    "coverage": 0.5385,
-    "contributing_indicators": [
-      "A1",
-      "A4",
-      "A5"
-    ],
-    "missing_indicators": [
-      "A2",
-      "A3",
-      "A6"
-    ],
-    "below_coverage_threshold": false,
-    "is_baseline_year": false
-  },
-  {
-    "country": "ZZB",
-    "axis": "B",
-    "year": 1995,
-    "axis_score": null,
-    "coverage": 0,
-    "contributing_indicators": [],
-    "missing_indicators": [
-      "B1",
-      "B2",
-      "B3",
-      "B4",
-      "B5"
-    ],
-    "below_coverage_threshold": true,
-    "is_baseline_year": false
-  },
-  {
-    "country": "ZZB",
-    "axis": "A",
-    "year": 1996,
-    "axis_score": 20,
-    "coverage": 0.5385,
-    "contributing_indicators": [
-      "A1",
-      "A4",
-      "A5"
-    ],
-    "missing_indicators": [
-      "A2",
-      "A3",
-      "A6"
-    ],
-    "below_coverage_threshold": false,
-    "is_baseline_year": false
-  },
-  {
-    "country": "ZZB",
-    "axis": "B",
-    "year": 1996,
-    "axis_score": null,
-    "coverage": 0,
-    "contributing_indicators": [],
-    "missing_indicators": [
-      "B1",
-      "B2",
-      "B3",
-      "B4",
-      "B5"
-    ],
-    "below_coverage_threshold": true,
-    "is_baseline_year": false
-  },
-  {
-    "country": "ZZB",
-    "axis": "A",
-    "year": 1997,
-    "axis_score": 20,
-    "coverage": 0.5385,
-    "contributing_indicators": [
-      "A1",
-      "A4",
-      "A5"
-    ],
-    "missing_indicators": [
-      "A2",
-      "A3",
-      "A6"
-    ],
-    "below_coverage_threshold": false,
-    "is_baseline_year": false
-  },
-  {
-    "country": "ZZB",
-    "axis": "B",
-    "year": 1997,
-    "axis_score": null,
-    "coverage": 0,
-    "contributing_indicators": [],
-    "missing_indicators": [
-      "B1",
-      "B2",
-      "B3",
-      "B4",
-      "B5"
-    ],
-    "below_coverage_threshold": true,
-    "is_baseline_year": false
-  },
-  {
-    "country": "ZZB",
-    "axis": "A",
-    "year": 1998,
-    "axis_score": 20,
-    "coverage": 0.5385,
-    "contributing_indicators": [
-      "A1",
-      "A4",
-      "A5"
-    ],
-    "missing_indicators": [
-      "A2",
-      "A3",
-      "A6"
-    ],
-    "below_coverage_threshold": false,
-    "is_baseline_year": false
-  },
-  {
-    "country": "ZZB",
-    "axis": "B",
-    "year": 1998,
-    "axis_score": null,
-    "coverage": 0,
-    "contributing_indicators": [],
-    "missing_indicators": [
-      "B1",
-      "B2",
-      "B3",
-      "B4",
-      "B5"
-    ],
-    "below_coverage_threshold": true,
-    "is_baseline_year": false
-  },
-  {
-    "country": "ZZB",
-    "axis": "A",
-    "year": 1999,
-    "axis_score": 20,
-    "coverage": 0.5385,
-    "contributing_indicators": [
-      "A1",
-      "A4",
-      "A5"
-    ],
-    "missing_indicators": [
-      "A2",
-      "A3",
-      "A6"
-    ],
-    "below_coverage_threshold": false,
-    "is_baseline_year": false
-  },
-  {
-    "country": "ZZB",
-    "axis": "B",
-    "year": 1999,
-    "axis_score": null,
-    "coverage": 0,
-    "contributing_indicators": [],
-    "missing_indicators": [
-      "B1",
-      "B2",
-      "B3",
-      "B4",
-      "B5"
-    ],
-    "below_coverage_threshold": true,
-    "is_baseline_year": false
-  },
-  {
-    "country": "ZZB",
-    "axis": "A",
-    "year": 2000,
-    "axis_score": 18.33,
-    "coverage": 0.6923,
-    "contributing_indicators": [
-      "A1",
-      "A2",
-      "A4",
-      "A5"
-    ],
-    "missing_indicators": [
-      "A3",
-      "A6"
-    ],
-    "below_coverage_threshold": false,
-    "is_baseline_year": false
-  },
-  {
-    "country": "ZZB",
-    "axis": "B",
-    "year": 2000,
-    "axis_score": null,
-    "coverage": 0,
-    "contributing_indicators": [],
-    "missing_indicators": [
-      "B1",
-      "B2",
-      "B3",
-      "B4",
-      "B5"
-    ],
-    "below_coverage_threshold": true,
-    "is_baseline_year": false
-  },
-  {
-    "country": "ZZB",
-    "axis": "A",
-    "year": 2001,
-    "axis_score": 20,
-    "coverage": 0.5385,
-    "contributing_indicators": [
-      "A1",
-      "A4",
-      "A5"
-    ],
-    "missing_indicators": [
-      "A2",
-      "A3",
-      "A6"
-    ],
-    "below_coverage_threshold": false,
-    "is_baseline_year": false
-  },
-  {
-    "country": "ZZB",
-    "axis": "B",
-    "year": 2001,
-    "axis_score": null,
-    "coverage": 0,
-    "contributing_indicators": [],
-    "missing_indicators": [
-      "B1",
-      "B2",
-      "B3",
-      "B4",
-      "B5"
-    ],
-    "below_coverage_threshold": true,
-    "is_baseline_year": false
-  },
-  {
-    "country": "ZZB",
-    "axis": "A",
-    "year": 2002,
-    "axis_score": 20,
-    "coverage": 0.5385,
-    "contributing_indicators": [
-      "A1",
-      "A4",
-      "A5"
-    ],
-    "missing_indicators": [
-      "A2",
-      "A3",
-      "A6"
-    ],
-    "below_coverage_threshold": false,
-    "is_baseline_year": false
-  },
-  {
-    "country": "ZZB",
-    "axis": "B",
-    "year": 2002,
-    "axis_score": null,
-    "coverage": 0,
-    "contributing_indicators": [],
-    "missing_indicators": [
-      "B1",
-      "B2",
-      "B3",
-      "B4",
-      "B5"
-    ],
-    "below_coverage_threshold": true,
-    "is_baseline_year": false
-  },
-  {
-    "country": "ZZB",
-    "axis": "A",
-    "year": 2003,
-    "axis_score": 20,
-    "coverage": 0.5385,
-    "contributing_indicators": [
-      "A1",
-      "A4",
-      "A5"
-    ],
-    "missing_indicators": [
-      "A2",
-      "A3",
-      "A6"
-    ],
-    "below_coverage_threshold": false,
-    "is_baseline_year": false
-  },
-  {
-    "country": "ZZB",
-    "axis": "B",
-    "year": 2003,
-    "axis_score": null,
-    "coverage": 0,
-    "contributing_indicators": [],
-    "missing_indicators": [
-      "B1",
-      "B2",
-      "B3",
-      "B4",
-      "B5"
-    ],
-    "below_coverage_threshold": true,
-    "is_baseline_year": false
-  },
-  {
-    "country": "ZZB",
-    "axis": "A",
-    "year": 2004,
-    "axis_score": 20,
-    "coverage": 0.5385,
-    "contributing_indicators": [
-      "A1",
-      "A4",
-      "A5"
-    ],
-    "missing_indicators": [
-      "A2",
-      "A3",
-      "A6"
-    ],
-    "below_coverage_threshold": false,
-    "is_baseline_year": false
-  },
-  {
-    "country": "ZZB",
-    "axis": "B",
-    "year": 2004,
-    "axis_score": null,
-    "coverage": 0,
-    "contributing_indicators": [],
-    "missing_indicators": [
-      "B1",
-      "B2",
-      "B3",
-      "B4",
-      "B5"
-    ],
-    "below_coverage_threshold": true,
-    "is_baseline_year": false
-  },
-  {
-    "country": "ZZB",
-    "axis": "A",
-    "year": 2005,
-    "axis_score": 20,
-    "coverage": 0.5385,
-    "contributing_indicators": [
-      "A1",
-      "A4",
-      "A5"
-    ],
-    "missing_indicators": [
-      "A2",
-      "A3",
-      "A6"
-    ],
-    "below_coverage_threshold": false,
-    "is_baseline_year": false
-  },
-  {
-    "country": "ZZB",
-    "axis": "B",
-    "year": 2005,
-    "axis_score": null,
-    "coverage": 0,
-    "contributing_indicators": [],
-    "missing_indicators": [
-      "B1",
-      "B2",
-      "B3",
-      "B4",
-      "B5"
-    ],
-    "below_coverage_threshold": true,
-    "is_baseline_year": false
-  },
-  {
-    "country": "ZZB",
-    "axis": "A",
-    "year": 2006,
-    "axis_score": 20,
-    "coverage": 0.5385,
-    "contributing_indicators": [
-      "A1",
-      "A4",
-      "A5"
-    ],
-    "missing_indicators": [
-      "A2",
-      "A3",
-      "A6"
-    ],
-    "below_coverage_threshold": false,
-    "is_baseline_year": false
-  },
-  {
-    "country": "ZZB",
-    "axis": "B",
-    "year": 2006,
-    "axis_score": null,
-    "coverage": 0,
-    "contributing_indicators": [],
-    "missing_indicators": [
-      "B1",
-      "B2",
-      "B3",
-      "B4",
-      "B5"
-    ],
-    "below_coverage_threshold": true,
-    "is_baseline_year": false
-  },
-  {
-    "country": "ZZB",
-    "axis": "A",
-    "year": 2007,
-    "axis_score": 20,
-    "coverage": 0.5385,
-    "contributing_indicators": [
-      "A1",
-      "A4",
-      "A5"
-    ],
-    "missing_indicators": [
-      "A2",
-      "A3",
-      "A6"
-    ],
-    "below_coverage_threshold": false,
-    "is_baseline_year": false
-  },
-  {
-    "country": "ZZB",
-    "axis": "B",
-    "year": 2007,
-    "axis_score": null,
-    "coverage": 0,
-    "contributing_indicators": [],
-    "missing_indicators": [
-      "B1",
-      "B2",
-      "B3",
-      "B4",
-      "B5"
-    ],
-    "below_coverage_threshold": true,
-    "is_baseline_year": false
-  },
-  {
-    "country": "ZZB",
-    "axis": "A",
-    "year": 2008,
-    "axis_score": 20,
-    "coverage": 0.5385,
-    "contributing_indicators": [
-      "A1",
-      "A4",
-      "A5"
-    ],
-    "missing_indicators": [
-      "A2",
-      "A3",
-      "A6"
-    ],
-    "below_coverage_threshold": false,
-    "is_baseline_year": false
-  },
-  {
-    "country": "ZZB",
-    "axis": "B",
-    "year": 2008,
-    "axis_score": null,
-    "coverage": 0,
-    "contributing_indicators": [],
-    "missing_indicators": [
-      "B1",
-      "B2",
-      "B3",
-      "B4",
-      "B5"
-    ],
-    "below_coverage_threshold": true,
-    "is_baseline_year": false
-  },
-  {
-    "country": "ZZB",
-    "axis": "A",
-    "year": 2009,
-    "axis_score": 20,
-    "coverage": 0.5385,
-    "contributing_indicators": [
-      "A1",
-      "A4",
-      "A5"
-    ],
-    "missing_indicators": [
-      "A2",
-      "A3",
-      "A6"
-    ],
-    "below_coverage_threshold": false,
-    "is_baseline_year": false
-  },
-  {
-    "country": "ZZB",
-    "axis": "B",
-    "year": 2009,
-    "axis_score": null,
-    "coverage": 0,
-    "contributing_indicators": [],
-    "missing_indicators": [
-      "B1",
-      "B2",
-      "B3",
-      "B4",
-      "B5"
-    ],
-    "below_coverage_threshold": true,
-    "is_baseline_year": false
-  },
-  {
-    "country": "ZZB",
-    "axis": "A",
-    "year": 2010,
-    "axis_score": 24.55,
-    "coverage": 0.8462,
-    "contributing_indicators": [
-      "A1",
-      "A2",
-      "A3",
-      "A4",
-      "A5"
-    ],
-    "missing_indicators": [
-      "A6"
-    ],
-    "below_coverage_threshold": false,
-    "is_baseline_year": false
-  },
-  {
-    "country": "ZZB",
-    "axis": "B",
-    "year": 2010,
-    "axis_score": 20,
-    "coverage": 0.25,
-    "contributing_indicators": [
-      "B5"
-    ],
-    "missing_indicators": [
-      "B1",
-      "B2",
-      "B3",
-      "B4"
-    ],
-    "below_coverage_threshold": false,
-    "is_baseline_year": false
-  },
-  {
-    "country": "ZZB",
-    "axis": "A",
-    "year": 2011,
-    "axis_score": 25.71,
-    "coverage": 0.5385,
-    "contributing_indicators": [
-      "A1",
-      "A4",
-      "A5"
-    ],
-    "missing_indicators": [
-      "A2",
-      "A3",
-      "A6"
-    ],
-    "below_coverage_threshold": false,
-    "is_baseline_year": false
-  },
-  {
-    "country": "ZZB",
-    "axis": "B",
-    "year": 2011,
-    "axis_score": null,
-    "coverage": 0,
-    "contributing_indicators": [],
-    "missing_indicators": [
-      "B1",
-      "B2",
-      "B3",
-      "B4",
-      "B5"
-    ],
-    "below_coverage_threshold": true,
-    "is_baseline_year": false
-  },
-  {
-    "country": "ZZB",
-    "axis": "A",
-    "year": 2012,
-    "axis_score": 25.71,
-    "coverage": 0.5385,
-    "contributing_indicators": [
-      "A1",
-      "A4",
-      "A5"
-    ],
-    "missing_indicators": [
-      "A2",
-      "A3",
-      "A6"
-    ],
-    "below_coverage_threshold": false,
-    "is_baseline_year": false
-  },
-  {
-    "country": "ZZB",
-    "axis": "B",
-    "year": 2012,
-    "axis_score": null,
-    "coverage": 0,
-    "contributing_indicators": [],
-    "missing_indicators": [
-      "B1",
-      "B2",
-      "B3",
-      "B4",
-      "B5"
-    ],
-    "below_coverage_threshold": true,
-    "is_baseline_year": false
-  },
-  {
-    "country": "ZZB",
-    "axis": "A",
-    "year": 2013,
-    "axis_score": 25.71,
-    "coverage": 0.5385,
-    "contributing_indicators": [
-      "A1",
-      "A4",
-      "A5"
-    ],
-    "missing_indicators": [
-      "A2",
-      "A3",
-      "A6"
-    ],
-    "below_coverage_threshold": false,
-    "is_baseline_year": false
-  },
-  {
-    "country": "ZZB",
-    "axis": "B",
-    "year": 2013,
-    "axis_score": null,
-    "coverage": 0,
-    "contributing_indicators": [],
-    "missing_indicators": [
-      "B1",
-      "B2",
-      "B3",
-      "B4",
-      "B5"
-    ],
-    "below_coverage_threshold": true,
-    "is_baseline_year": false
-  },
-  {
-    "country": "ZZB",
-    "axis": "A",
-    "year": 2014,
-    "axis_score": 25.71,
-    "coverage": 0.5385,
-    "contributing_indicators": [
-      "A1",
-      "A4",
-      "A5"
-    ],
-    "missing_indicators": [
-      "A2",
-      "A3",
-      "A6"
-    ],
-    "below_coverage_threshold": false,
-    "is_baseline_year": false
-  },
-  {
-    "country": "ZZB",
-    "axis": "B",
-    "year": 2014,
-    "axis_score": null,
-    "coverage": 0,
-    "contributing_indicators": [],
-    "missing_indicators": [
-      "B1",
-      "B2",
-      "B3",
-      "B4",
-      "B5"
-    ],
-    "below_coverage_threshold": true,
-    "is_baseline_year": false
-  },
-  {
-    "country": "ZZB",
-    "axis": "A",
-    "year": 2015,
-    "axis_score": 31.43,
-    "coverage": 0.5385,
-    "contributing_indicators": [
-      "A1",
-      "A4",
-      "A5"
-    ],
-    "missing_indicators": [
-      "A2",
-      "A3",
-      "A6"
-    ],
-    "below_coverage_threshold": false,
-    "is_baseline_year": false
-  },
-  {
-    "country": "ZZB",
-    "axis": "B",
-    "year": 2015,
-    "axis_score": null,
-    "coverage": 0,
-    "contributing_indicators": [],
-    "missing_indicators": [
-      "B1",
-      "B2",
-      "B3",
-      "B4",
-      "B5"
-    ],
-    "below_coverage_threshold": true,
-    "is_baseline_year": false
-  },
-  {
-    "country": "ZZB",
-    "axis": "A",
-    "year": 2016,
-    "axis_score": 31.43,
-    "coverage": 0.5385,
-    "contributing_indicators": [
-      "A1",
-      "A4",
-      "A5"
-    ],
-    "missing_indicators": [
-      "A2",
-      "A3",
-      "A6"
-    ],
-    "below_coverage_threshold": false,
-    "is_baseline_year": false
-  },
-  {
-    "country": "ZZB",
-    "axis": "B",
-    "year": 2016,
-    "axis_score": null,
-    "coverage": 0,
-    "contributing_indicators": [],
-    "missing_indicators": [
-      "B1",
-      "B2",
-      "B3",
-      "B4",
-      "B5"
-    ],
-    "below_coverage_threshold": true,
-    "is_baseline_year": false
-  },
-  {
-    "country": "ZZB",
-    "axis": "A",
-    "year": 2017,
-    "axis_score": 31.43,
-    "coverage": 0.5385,
-    "contributing_indicators": [
-      "A1",
-      "A4",
-      "A5"
-    ],
-    "missing_indicators": [
-      "A2",
-      "A3",
-      "A6"
-    ],
-    "below_coverage_threshold": false,
-    "is_baseline_year": false
-  },
-  {
-    "country": "ZZB",
-    "axis": "B",
-    "year": 2017,
-    "axis_score": null,
-    "coverage": 0,
-    "contributing_indicators": [],
-    "missing_indicators": [
-      "B1",
-      "B2",
-      "B3",
-      "B4",
-      "B5"
-    ],
-    "below_coverage_threshold": true,
-    "is_baseline_year": false
-  },
-  {
-    "country": "ZZB",
-    "axis": "A",
-    "year": 2018,
-    "axis_score": 31.43,
-    "coverage": 0.5385,
-    "contributing_indicators": [
-      "A1",
-      "A4",
-      "A5"
-    ],
-    "missing_indicators": [
-      "A2",
-      "A3",
-      "A6"
-    ],
-    "below_coverage_threshold": false,
-    "is_baseline_year": false
-  },
-  {
-    "country": "ZZB",
-    "axis": "B",
-    "year": 2018,
-    "axis_score": null,
-    "coverage": 0,
-    "contributing_indicators": [],
-    "missing_indicators": [
-      "B1",
-      "B2",
-      "B3",
-      "B4",
-      "B5"
-    ],
-    "below_coverage_threshold": true,
-    "is_baseline_year": false
-  },
-  {
-    "country": "ZZB",
-    "axis": "A",
-    "year": 2019,
-    "axis_score": 31.43,
-    "coverage": 0.5385,
-    "contributing_indicators": [
-      "A1",
-      "A4",
-      "A5"
-    ],
-    "missing_indicators": [
-      "A2",
-      "A3",
-      "A6"
-    ],
-    "below_coverage_threshold": false,
-    "is_baseline_year": false
-  },
-  {
-    "country": "ZZB",
-    "axis": "B",
-    "year": 2019,
-    "axis_score": null,
-    "coverage": 0,
-    "contributing_indicators": [],
-    "missing_indicators": [
-      "B1",
-      "B2",
-      "B3",
-      "B4",
-      "B5"
-    ],
-    "below_coverage_threshold": true,
-    "is_baseline_year": false
-  },
-  {
-    "country": "ZZB",
-    "axis": "A",
-    "year": 2020,
-    "axis_score": 29.23,
-    "coverage": 1,
-    "contributing_indicators": [
-      "A1",
       "A2",
       "A3",
       "A4",
       "A5",
       "A6"
     ],
-    "missing_indicators": [],
     "below_coverage_threshold": false,
-    "is_baseline_year": false
+    "is_baseline_year": true
   },
   {
-    "country": "ZZB",
+    "country": "BFA",
     "axis": "B",
-    "year": 2020,
-    "axis_score": 25,
-    "coverage": 0.5,
-    "contributing_indicators": [
-      "B3",
-      "B5"
-    ],
-    "missing_indicators": [
-      "B1",
-      "B2",
-      "B4"
-    ],
-    "below_coverage_threshold": false,
-    "is_baseline_year": false
-  },
-  {
-    "country": "ZZB",
-    "axis": "A",
-    "year": 2021,
-    "axis_score": 31.43,
-    "coverage": 0.5385,
-    "contributing_indicators": [
-      "A1",
-      "A4",
-      "A5"
-    ],
-    "missing_indicators": [
-      "A2",
-      "A3",
-      "A6"
-    ],
-    "below_coverage_threshold": false,
-    "is_baseline_year": false
-  },
-  {
-    "country": "ZZB",
-    "axis": "B",
-    "year": 2021,
+    "year": 1960,
     "axis_score": null,
     "coverage": 0,
     "contributing_indicators": [],
@@ -2230,138 +33,2333 @@
       "B5"
     ],
     "below_coverage_threshold": true,
-    "is_baseline_year": false
+    "is_baseline_year": true
   },
   {
-    "country": "ZZB",
+    "country": "BFA",
     "axis": "A",
-    "year": 2022,
-    "axis_score": 31.43,
-    "coverage": 0.5385,
+    "year": 1961,
+    "axis_score": 20,
+    "coverage": 0.2308,
     "contributing_indicators": [
-      "A1",
-      "A4",
-      "A5"
+      "A1"
     ],
     "missing_indicators": [
       "A2",
       "A3",
-      "A6"
-    ],
-    "below_coverage_threshold": false,
-    "is_baseline_year": false
-  },
-  {
-    "country": "ZZB",
-    "axis": "B",
-    "year": 2022,
-    "axis_score": null,
-    "coverage": 0,
-    "contributing_indicators": [],
-    "missing_indicators": [
-      "B1",
-      "B2",
-      "B3",
-      "B4",
-      "B5"
-    ],
-    "below_coverage_threshold": true,
-    "is_baseline_year": false
-  },
-  {
-    "country": "ZZB",
-    "axis": "A",
-    "year": 2023,
-    "axis_score": 31.43,
-    "coverage": 0.5385,
-    "contributing_indicators": [
-      "A1",
-      "A4",
-      "A5"
-    ],
-    "missing_indicators": [
-      "A2",
-      "A3",
-      "A6"
-    ],
-    "below_coverage_threshold": false,
-    "is_baseline_year": false
-  },
-  {
-    "country": "ZZB",
-    "axis": "B",
-    "year": 2023,
-    "axis_score": null,
-    "coverage": 0,
-    "contributing_indicators": [],
-    "missing_indicators": [
-      "B1",
-      "B2",
-      "B3",
-      "B4",
-      "B5"
-    ],
-    "below_coverage_threshold": true,
-    "is_baseline_year": false
-  },
-  {
-    "country": "ZZB",
-    "axis": "A",
-    "year": 2024,
-    "axis_score": 30,
-    "coverage": 0.6923,
-    "contributing_indicators": [
-      "A1",
       "A4",
       "A5",
       "A6"
     ],
-    "missing_indicators": [
-      "A2",
-      "A3"
-    ],
     "below_coverage_threshold": false,
     "is_baseline_year": false
   },
   {
-    "country": "ZZB",
+    "country": "BFA",
     "axis": "B",
-    "year": 2024,
-    "axis_score": 28.33,
-    "coverage": 0.75,
-    "contributing_indicators": [
+    "year": 1961,
+    "axis_score": null,
+    "coverage": 0,
+    "contributing_indicators": [],
+    "missing_indicators": [
+      "B1",
       "B2",
       "B3",
       "B4",
       "B5"
     ],
+    "below_coverage_threshold": true,
+    "is_baseline_year": false
+  },
+  {
+    "country": "BFA",
+    "axis": "A",
+    "year": 1962,
+    "axis_score": 20,
+    "coverage": 0.2308,
+    "contributing_indicators": [
+      "A1"
+    ],
     "missing_indicators": [
-      "B1"
+      "A2",
+      "A3",
+      "A4",
+      "A5",
+      "A6"
     ],
     "below_coverage_threshold": false,
     "is_baseline_year": false
   },
   {
-    "country": "ZZB",
+    "country": "BFA",
+    "axis": "B",
+    "year": 1962,
+    "axis_score": null,
+    "coverage": 0,
+    "contributing_indicators": [],
+    "missing_indicators": [
+      "B1",
+      "B2",
+      "B3",
+      "B4",
+      "B5"
+    ],
+    "below_coverage_threshold": true,
+    "is_baseline_year": false
+  },
+  {
+    "country": "BFA",
+    "axis": "A",
+    "year": 1963,
+    "axis_score": 20,
+    "coverage": 0.2308,
+    "contributing_indicators": [
+      "A1"
+    ],
+    "missing_indicators": [
+      "A2",
+      "A3",
+      "A4",
+      "A5",
+      "A6"
+    ],
+    "below_coverage_threshold": false,
+    "is_baseline_year": false
+  },
+  {
+    "country": "BFA",
+    "axis": "B",
+    "year": 1963,
+    "axis_score": null,
+    "coverage": 0,
+    "contributing_indicators": [],
+    "missing_indicators": [
+      "B1",
+      "B2",
+      "B3",
+      "B4",
+      "B5"
+    ],
+    "below_coverage_threshold": true,
+    "is_baseline_year": false
+  },
+  {
+    "country": "BFA",
+    "axis": "A",
+    "year": 1964,
+    "axis_score": 20,
+    "coverage": 0.2308,
+    "contributing_indicators": [
+      "A1"
+    ],
+    "missing_indicators": [
+      "A2",
+      "A3",
+      "A4",
+      "A5",
+      "A6"
+    ],
+    "below_coverage_threshold": false,
+    "is_baseline_year": false
+  },
+  {
+    "country": "BFA",
+    "axis": "B",
+    "year": 1964,
+    "axis_score": null,
+    "coverage": 0,
+    "contributing_indicators": [],
+    "missing_indicators": [
+      "B1",
+      "B2",
+      "B3",
+      "B4",
+      "B5"
+    ],
+    "below_coverage_threshold": true,
+    "is_baseline_year": false
+  },
+  {
+    "country": "BFA",
+    "axis": "A",
+    "year": 1965,
+    "axis_score": 20,
+    "coverage": 0.2308,
+    "contributing_indicators": [
+      "A1"
+    ],
+    "missing_indicators": [
+      "A2",
+      "A3",
+      "A4",
+      "A5",
+      "A6"
+    ],
+    "below_coverage_threshold": false,
+    "is_baseline_year": false
+  },
+  {
+    "country": "BFA",
+    "axis": "B",
+    "year": 1965,
+    "axis_score": null,
+    "coverage": 0,
+    "contributing_indicators": [],
+    "missing_indicators": [
+      "B1",
+      "B2",
+      "B3",
+      "B4",
+      "B5"
+    ],
+    "below_coverage_threshold": true,
+    "is_baseline_year": false
+  },
+  {
+    "country": "BFA",
+    "axis": "A",
+    "year": 1966,
+    "axis_score": 20,
+    "coverage": 0.2308,
+    "contributing_indicators": [
+      "A1"
+    ],
+    "missing_indicators": [
+      "A2",
+      "A3",
+      "A4",
+      "A5",
+      "A6"
+    ],
+    "below_coverage_threshold": false,
+    "is_baseline_year": false
+  },
+  {
+    "country": "BFA",
+    "axis": "B",
+    "year": 1966,
+    "axis_score": null,
+    "coverage": 0,
+    "contributing_indicators": [],
+    "missing_indicators": [
+      "B1",
+      "B2",
+      "B3",
+      "B4",
+      "B5"
+    ],
+    "below_coverage_threshold": true,
+    "is_baseline_year": false
+  },
+  {
+    "country": "BFA",
+    "axis": "A",
+    "year": 1967,
+    "axis_score": 20,
+    "coverage": 0.2308,
+    "contributing_indicators": [
+      "A1"
+    ],
+    "missing_indicators": [
+      "A2",
+      "A3",
+      "A4",
+      "A5",
+      "A6"
+    ],
+    "below_coverage_threshold": false,
+    "is_baseline_year": false
+  },
+  {
+    "country": "BFA",
+    "axis": "B",
+    "year": 1967,
+    "axis_score": null,
+    "coverage": 0,
+    "contributing_indicators": [],
+    "missing_indicators": [
+      "B1",
+      "B2",
+      "B3",
+      "B4",
+      "B5"
+    ],
+    "below_coverage_threshold": true,
+    "is_baseline_year": false
+  },
+  {
+    "country": "BFA",
+    "axis": "A",
+    "year": 1968,
+    "axis_score": 20,
+    "coverage": 0.2308,
+    "contributing_indicators": [
+      "A1"
+    ],
+    "missing_indicators": [
+      "A2",
+      "A3",
+      "A4",
+      "A5",
+      "A6"
+    ],
+    "below_coverage_threshold": false,
+    "is_baseline_year": false
+  },
+  {
+    "country": "BFA",
+    "axis": "B",
+    "year": 1968,
+    "axis_score": null,
+    "coverage": 0,
+    "contributing_indicators": [],
+    "missing_indicators": [
+      "B1",
+      "B2",
+      "B3",
+      "B4",
+      "B5"
+    ],
+    "below_coverage_threshold": true,
+    "is_baseline_year": false
+  },
+  {
+    "country": "BFA",
+    "axis": "A",
+    "year": 1969,
+    "axis_score": 20,
+    "coverage": 0.2308,
+    "contributing_indicators": [
+      "A1"
+    ],
+    "missing_indicators": [
+      "A2",
+      "A3",
+      "A4",
+      "A5",
+      "A6"
+    ],
+    "below_coverage_threshold": false,
+    "is_baseline_year": false
+  },
+  {
+    "country": "BFA",
+    "axis": "B",
+    "year": 1969,
+    "axis_score": null,
+    "coverage": 0,
+    "contributing_indicators": [],
+    "missing_indicators": [
+      "B1",
+      "B2",
+      "B3",
+      "B4",
+      "B5"
+    ],
+    "below_coverage_threshold": true,
+    "is_baseline_year": false
+  },
+  {
+    "country": "BFA",
+    "axis": "A",
+    "year": 1970,
+    "axis_score": 20,
+    "coverage": 0.2308,
+    "contributing_indicators": [
+      "A1"
+    ],
+    "missing_indicators": [
+      "A2",
+      "A3",
+      "A4",
+      "A5",
+      "A6"
+    ],
+    "below_coverage_threshold": false,
+    "is_baseline_year": false
+  },
+  {
+    "country": "BFA",
+    "axis": "B",
+    "year": 1970,
+    "axis_score": null,
+    "coverage": 0,
+    "contributing_indicators": [],
+    "missing_indicators": [
+      "B1",
+      "B2",
+      "B3",
+      "B4",
+      "B5"
+    ],
+    "below_coverage_threshold": true,
+    "is_baseline_year": false
+  },
+  {
+    "country": "BFA",
+    "axis": "A",
+    "year": 1971,
+    "axis_score": 20,
+    "coverage": 0.2308,
+    "contributing_indicators": [
+      "A1"
+    ],
+    "missing_indicators": [
+      "A2",
+      "A3",
+      "A4",
+      "A5",
+      "A6"
+    ],
+    "below_coverage_threshold": false,
+    "is_baseline_year": false
+  },
+  {
+    "country": "BFA",
+    "axis": "B",
+    "year": 1971,
+    "axis_score": null,
+    "coverage": 0,
+    "contributing_indicators": [],
+    "missing_indicators": [
+      "B1",
+      "B2",
+      "B3",
+      "B4",
+      "B5"
+    ],
+    "below_coverage_threshold": true,
+    "is_baseline_year": false
+  },
+  {
+    "country": "BFA",
+    "axis": "A",
+    "year": 1972,
+    "axis_score": 20,
+    "coverage": 0.2308,
+    "contributing_indicators": [
+      "A1"
+    ],
+    "missing_indicators": [
+      "A2",
+      "A3",
+      "A4",
+      "A5",
+      "A6"
+    ],
+    "below_coverage_threshold": false,
+    "is_baseline_year": false
+  },
+  {
+    "country": "BFA",
+    "axis": "B",
+    "year": 1972,
+    "axis_score": null,
+    "coverage": 0,
+    "contributing_indicators": [],
+    "missing_indicators": [
+      "B1",
+      "B2",
+      "B3",
+      "B4",
+      "B5"
+    ],
+    "below_coverage_threshold": true,
+    "is_baseline_year": false
+  },
+  {
+    "country": "BFA",
+    "axis": "A",
+    "year": 1973,
+    "axis_score": 20,
+    "coverage": 0.2308,
+    "contributing_indicators": [
+      "A1"
+    ],
+    "missing_indicators": [
+      "A2",
+      "A3",
+      "A4",
+      "A5",
+      "A6"
+    ],
+    "below_coverage_threshold": false,
+    "is_baseline_year": false
+  },
+  {
+    "country": "BFA",
+    "axis": "B",
+    "year": 1973,
+    "axis_score": null,
+    "coverage": 0,
+    "contributing_indicators": [],
+    "missing_indicators": [
+      "B1",
+      "B2",
+      "B3",
+      "B4",
+      "B5"
+    ],
+    "below_coverage_threshold": true,
+    "is_baseline_year": false
+  },
+  {
+    "country": "BFA",
+    "axis": "A",
+    "year": 1974,
+    "axis_score": 20,
+    "coverage": 0.2308,
+    "contributing_indicators": [
+      "A1"
+    ],
+    "missing_indicators": [
+      "A2",
+      "A3",
+      "A4",
+      "A5",
+      "A6"
+    ],
+    "below_coverage_threshold": false,
+    "is_baseline_year": false
+  },
+  {
+    "country": "BFA",
+    "axis": "B",
+    "year": 1974,
+    "axis_score": null,
+    "coverage": 0,
+    "contributing_indicators": [],
+    "missing_indicators": [
+      "B1",
+      "B2",
+      "B3",
+      "B4",
+      "B5"
+    ],
+    "below_coverage_threshold": true,
+    "is_baseline_year": false
+  },
+  {
+    "country": "BFA",
+    "axis": "A",
+    "year": 1975,
+    "axis_score": 20,
+    "coverage": 0.2308,
+    "contributing_indicators": [
+      "A1"
+    ],
+    "missing_indicators": [
+      "A2",
+      "A3",
+      "A4",
+      "A5",
+      "A6"
+    ],
+    "below_coverage_threshold": false,
+    "is_baseline_year": false
+  },
+  {
+    "country": "BFA",
+    "axis": "B",
+    "year": 1975,
+    "axis_score": null,
+    "coverage": 0,
+    "contributing_indicators": [],
+    "missing_indicators": [
+      "B1",
+      "B2",
+      "B3",
+      "B4",
+      "B5"
+    ],
+    "below_coverage_threshold": true,
+    "is_baseline_year": false
+  },
+  {
+    "country": "BFA",
+    "axis": "A",
+    "year": 1976,
+    "axis_score": 20,
+    "coverage": 0.2308,
+    "contributing_indicators": [
+      "A1"
+    ],
+    "missing_indicators": [
+      "A2",
+      "A3",
+      "A4",
+      "A5",
+      "A6"
+    ],
+    "below_coverage_threshold": false,
+    "is_baseline_year": false
+  },
+  {
+    "country": "BFA",
+    "axis": "B",
+    "year": 1976,
+    "axis_score": null,
+    "coverage": 0,
+    "contributing_indicators": [],
+    "missing_indicators": [
+      "B1",
+      "B2",
+      "B3",
+      "B4",
+      "B5"
+    ],
+    "below_coverage_threshold": true,
+    "is_baseline_year": false
+  },
+  {
+    "country": "BFA",
+    "axis": "A",
+    "year": 1977,
+    "axis_score": 20,
+    "coverage": 0.2308,
+    "contributing_indicators": [
+      "A1"
+    ],
+    "missing_indicators": [
+      "A2",
+      "A3",
+      "A4",
+      "A5",
+      "A6"
+    ],
+    "below_coverage_threshold": false,
+    "is_baseline_year": false
+  },
+  {
+    "country": "BFA",
+    "axis": "B",
+    "year": 1977,
+    "axis_score": null,
+    "coverage": 0,
+    "contributing_indicators": [],
+    "missing_indicators": [
+      "B1",
+      "B2",
+      "B3",
+      "B4",
+      "B5"
+    ],
+    "below_coverage_threshold": true,
+    "is_baseline_year": false
+  },
+  {
+    "country": "BFA",
+    "axis": "A",
+    "year": 1978,
+    "axis_score": 20,
+    "coverage": 0.2308,
+    "contributing_indicators": [
+      "A1"
+    ],
+    "missing_indicators": [
+      "A2",
+      "A3",
+      "A4",
+      "A5",
+      "A6"
+    ],
+    "below_coverage_threshold": false,
+    "is_baseline_year": false
+  },
+  {
+    "country": "BFA",
+    "axis": "B",
+    "year": 1978,
+    "axis_score": null,
+    "coverage": 0,
+    "contributing_indicators": [],
+    "missing_indicators": [
+      "B1",
+      "B2",
+      "B3",
+      "B4",
+      "B5"
+    ],
+    "below_coverage_threshold": true,
+    "is_baseline_year": false
+  },
+  {
+    "country": "BFA",
+    "axis": "A",
+    "year": 1979,
+    "axis_score": 20,
+    "coverage": 0.2308,
+    "contributing_indicators": [
+      "A1"
+    ],
+    "missing_indicators": [
+      "A2",
+      "A3",
+      "A4",
+      "A5",
+      "A6"
+    ],
+    "below_coverage_threshold": false,
+    "is_baseline_year": false
+  },
+  {
+    "country": "BFA",
+    "axis": "B",
+    "year": 1979,
+    "axis_score": null,
+    "coverage": 0,
+    "contributing_indicators": [],
+    "missing_indicators": [
+      "B1",
+      "B2",
+      "B3",
+      "B4",
+      "B5"
+    ],
+    "below_coverage_threshold": true,
+    "is_baseline_year": false
+  },
+  {
+    "country": "BFA",
+    "axis": "A",
+    "year": 1980,
+    "axis_score": 20,
+    "coverage": 0.2308,
+    "contributing_indicators": [
+      "A1"
+    ],
+    "missing_indicators": [
+      "A2",
+      "A3",
+      "A4",
+      "A5",
+      "A6"
+    ],
+    "below_coverage_threshold": false,
+    "is_baseline_year": false
+  },
+  {
+    "country": "BFA",
+    "axis": "B",
+    "year": 1980,
+    "axis_score": null,
+    "coverage": 0,
+    "contributing_indicators": [],
+    "missing_indicators": [
+      "B1",
+      "B2",
+      "B3",
+      "B4",
+      "B5"
+    ],
+    "below_coverage_threshold": true,
+    "is_baseline_year": false
+  },
+  {
+    "country": "BFA",
+    "axis": "A",
+    "year": 1981,
+    "axis_score": 20,
+    "coverage": 0.2308,
+    "contributing_indicators": [
+      "A1"
+    ],
+    "missing_indicators": [
+      "A2",
+      "A3",
+      "A4",
+      "A5",
+      "A6"
+    ],
+    "below_coverage_threshold": false,
+    "is_baseline_year": false
+  },
+  {
+    "country": "BFA",
+    "axis": "B",
+    "year": 1981,
+    "axis_score": null,
+    "coverage": 0,
+    "contributing_indicators": [],
+    "missing_indicators": [
+      "B1",
+      "B2",
+      "B3",
+      "B4",
+      "B5"
+    ],
+    "below_coverage_threshold": true,
+    "is_baseline_year": false
+  },
+  {
+    "country": "BFA",
+    "axis": "A",
+    "year": 1982,
+    "axis_score": 20,
+    "coverage": 0.2308,
+    "contributing_indicators": [
+      "A1"
+    ],
+    "missing_indicators": [
+      "A2",
+      "A3",
+      "A4",
+      "A5",
+      "A6"
+    ],
+    "below_coverage_threshold": false,
+    "is_baseline_year": false
+  },
+  {
+    "country": "BFA",
+    "axis": "B",
+    "year": 1982,
+    "axis_score": null,
+    "coverage": 0,
+    "contributing_indicators": [],
+    "missing_indicators": [
+      "B1",
+      "B2",
+      "B3",
+      "B4",
+      "B5"
+    ],
+    "below_coverage_threshold": true,
+    "is_baseline_year": false
+  },
+  {
+    "country": "BFA",
+    "axis": "A",
+    "year": 1983,
+    "axis_score": 20,
+    "coverage": 0.2308,
+    "contributing_indicators": [
+      "A1"
+    ],
+    "missing_indicators": [
+      "A2",
+      "A3",
+      "A4",
+      "A5",
+      "A6"
+    ],
+    "below_coverage_threshold": false,
+    "is_baseline_year": false
+  },
+  {
+    "country": "BFA",
+    "axis": "B",
+    "year": 1983,
+    "axis_score": null,
+    "coverage": 0,
+    "contributing_indicators": [],
+    "missing_indicators": [
+      "B1",
+      "B2",
+      "B3",
+      "B4",
+      "B5"
+    ],
+    "below_coverage_threshold": true,
+    "is_baseline_year": false
+  },
+  {
+    "country": "BFA",
+    "axis": "A",
+    "year": 1984,
+    "axis_score": 20,
+    "coverage": 0.2308,
+    "contributing_indicators": [
+      "A1"
+    ],
+    "missing_indicators": [
+      "A2",
+      "A3",
+      "A4",
+      "A5",
+      "A6"
+    ],
+    "below_coverage_threshold": false,
+    "is_baseline_year": false
+  },
+  {
+    "country": "BFA",
+    "axis": "B",
+    "year": 1984,
+    "axis_score": null,
+    "coverage": 0,
+    "contributing_indicators": [],
+    "missing_indicators": [
+      "B1",
+      "B2",
+      "B3",
+      "B4",
+      "B5"
+    ],
+    "below_coverage_threshold": true,
+    "is_baseline_year": false
+  },
+  {
+    "country": "BFA",
+    "axis": "A",
+    "year": 1985,
+    "axis_score": 20,
+    "coverage": 0.2308,
+    "contributing_indicators": [
+      "A1"
+    ],
+    "missing_indicators": [
+      "A2",
+      "A3",
+      "A4",
+      "A5",
+      "A6"
+    ],
+    "below_coverage_threshold": false,
+    "is_baseline_year": false
+  },
+  {
+    "country": "BFA",
+    "axis": "B",
+    "year": 1985,
+    "axis_score": null,
+    "coverage": 0,
+    "contributing_indicators": [],
+    "missing_indicators": [
+      "B1",
+      "B2",
+      "B3",
+      "B4",
+      "B5"
+    ],
+    "below_coverage_threshold": true,
+    "is_baseline_year": false
+  },
+  {
+    "country": "BFA",
+    "axis": "A",
+    "year": 1986,
+    "axis_score": 20,
+    "coverage": 0.2308,
+    "contributing_indicators": [
+      "A1"
+    ],
+    "missing_indicators": [
+      "A2",
+      "A3",
+      "A4",
+      "A5",
+      "A6"
+    ],
+    "below_coverage_threshold": false,
+    "is_baseline_year": false
+  },
+  {
+    "country": "BFA",
+    "axis": "B",
+    "year": 1986,
+    "axis_score": null,
+    "coverage": 0,
+    "contributing_indicators": [],
+    "missing_indicators": [
+      "B1",
+      "B2",
+      "B3",
+      "B4",
+      "B5"
+    ],
+    "below_coverage_threshold": true,
+    "is_baseline_year": false
+  },
+  {
+    "country": "BFA",
+    "axis": "A",
+    "year": 1987,
+    "axis_score": 20,
+    "coverage": 0.2308,
+    "contributing_indicators": [
+      "A1"
+    ],
+    "missing_indicators": [
+      "A2",
+      "A3",
+      "A4",
+      "A5",
+      "A6"
+    ],
+    "below_coverage_threshold": false,
+    "is_baseline_year": false
+  },
+  {
+    "country": "BFA",
+    "axis": "B",
+    "year": 1987,
+    "axis_score": null,
+    "coverage": 0,
+    "contributing_indicators": [],
+    "missing_indicators": [
+      "B1",
+      "B2",
+      "B3",
+      "B4",
+      "B5"
+    ],
+    "below_coverage_threshold": true,
+    "is_baseline_year": false
+  },
+  {
+    "country": "BFA",
+    "axis": "A",
+    "year": 1988,
+    "axis_score": 20,
+    "coverage": 0.2308,
+    "contributing_indicators": [
+      "A1"
+    ],
+    "missing_indicators": [
+      "A2",
+      "A3",
+      "A4",
+      "A5",
+      "A6"
+    ],
+    "below_coverage_threshold": false,
+    "is_baseline_year": false
+  },
+  {
+    "country": "BFA",
+    "axis": "B",
+    "year": 1988,
+    "axis_score": null,
+    "coverage": 0,
+    "contributing_indicators": [],
+    "missing_indicators": [
+      "B1",
+      "B2",
+      "B3",
+      "B4",
+      "B5"
+    ],
+    "below_coverage_threshold": true,
+    "is_baseline_year": false
+  },
+  {
+    "country": "BFA",
+    "axis": "A",
+    "year": 1989,
+    "axis_score": 20,
+    "coverage": 0.2308,
+    "contributing_indicators": [
+      "A1"
+    ],
+    "missing_indicators": [
+      "A2",
+      "A3",
+      "A4",
+      "A5",
+      "A6"
+    ],
+    "below_coverage_threshold": false,
+    "is_baseline_year": false
+  },
+  {
+    "country": "BFA",
+    "axis": "B",
+    "year": 1989,
+    "axis_score": null,
+    "coverage": 0,
+    "contributing_indicators": [],
+    "missing_indicators": [
+      "B1",
+      "B2",
+      "B3",
+      "B4",
+      "B5"
+    ],
+    "below_coverage_threshold": true,
+    "is_baseline_year": false
+  },
+  {
+    "country": "BFA",
+    "axis": "A",
+    "year": 1990,
+    "axis_score": 20,
+    "coverage": 0.2308,
+    "contributing_indicators": [
+      "A1"
+    ],
+    "missing_indicators": [
+      "A2",
+      "A3",
+      "A4",
+      "A5",
+      "A6"
+    ],
+    "below_coverage_threshold": false,
+    "is_baseline_year": false
+  },
+  {
+    "country": "BFA",
+    "axis": "B",
+    "year": 1990,
+    "axis_score": null,
+    "coverage": 0,
+    "contributing_indicators": [],
+    "missing_indicators": [
+      "B1",
+      "B2",
+      "B3",
+      "B4",
+      "B5"
+    ],
+    "below_coverage_threshold": true,
+    "is_baseline_year": false
+  },
+  {
+    "country": "BFA",
+    "axis": "A",
+    "year": 1991,
+    "axis_score": 20,
+    "coverage": 0.2308,
+    "contributing_indicators": [
+      "A1"
+    ],
+    "missing_indicators": [
+      "A2",
+      "A3",
+      "A4",
+      "A5",
+      "A6"
+    ],
+    "below_coverage_threshold": false,
+    "is_baseline_year": false
+  },
+  {
+    "country": "BFA",
+    "axis": "B",
+    "year": 1991,
+    "axis_score": null,
+    "coverage": 0,
+    "contributing_indicators": [],
+    "missing_indicators": [
+      "B1",
+      "B2",
+      "B3",
+      "B4",
+      "B5"
+    ],
+    "below_coverage_threshold": true,
+    "is_baseline_year": false
+  },
+  {
+    "country": "BFA",
+    "axis": "A",
+    "year": 1992,
+    "axis_score": 20,
+    "coverage": 0.2308,
+    "contributing_indicators": [
+      "A1"
+    ],
+    "missing_indicators": [
+      "A2",
+      "A3",
+      "A4",
+      "A5",
+      "A6"
+    ],
+    "below_coverage_threshold": false,
+    "is_baseline_year": false
+  },
+  {
+    "country": "BFA",
+    "axis": "B",
+    "year": 1992,
+    "axis_score": null,
+    "coverage": 0,
+    "contributing_indicators": [],
+    "missing_indicators": [
+      "B1",
+      "B2",
+      "B3",
+      "B4",
+      "B5"
+    ],
+    "below_coverage_threshold": true,
+    "is_baseline_year": false
+  },
+  {
+    "country": "BFA",
+    "axis": "A",
+    "year": 1993,
+    "axis_score": 20,
+    "coverage": 0.2308,
+    "contributing_indicators": [
+      "A1"
+    ],
+    "missing_indicators": [
+      "A2",
+      "A3",
+      "A4",
+      "A5",
+      "A6"
+    ],
+    "below_coverage_threshold": false,
+    "is_baseline_year": false
+  },
+  {
+    "country": "BFA",
+    "axis": "B",
+    "year": 1993,
+    "axis_score": null,
+    "coverage": 0,
+    "contributing_indicators": [],
+    "missing_indicators": [
+      "B1",
+      "B2",
+      "B3",
+      "B4",
+      "B5"
+    ],
+    "below_coverage_threshold": true,
+    "is_baseline_year": false
+  },
+  {
+    "country": "BFA",
+    "axis": "A",
+    "year": 1994,
+    "axis_score": 20,
+    "coverage": 0.2308,
+    "contributing_indicators": [
+      "A1"
+    ],
+    "missing_indicators": [
+      "A2",
+      "A3",
+      "A4",
+      "A5",
+      "A6"
+    ],
+    "below_coverage_threshold": false,
+    "is_baseline_year": false
+  },
+  {
+    "country": "BFA",
+    "axis": "B",
+    "year": 1994,
+    "axis_score": null,
+    "coverage": 0,
+    "contributing_indicators": [],
+    "missing_indicators": [
+      "B1",
+      "B2",
+      "B3",
+      "B4",
+      "B5"
+    ],
+    "below_coverage_threshold": true,
+    "is_baseline_year": false
+  },
+  {
+    "country": "BFA",
+    "axis": "A",
+    "year": 1995,
+    "axis_score": 20,
+    "coverage": 0.2308,
+    "contributing_indicators": [
+      "A1"
+    ],
+    "missing_indicators": [
+      "A2",
+      "A3",
+      "A4",
+      "A5",
+      "A6"
+    ],
+    "below_coverage_threshold": false,
+    "is_baseline_year": false
+  },
+  {
+    "country": "BFA",
+    "axis": "B",
+    "year": 1995,
+    "axis_score": null,
+    "coverage": 0,
+    "contributing_indicators": [],
+    "missing_indicators": [
+      "B1",
+      "B2",
+      "B3",
+      "B4",
+      "B5"
+    ],
+    "below_coverage_threshold": true,
+    "is_baseline_year": false
+  },
+  {
+    "country": "BFA",
+    "axis": "A",
+    "year": 1996,
+    "axis_score": 20,
+    "coverage": 0.2308,
+    "contributing_indicators": [
+      "A1"
+    ],
+    "missing_indicators": [
+      "A2",
+      "A3",
+      "A4",
+      "A5",
+      "A6"
+    ],
+    "below_coverage_threshold": false,
+    "is_baseline_year": false
+  },
+  {
+    "country": "BFA",
+    "axis": "B",
+    "year": 1996,
+    "axis_score": null,
+    "coverage": 0,
+    "contributing_indicators": [],
+    "missing_indicators": [
+      "B1",
+      "B2",
+      "B3",
+      "B4",
+      "B5"
+    ],
+    "below_coverage_threshold": true,
+    "is_baseline_year": false
+  },
+  {
+    "country": "BFA",
+    "axis": "A",
+    "year": 1997,
+    "axis_score": 20,
+    "coverage": 0.2308,
+    "contributing_indicators": [
+      "A1"
+    ],
+    "missing_indicators": [
+      "A2",
+      "A3",
+      "A4",
+      "A5",
+      "A6"
+    ],
+    "below_coverage_threshold": false,
+    "is_baseline_year": false
+  },
+  {
+    "country": "BFA",
+    "axis": "B",
+    "year": 1997,
+    "axis_score": null,
+    "coverage": 0,
+    "contributing_indicators": [],
+    "missing_indicators": [
+      "B1",
+      "B2",
+      "B3",
+      "B4",
+      "B5"
+    ],
+    "below_coverage_threshold": true,
+    "is_baseline_year": false
+  },
+  {
+    "country": "BFA",
+    "axis": "A",
+    "year": 1998,
+    "axis_score": 20,
+    "coverage": 0.2308,
+    "contributing_indicators": [
+      "A1"
+    ],
+    "missing_indicators": [
+      "A2",
+      "A3",
+      "A4",
+      "A5",
+      "A6"
+    ],
+    "below_coverage_threshold": false,
+    "is_baseline_year": false
+  },
+  {
+    "country": "BFA",
+    "axis": "B",
+    "year": 1998,
+    "axis_score": null,
+    "coverage": 0,
+    "contributing_indicators": [],
+    "missing_indicators": [
+      "B1",
+      "B2",
+      "B3",
+      "B4",
+      "B5"
+    ],
+    "below_coverage_threshold": true,
+    "is_baseline_year": false
+  },
+  {
+    "country": "BFA",
+    "axis": "A",
+    "year": 1999,
+    "axis_score": 20,
+    "coverage": 0.2308,
+    "contributing_indicators": [
+      "A1"
+    ],
+    "missing_indicators": [
+      "A2",
+      "A3",
+      "A4",
+      "A5",
+      "A6"
+    ],
+    "below_coverage_threshold": false,
+    "is_baseline_year": false
+  },
+  {
+    "country": "BFA",
+    "axis": "B",
+    "year": 1999,
+    "axis_score": null,
+    "coverage": 0,
+    "contributing_indicators": [],
+    "missing_indicators": [
+      "B1",
+      "B2",
+      "B3",
+      "B4",
+      "B5"
+    ],
+    "below_coverage_threshold": true,
+    "is_baseline_year": false
+  },
+  {
+    "country": "BFA",
+    "axis": "A",
+    "year": 2000,
+    "axis_score": 20,
+    "coverage": 0.2308,
+    "contributing_indicators": [
+      "A1"
+    ],
+    "missing_indicators": [
+      "A2",
+      "A3",
+      "A4",
+      "A5",
+      "A6"
+    ],
+    "below_coverage_threshold": false,
+    "is_baseline_year": false
+  },
+  {
+    "country": "BFA",
+    "axis": "B",
+    "year": 2000,
+    "axis_score": null,
+    "coverage": 0,
+    "contributing_indicators": [],
+    "missing_indicators": [
+      "B1",
+      "B2",
+      "B3",
+      "B4",
+      "B5"
+    ],
+    "below_coverage_threshold": true,
+    "is_baseline_year": false
+  },
+  {
+    "country": "BFA",
+    "axis": "A",
+    "year": 2001,
+    "axis_score": 20,
+    "coverage": 0.2308,
+    "contributing_indicators": [
+      "A1"
+    ],
+    "missing_indicators": [
+      "A2",
+      "A3",
+      "A4",
+      "A5",
+      "A6"
+    ],
+    "below_coverage_threshold": false,
+    "is_baseline_year": false
+  },
+  {
+    "country": "BFA",
+    "axis": "B",
+    "year": 2001,
+    "axis_score": null,
+    "coverage": 0,
+    "contributing_indicators": [],
+    "missing_indicators": [
+      "B1",
+      "B2",
+      "B3",
+      "B4",
+      "B5"
+    ],
+    "below_coverage_threshold": true,
+    "is_baseline_year": false
+  },
+  {
+    "country": "BFA",
+    "axis": "A",
+    "year": 2002,
+    "axis_score": 20,
+    "coverage": 0.2308,
+    "contributing_indicators": [
+      "A1"
+    ],
+    "missing_indicators": [
+      "A2",
+      "A3",
+      "A4",
+      "A5",
+      "A6"
+    ],
+    "below_coverage_threshold": false,
+    "is_baseline_year": false
+  },
+  {
+    "country": "BFA",
+    "axis": "B",
+    "year": 2002,
+    "axis_score": null,
+    "coverage": 0,
+    "contributing_indicators": [],
+    "missing_indicators": [
+      "B1",
+      "B2",
+      "B3",
+      "B4",
+      "B5"
+    ],
+    "below_coverage_threshold": true,
+    "is_baseline_year": false
+  },
+  {
+    "country": "BFA",
+    "axis": "A",
+    "year": 2003,
+    "axis_score": 20,
+    "coverage": 0.2308,
+    "contributing_indicators": [
+      "A1"
+    ],
+    "missing_indicators": [
+      "A2",
+      "A3",
+      "A4",
+      "A5",
+      "A6"
+    ],
+    "below_coverage_threshold": false,
+    "is_baseline_year": false
+  },
+  {
+    "country": "BFA",
+    "axis": "B",
+    "year": 2003,
+    "axis_score": null,
+    "coverage": 0,
+    "contributing_indicators": [],
+    "missing_indicators": [
+      "B1",
+      "B2",
+      "B3",
+      "B4",
+      "B5"
+    ],
+    "below_coverage_threshold": true,
+    "is_baseline_year": false
+  },
+  {
+    "country": "BFA",
+    "axis": "A",
+    "year": 2004,
+    "axis_score": 20,
+    "coverage": 0.2308,
+    "contributing_indicators": [
+      "A1"
+    ],
+    "missing_indicators": [
+      "A2",
+      "A3",
+      "A4",
+      "A5",
+      "A6"
+    ],
+    "below_coverage_threshold": false,
+    "is_baseline_year": false
+  },
+  {
+    "country": "BFA",
+    "axis": "B",
+    "year": 2004,
+    "axis_score": null,
+    "coverage": 0,
+    "contributing_indicators": [],
+    "missing_indicators": [
+      "B1",
+      "B2",
+      "B3",
+      "B4",
+      "B5"
+    ],
+    "below_coverage_threshold": true,
+    "is_baseline_year": false
+  },
+  {
+    "country": "BFA",
+    "axis": "A",
+    "year": 2005,
+    "axis_score": 20,
+    "coverage": 0.2308,
+    "contributing_indicators": [
+      "A1"
+    ],
+    "missing_indicators": [
+      "A2",
+      "A3",
+      "A4",
+      "A5",
+      "A6"
+    ],
+    "below_coverage_threshold": false,
+    "is_baseline_year": false
+  },
+  {
+    "country": "BFA",
+    "axis": "B",
+    "year": 2005,
+    "axis_score": null,
+    "coverage": 0,
+    "contributing_indicators": [],
+    "missing_indicators": [
+      "B1",
+      "B2",
+      "B3",
+      "B4",
+      "B5"
+    ],
+    "below_coverage_threshold": true,
+    "is_baseline_year": false
+  },
+  {
+    "country": "BFA",
+    "axis": "A",
+    "year": 2006,
+    "axis_score": 20,
+    "coverage": 0.2308,
+    "contributing_indicators": [
+      "A1"
+    ],
+    "missing_indicators": [
+      "A2",
+      "A3",
+      "A4",
+      "A5",
+      "A6"
+    ],
+    "below_coverage_threshold": false,
+    "is_baseline_year": false
+  },
+  {
+    "country": "BFA",
+    "axis": "B",
+    "year": 2006,
+    "axis_score": null,
+    "coverage": 0,
+    "contributing_indicators": [],
+    "missing_indicators": [
+      "B1",
+      "B2",
+      "B3",
+      "B4",
+      "B5"
+    ],
+    "below_coverage_threshold": true,
+    "is_baseline_year": false
+  },
+  {
+    "country": "BFA",
+    "axis": "A",
+    "year": 2007,
+    "axis_score": 20,
+    "coverage": 0.2308,
+    "contributing_indicators": [
+      "A1"
+    ],
+    "missing_indicators": [
+      "A2",
+      "A3",
+      "A4",
+      "A5",
+      "A6"
+    ],
+    "below_coverage_threshold": false,
+    "is_baseline_year": false
+  },
+  {
+    "country": "BFA",
+    "axis": "B",
+    "year": 2007,
+    "axis_score": null,
+    "coverage": 0,
+    "contributing_indicators": [],
+    "missing_indicators": [
+      "B1",
+      "B2",
+      "B3",
+      "B4",
+      "B5"
+    ],
+    "below_coverage_threshold": true,
+    "is_baseline_year": false
+  },
+  {
+    "country": "BFA",
+    "axis": "A",
+    "year": 2008,
+    "axis_score": 20,
+    "coverage": 0.2308,
+    "contributing_indicators": [
+      "A1"
+    ],
+    "missing_indicators": [
+      "A2",
+      "A3",
+      "A4",
+      "A5",
+      "A6"
+    ],
+    "below_coverage_threshold": false,
+    "is_baseline_year": false
+  },
+  {
+    "country": "BFA",
+    "axis": "B",
+    "year": 2008,
+    "axis_score": null,
+    "coverage": 0,
+    "contributing_indicators": [],
+    "missing_indicators": [
+      "B1",
+      "B2",
+      "B3",
+      "B4",
+      "B5"
+    ],
+    "below_coverage_threshold": true,
+    "is_baseline_year": false
+  },
+  {
+    "country": "BFA",
+    "axis": "A",
+    "year": 2009,
+    "axis_score": 20,
+    "coverage": 0.2308,
+    "contributing_indicators": [
+      "A1"
+    ],
+    "missing_indicators": [
+      "A2",
+      "A3",
+      "A4",
+      "A5",
+      "A6"
+    ],
+    "below_coverage_threshold": false,
+    "is_baseline_year": false
+  },
+  {
+    "country": "BFA",
+    "axis": "B",
+    "year": 2009,
+    "axis_score": null,
+    "coverage": 0,
+    "contributing_indicators": [],
+    "missing_indicators": [
+      "B1",
+      "B2",
+      "B3",
+      "B4",
+      "B5"
+    ],
+    "below_coverage_threshold": true,
+    "is_baseline_year": false
+  },
+  {
+    "country": "BFA",
+    "axis": "A",
+    "year": 2010,
+    "axis_score": 20,
+    "coverage": 0.2308,
+    "contributing_indicators": [
+      "A1"
+    ],
+    "missing_indicators": [
+      "A2",
+      "A3",
+      "A4",
+      "A5",
+      "A6"
+    ],
+    "below_coverage_threshold": false,
+    "is_baseline_year": false
+  },
+  {
+    "country": "BFA",
+    "axis": "B",
+    "year": 2010,
+    "axis_score": null,
+    "coverage": 0,
+    "contributing_indicators": [],
+    "missing_indicators": [
+      "B1",
+      "B2",
+      "B3",
+      "B4",
+      "B5"
+    ],
+    "below_coverage_threshold": true,
+    "is_baseline_year": false
+  },
+  {
+    "country": "BFA",
+    "axis": "A",
+    "year": 2011,
+    "axis_score": 20,
+    "coverage": 0.2308,
+    "contributing_indicators": [
+      "A1"
+    ],
+    "missing_indicators": [
+      "A2",
+      "A3",
+      "A4",
+      "A5",
+      "A6"
+    ],
+    "below_coverage_threshold": false,
+    "is_baseline_year": false
+  },
+  {
+    "country": "BFA",
+    "axis": "B",
+    "year": 2011,
+    "axis_score": null,
+    "coverage": 0,
+    "contributing_indicators": [],
+    "missing_indicators": [
+      "B1",
+      "B2",
+      "B3",
+      "B4",
+      "B5"
+    ],
+    "below_coverage_threshold": true,
+    "is_baseline_year": false
+  },
+  {
+    "country": "BFA",
+    "axis": "A",
+    "year": 2012,
+    "axis_score": 20,
+    "coverage": 0.2308,
+    "contributing_indicators": [
+      "A1"
+    ],
+    "missing_indicators": [
+      "A2",
+      "A3",
+      "A4",
+      "A5",
+      "A6"
+    ],
+    "below_coverage_threshold": false,
+    "is_baseline_year": false
+  },
+  {
+    "country": "BFA",
+    "axis": "B",
+    "year": 2012,
+    "axis_score": null,
+    "coverage": 0,
+    "contributing_indicators": [],
+    "missing_indicators": [
+      "B1",
+      "B2",
+      "B3",
+      "B4",
+      "B5"
+    ],
+    "below_coverage_threshold": true,
+    "is_baseline_year": false
+  },
+  {
+    "country": "BFA",
+    "axis": "A",
+    "year": 2013,
+    "axis_score": 20,
+    "coverage": 0.2308,
+    "contributing_indicators": [
+      "A1"
+    ],
+    "missing_indicators": [
+      "A2",
+      "A3",
+      "A4",
+      "A5",
+      "A6"
+    ],
+    "below_coverage_threshold": false,
+    "is_baseline_year": false
+  },
+  {
+    "country": "BFA",
+    "axis": "B",
+    "year": 2013,
+    "axis_score": null,
+    "coverage": 0,
+    "contributing_indicators": [],
+    "missing_indicators": [
+      "B1",
+      "B2",
+      "B3",
+      "B4",
+      "B5"
+    ],
+    "below_coverage_threshold": true,
+    "is_baseline_year": false
+  },
+  {
+    "country": "BFA",
+    "axis": "A",
+    "year": 2014,
+    "axis_score": 20,
+    "coverage": 0.2308,
+    "contributing_indicators": [
+      "A1"
+    ],
+    "missing_indicators": [
+      "A2",
+      "A3",
+      "A4",
+      "A5",
+      "A6"
+    ],
+    "below_coverage_threshold": false,
+    "is_baseline_year": false
+  },
+  {
+    "country": "BFA",
+    "axis": "B",
+    "year": 2014,
+    "axis_score": null,
+    "coverage": 0,
+    "contributing_indicators": [],
+    "missing_indicators": [
+      "B1",
+      "B2",
+      "B3",
+      "B4",
+      "B5"
+    ],
+    "below_coverage_threshold": true,
+    "is_baseline_year": false
+  },
+  {
+    "country": "BFA",
+    "axis": "A",
+    "year": 2015,
+    "axis_score": 20,
+    "coverage": 0.2308,
+    "contributing_indicators": [
+      "A1"
+    ],
+    "missing_indicators": [
+      "A2",
+      "A3",
+      "A4",
+      "A5",
+      "A6"
+    ],
+    "below_coverage_threshold": false,
+    "is_baseline_year": false
+  },
+  {
+    "country": "BFA",
+    "axis": "B",
+    "year": 2015,
+    "axis_score": null,
+    "coverage": 0,
+    "contributing_indicators": [],
+    "missing_indicators": [
+      "B1",
+      "B2",
+      "B3",
+      "B4",
+      "B5"
+    ],
+    "below_coverage_threshold": true,
+    "is_baseline_year": false
+  },
+  {
+    "country": "BFA",
+    "axis": "A",
+    "year": 2016,
+    "axis_score": 20,
+    "coverage": 0.2308,
+    "contributing_indicators": [
+      "A1"
+    ],
+    "missing_indicators": [
+      "A2",
+      "A3",
+      "A4",
+      "A5",
+      "A6"
+    ],
+    "below_coverage_threshold": false,
+    "is_baseline_year": false
+  },
+  {
+    "country": "BFA",
+    "axis": "B",
+    "year": 2016,
+    "axis_score": null,
+    "coverage": 0,
+    "contributing_indicators": [],
+    "missing_indicators": [
+      "B1",
+      "B2",
+      "B3",
+      "B4",
+      "B5"
+    ],
+    "below_coverage_threshold": true,
+    "is_baseline_year": false
+  },
+  {
+    "country": "BFA",
+    "axis": "A",
+    "year": 2017,
+    "axis_score": 20,
+    "coverage": 0.2308,
+    "contributing_indicators": [
+      "A1"
+    ],
+    "missing_indicators": [
+      "A2",
+      "A3",
+      "A4",
+      "A5",
+      "A6"
+    ],
+    "below_coverage_threshold": false,
+    "is_baseline_year": false
+  },
+  {
+    "country": "BFA",
+    "axis": "B",
+    "year": 2017,
+    "axis_score": null,
+    "coverage": 0,
+    "contributing_indicators": [],
+    "missing_indicators": [
+      "B1",
+      "B2",
+      "B3",
+      "B4",
+      "B5"
+    ],
+    "below_coverage_threshold": true,
+    "is_baseline_year": false
+  },
+  {
+    "country": "BFA",
+    "axis": "A",
+    "year": 2018,
+    "axis_score": 20,
+    "coverage": 0.2308,
+    "contributing_indicators": [
+      "A1"
+    ],
+    "missing_indicators": [
+      "A2",
+      "A3",
+      "A4",
+      "A5",
+      "A6"
+    ],
+    "below_coverage_threshold": false,
+    "is_baseline_year": false
+  },
+  {
+    "country": "BFA",
+    "axis": "B",
+    "year": 2018,
+    "axis_score": null,
+    "coverage": 0,
+    "contributing_indicators": [],
+    "missing_indicators": [
+      "B1",
+      "B2",
+      "B3",
+      "B4",
+      "B5"
+    ],
+    "below_coverage_threshold": true,
+    "is_baseline_year": false
+  },
+  {
+    "country": "BFA",
+    "axis": "A",
+    "year": 2019,
+    "axis_score": 20,
+    "coverage": 0.2308,
+    "contributing_indicators": [
+      "A1"
+    ],
+    "missing_indicators": [
+      "A2",
+      "A3",
+      "A4",
+      "A5",
+      "A6"
+    ],
+    "below_coverage_threshold": false,
+    "is_baseline_year": false
+  },
+  {
+    "country": "BFA",
+    "axis": "B",
+    "year": 2019,
+    "axis_score": null,
+    "coverage": 0,
+    "contributing_indicators": [],
+    "missing_indicators": [
+      "B1",
+      "B2",
+      "B3",
+      "B4",
+      "B5"
+    ],
+    "below_coverage_threshold": true,
+    "is_baseline_year": false
+  },
+  {
+    "country": "BFA",
+    "axis": "A",
+    "year": 2020,
+    "axis_score": 40,
+    "coverage": 0.2308,
+    "contributing_indicators": [
+      "A1"
+    ],
+    "missing_indicators": [
+      "A2",
+      "A3",
+      "A4",
+      "A5",
+      "A6"
+    ],
+    "below_coverage_threshold": false,
+    "is_baseline_year": false
+  },
+  {
+    "country": "BFA",
+    "axis": "B",
+    "year": 2020,
+    "axis_score": null,
+    "coverage": 0,
+    "contributing_indicators": [],
+    "missing_indicators": [
+      "B1",
+      "B2",
+      "B3",
+      "B4",
+      "B5"
+    ],
+    "below_coverage_threshold": true,
+    "is_baseline_year": false
+  },
+  {
+    "country": "BFA",
+    "axis": "A",
+    "year": 2021,
+    "axis_score": 40,
+    "coverage": 0.2308,
+    "contributing_indicators": [
+      "A1"
+    ],
+    "missing_indicators": [
+      "A2",
+      "A3",
+      "A4",
+      "A5",
+      "A6"
+    ],
+    "below_coverage_threshold": false,
+    "is_baseline_year": false
+  },
+  {
+    "country": "BFA",
+    "axis": "B",
+    "year": 2021,
+    "axis_score": null,
+    "coverage": 0,
+    "contributing_indicators": [],
+    "missing_indicators": [
+      "B1",
+      "B2",
+      "B3",
+      "B4",
+      "B5"
+    ],
+    "below_coverage_threshold": true,
+    "is_baseline_year": false
+  },
+  {
+    "country": "BFA",
+    "axis": "A",
+    "year": 2022,
+    "axis_score": 40,
+    "coverage": 0.2308,
+    "contributing_indicators": [
+      "A1"
+    ],
+    "missing_indicators": [
+      "A2",
+      "A3",
+      "A4",
+      "A5",
+      "A6"
+    ],
+    "below_coverage_threshold": false,
+    "is_baseline_year": false
+  },
+  {
+    "country": "BFA",
+    "axis": "B",
+    "year": 2022,
+    "axis_score": null,
+    "coverage": 0,
+    "contributing_indicators": [],
+    "missing_indicators": [
+      "B1",
+      "B2",
+      "B3",
+      "B4",
+      "B5"
+    ],
+    "below_coverage_threshold": true,
+    "is_baseline_year": false
+  },
+  {
+    "country": "BFA",
+    "axis": "A",
+    "year": 2023,
+    "axis_score": 40,
+    "coverage": 0.2308,
+    "contributing_indicators": [
+      "A1"
+    ],
+    "missing_indicators": [
+      "A2",
+      "A3",
+      "A4",
+      "A5",
+      "A6"
+    ],
+    "below_coverage_threshold": false,
+    "is_baseline_year": false
+  },
+  {
+    "country": "BFA",
+    "axis": "B",
+    "year": 2023,
+    "axis_score": null,
+    "coverage": 0,
+    "contributing_indicators": [],
+    "missing_indicators": [
+      "B1",
+      "B2",
+      "B3",
+      "B4",
+      "B5"
+    ],
+    "below_coverage_threshold": true,
+    "is_baseline_year": false
+  },
+  {
+    "country": "BFA",
+    "axis": "A",
+    "year": 2024,
+    "axis_score": 40,
+    "coverage": 0.2308,
+    "contributing_indicators": [
+      "A1"
+    ],
+    "missing_indicators": [
+      "A2",
+      "A3",
+      "A4",
+      "A5",
+      "A6"
+    ],
+    "below_coverage_threshold": false,
+    "is_baseline_year": false
+  },
+  {
+    "country": "BFA",
+    "axis": "B",
+    "year": 2024,
+    "axis_score": null,
+    "coverage": 0,
+    "contributing_indicators": [],
+    "missing_indicators": [
+      "B1",
+      "B2",
+      "B3",
+      "B4",
+      "B5"
+    ],
+    "below_coverage_threshold": true,
+    "is_baseline_year": false
+  },
+  {
+    "country": "BFA",
     "axis": "A",
     "year": 2025,
-    "axis_score": 31.43,
-    "coverage": 0.5385,
+    "axis_score": 40,
+    "coverage": 0.2308,
     "contributing_indicators": [
-      "A1",
-      "A4",
-      "A5"
+      "A1"
     ],
     "missing_indicators": [
       "A2",
       "A3",
+      "A4",
+      "A5",
       "A6"
     ],
     "below_coverage_threshold": false,
     "is_baseline_year": false
   },
   {
-    "country": "ZZB",
+    "country": "BFA",
     "axis": "B",
     "year": 2025,
     "axis_score": null,
@@ -2378,26 +2376,26 @@
     "is_baseline_year": false
   },
   {
-    "country": "ZZB",
+    "country": "BFA",
     "axis": "A",
     "year": 2026,
-    "axis_score": 31.43,
-    "coverage": 0.5385,
+    "axis_score": 40,
+    "coverage": 0.2308,
     "contributing_indicators": [
-      "A1",
-      "A4",
-      "A5"
+      "A1"
     ],
     "missing_indicators": [
       "A2",
       "A3",
+      "A4",
+      "A5",
       "A6"
     ],
     "below_coverage_threshold": false,
     "is_baseline_year": false
   },
   {
-    "country": "ZZB",
+    "country": "BFA",
     "axis": "B",
     "year": 2026,
     "axis_score": null,

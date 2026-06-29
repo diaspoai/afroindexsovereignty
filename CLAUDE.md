@@ -32,10 +32,13 @@ Operating manual: `docs/IAFS_SDLC_v0.1.md`.
    `interpolated`, `extrapolated`, `imputed`, `estimated_from`, `back_filled`
    are forbidden by the schema and the validator. R9 trajectory rendering must
    show gaps as gaps — never a line implying absent data.
-10. **No real country data in code.** Until the research workflow lands real
-    Gabon / Burkina Faso data, only clearly-labeled dummy data
-    (ISO `ZZA`, `ZZB`, `source_url` host `example.invalid/dummy/...`) lives
-    in `data/`. Code MUST NOT invent real country figures.
+10. **Real data only — and only via the research workflow.** The project is
+    now in `mode: "real"`. Real country data is added exclusively through
+    `tools/research/{init-country,add-score,capture}` so every record passes
+    schema + anchor + provenance + receipt + Wayback checks. The dummy data
+    scaffolding (ISO `ZZA`/`ZZB`, `example.invalid` URLs) was removed when
+    the first real country (BFA) landed; do not reintroduce it. Code MUST
+    NOT invent country figures.
 
 ## Temporal rules (R9 / A4 / A8)
 

@@ -29,6 +29,8 @@ export interface Receipt {
   content_sha256: string;
   content_excerpt?: string;
   wayback_url: string;
+  /** Which URL eval 06 re-fetches to verify content_sha256. Default "live". */
+  verify_via?: "live" | "wayback";
 }
 
 export interface RealModeInput {
