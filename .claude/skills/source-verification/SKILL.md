@@ -30,11 +30,28 @@ with shape:
 ```
 
 ## Procedure
+
+**Canonical path: use the CLI** at `tools/research/capture.ts`:
+
+```bash
+npm run research:capture -- \
+  --score-ref BFA/A2/2024 \
+  --url https://comtradeplus.un.org/.../bfa-2024 \
+  --excerpt "France: 14.5% of total imports in 2024"
+```
+
+The tool does all five steps below, refuses to overwrite existing
+receipts, and writes a receipt that already conforms to
+`schemas/receipt.schema.json`. Use `--dry-run` to preview.
+
+If you need to do it by hand (debugging the tool itself, recovering
+from a partial state, etc.):
+
 1. **Fetch.** `WebFetch(source_url)` → record `http_status`, full body.
 2. **Hash.** Compute `sha256(body)` → `content_sha256`.
 3. **Excerpt.** Pull the first ~500 chars OR (preferably) the specific paragraph / table cell that supports the score's `raw_value`. Quote verbatim.
 4. **Archive.** Submit to Wayback (`https://web.archive.org/save/<url>`) and record the returned snapshot URL. If submission fails (rate limit, blocked), fall back to the latest existing snapshot via `https://archive.org/wayback/available?url=<url>`. If no snapshot exists at all, FAIL — flag the PR and ask the maintainer to handle manually.
-5. **Write the receipt.** JSON, pretty-printed.
+5. **Write the receipt.** JSON, pretty-printed, at `evidence/<git-short-sha>/<ISO3>-<indicator>-<year>.json` (or `event-<id>.json`).
 
 ## What the CI eval (06) will check
 - Receipt exists for every changed Score / Event in the PR diff.

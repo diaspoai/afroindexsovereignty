@@ -20,6 +20,9 @@
     "preview": "astro preview",
     "lint:composite": "bash .claude/hooks/forbid-composite.sh --scan",
     "gen:africa": "tsx scripts/gen-africa-paths.ts",
+    "research:init-country": "tsx tools/research/init-country.ts",
+    "research:add-score": "tsx tools/research/add-score.ts",
+    "research:capture": "tsx tools/research/capture.ts",
     "e2e": "playwright test",
     "ci": "npm run validate && npm run normalize && npm run test && npm run build && npm run e2e"
   },
