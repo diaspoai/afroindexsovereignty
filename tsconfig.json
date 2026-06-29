@@ -1,54 +1,34 @@
 {
-	"compilerOptions": {
-		"target": "ES2022",
-		"module": "ESNext",
-		"moduleResolution": "Bundler",
-		"lib": [
-			"ES2022",
-			"DOM",
-			"DOM.Iterable"
-		],
-		"strict": true,
-		"noImplicitAny": true,
-		"noUncheckedIndexedAccess": true,
-		"exactOptionalPropertyTypes": true,
-		"esModuleInterop": true,
-		"skipLibCheck": true,
-		"resolveJsonModule": true,
-		"isolatedModules": true,
-		"allowImportingTsExtensions": true,
-		"noEmit": true,
-		"jsx": "preserve",
-		"baseUrl": ".",
-		"paths": {
-			"@data/*": [
-				"data/*"
-			],
-			"@schemas/*": [
-				"schemas/*"
-			],
-			"@scripts/*": [
-				"scripts/*"
-			],
-			"@built/*": [
-				"built/*"
-			],
-			"@site/*": [
-				"src/*"
-			]
-		}
-	},
-	"include": [
-		"scripts/**/*.ts",
-		"evals/**/*.ts",
-		"src/**/*.ts",
-		"src/**/*.astro",
-		"./worker-configuration.d.ts"
-	],
-	"exclude": [
-		"node_modules",
-		"dist",
-		".astro",
-		"built"
-	]
+  "compilerOptions": {
+    "target": "ES2022",
+    "module": "ESNext",
+    "moduleResolution": "Bundler",
+    "lib": ["ES2022", "DOM", "DOM.Iterable"],
+    "strict": true,
+    "noImplicitAny": true,
+    "noUncheckedIndexedAccess": true,
+    "exactOptionalPropertyTypes": true,
+    "esModuleInterop": true,
+    "skipLibCheck": true,
+    "resolveJsonModule": true,
+    "isolatedModules": true,
+    "allowImportingTsExtensions": true,
+    "noEmit": true,
+    "jsx": "preserve",
+    "baseUrl": ".",
+    "paths": {
+      "@data/*": ["data/*"],
+      "@schemas/*": ["schemas/*"],
+      "@scripts/*": ["scripts/*"],
+      "@built/*": ["built/*"],
+      "@site/*": ["src/*"]
+    }
+  },
+  "include": [
+    "scripts/**/*.ts",
+    "evals/**/*.ts",
+    "src/**/*.ts",
+    "src/**/*.astro"
+  ],
+  "exclude": ["node_modules", "dist", ".astro", "built"]
 }

@@ -28,8 +28,5 @@ evidence/.cache/
 # misc
 *.tsbuildinfo
 
-# wrangler files
-.wrangler
-.dev.vars*
-!.dev.vars.example
+# example files (kept tracked)
 !.env.example
