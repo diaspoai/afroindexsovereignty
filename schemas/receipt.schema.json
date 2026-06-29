@@ -1,0 +1,22 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://iafs/schemas/receipt.schema.json",
+  "title": "Receipt",
+  "description": "Evidence receipt produced by the source-verification skill. One file per changed Score (or Event) lives at evidence/<git-short-sha>/<ISO3>-<indicator>-<year>.json (or event-<event-id>.json). Required in mode=real; ignored in mode=dummy. The receipt is the trajectory-eval (06) artifact — without it the score is unverified.",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["score_ref", "source_url", "fetched_at", "http_status", "content_sha256", "wayback_url"],
+  "properties": {
+    "score_ref": {
+      "type": "string",
+      "description": "For scores: <ISO3>/<indicator_id>/<year>. For events: event/<event-id>.",
+      "pattern": "^([A-Z]{3}/[AB][1-6]/[0-9]{4}|event/[a-z0-9][a-z0-9\\-]{1,80})$"
+    },
+    "source_url": { "type": "string", "format": "uri", "minLength": 1 },
+    "fetched_at": { "type": "string", "format": "date-time" },
+    "http_status": { "type": "integer", "minimum": 100, "maximum": 599 },
+    "content_sha256": { "type": "string", "pattern": "^[a-f0-9]{64}$" },
+    "content_excerpt": { "type": "string" },
+    "wayback_url": { "type": "string", "format": "uri", "pattern": "^https://web\\.archive\\.org/" }
+  }
+}
