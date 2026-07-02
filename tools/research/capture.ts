@@ -25,6 +25,7 @@ import { writeFileSync, mkdirSync, existsSync } from "node:fs";
 import { join } from "node:path";
 import { freshFetch } from "../../scripts/lib/fetcher.ts";
 import { REPO_ROOT } from "../../scripts/lib/io.ts";
+import { probeWaybackStable } from "../../scripts/lib/wayback-stability.ts";
 import { parseArgs, gitShortSha, die, ok } from "./lib/cli.ts";
 
 interface Args {
@@ -33,20 +34,27 @@ interface Args {
   "sha-dir"?: string;
   excerpt?: string;
   "verify-via"?: string;
+  "stability-probes"?: string;
+  "stability-delay-ms"?: string;
   "dry-run"?: boolean;
 }
 
 const args = parseArgs<Args>({
-  usage: "Usage: npm run research:capture -- --score-ref <ref> --url <url> [--excerpt <text>] [--sha-dir <sha>] [--verify-via live|wayback] [--dry-run]",
+  usage: "Usage: npm run research:capture -- --score-ref <ref> --url <url> [--excerpt <text>] [--sha-dir <sha>] [--verify-via live|wayback] [--stability-probes N] [--stability-delay-ms N] [--dry-run]",
   schema: {
-    "score-ref":  { type: "string", required: true },
-    "url":        { type: "string", required: true },
-    "sha-dir":    { type: "string" },
-    "excerpt":    { type: "string" },
-    "verify-via": { type: "string" },
-    "dry-run":    { type: "boolean" },
+    "score-ref":          { type: "string", required: true },
+    "url":                { type: "string", required: true },
+    "sha-dir":            { type: "string" },
+    "excerpt":            { type: "string" },
+    "verify-via":         { type: "string" },
+    "stability-probes":   { type: "string" },
+    "stability-delay-ms": { type: "string" },
+    "dry-run":            { type: "boolean" },
   },
 });
+
+const STABILITY_PROBES = Math.max(1, parseInt(args["stability-probes"] ?? "3", 10));
+const STABILITY_DELAY_MS = Math.max(0, parseInt(args["stability-delay-ms"] ?? "2000", 10));
 
 const verifyVia = (args["verify-via"] ?? "live") as "live" | "wayback";
 if (verifyVia !== "live" && verifyVia !== "wayback") {
@@ -93,14 +101,29 @@ ok(`capture: wayback ${waybackUrl}`);
 let hashedHttpStatus: number;
 let contentSha256: string;
 if (verifyVia === "wayback") {
-  ok(`capture: hashing wayback snapshot (verify_via=wayback)`);
-  const snap = await freshFetch(waybackUrl);
-  if (snap.fetch_error || snap.http_status < 200 || snap.http_status >= 400) {
-    die(`wayback snapshot fetch failed (status ${snap.http_status}): ${snap.fetch_error ?? "non-2xx"}. Snapshot may need a few seconds to settle; retry shortly.`);
+  const probe = await probeWaybackStable(waybackUrl, {
+    probes: STABILITY_PROBES,
+    delayMs: STABILITY_DELAY_MS,
+    fetchFn: freshFetch,
+    onProbe: (i, n, r) =>
+      ok(`capture: wayback probe ${i}/${n} · HTTP ${r.http_status} · sha256 ${r.content_sha256.slice(0, 12)}…`),
+  });
+  if (probe.fetchError) {
+    die(`wayback snapshot fetch failed — ${probe.fetchError}. Snapshot may need a few seconds to settle; retry shortly.`);
   }
-  hashedHttpStatus = snap.http_status;
-  contentSha256 = snap.content_sha256;
-  ok(`capture: wayback HTTP ${snap.http_status} · sha256 ${snap.content_sha256.slice(0, 12)}…`);
+  if (!probe.stable) {
+    die(
+      `wayback URL returned ${probe.uniqueHashes.length} different sha256 hashes across ${STABILITY_PROBES} probes: ${probe.uniqueHashes.map((h) => h.slice(0, 12) + "…").join(", ")}\n` +
+      `  This source is not stable enough for a real-mode receipt — eval 06 would drift in CI.\n` +
+      `  Options:\n` +
+      `    (a) pick a more static source (Wikipedia archive dump, government archive, treaty PDF)\n` +
+      `    (b) wait ~24h and retry — some Wayback snapshots settle after archival\n` +
+      `    (c) increase --stability-delay-ms and retry to rule out CDN cache jitter`,
+    );
+  }
+  hashedHttpStatus = probe.httpStatus;
+  contentSha256 = probe.contentSha256;
+  ok(`capture: wayback stable across ${STABILITY_PROBES} probes · HTTP ${probe.httpStatus} · sha256 ${probe.contentSha256.slice(0, 12)}…`);
 } else {
   hashedHttpStatus = live.http_status;
   contentSha256 = live.content_sha256;
@@ -149,6 +172,7 @@ export function waybackIdMode(waybackUrl: string): string {
   if (!m) return waybackUrl;
   return `${m[1]}id_${m[2]}`;
 }
+
 
 /**
  * Try to save a new snapshot. On failure (rate limit, blocked, etc.),
