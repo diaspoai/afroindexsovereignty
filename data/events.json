@@ -1,1 +1,58 @@
-[]
+[
+  {
+    "id": "bfa-2022-01-24-damiba-coup",
+    "country": "BFA",
+    "date": "2022-01-24",
+    "axis": "A",
+    "indicator_id": "A5",
+    "title_fr": "Coup d'État du lieutenant-colonel Damiba",
+    "title_en": "Lt.-Col. Damiba coup",
+    "description_fr": "Le lieutenant-colonel Paul-Henri Sandaogo Damiba renverse le président Roch Marc Christian Kaboré. Macron et la France condamnent le putsch aux côtés de la CEDEAO, mais le pacte clientéliste défense/coopération avec Paris reste actif : la Task Force Sabre n'est pas remise en cause à ce stade.",
+    "description_en": "Lt.-Col. Paul-Henri Sandaogo Damiba overthrows President Roch Marc Christian Kaboré. Macron and France condemn the coup alongside ECOWAS, but the clientelist defense/cooperation pact with Paris remains active: Task Force Sabre is not challenged at this point.",
+    "direction": "0",
+    "source_url": "https://en.wikipedia.org/wiki/January_2022_Burkina_Faso_coup_d%27%C3%A9tat",
+    "source_date": "2026-06-30"
+  },
+  {
+    "id": "bfa-2022-09-30-traore-coup",
+    "country": "BFA",
+    "date": "2022-09-30",
+    "axis": "A",
+    "indicator_id": "A5",
+    "title_fr": "Coup d'État du capitaine Traoré",
+    "title_en": "Capt. Traoré coup",
+    "description_fr": "Le capitaine Ibrahim Traoré renverse Damiba. La junte accuse la France d'avoir soutenu Damiba; les 1er–2 octobre, des manifestants attaquent l'ambassade de France à Ouagadougou (gaz lacrymogènes). Le pacte clientéliste reste formellement actif mais commence à se fissurer.",
+    "description_en": "Capt. Ibrahim Traoré ousts Damiba. The junta accuses France of having backed Damiba; on 1–2 October, protesters attack the French embassy in Ouagadougou (tear gas). The clientelist pact remains formally active but begins to crack.",
+    "direction": "0",
+    "source_url": "https://www.france24.com/en/africa/20221002-security-forces-fire-tear-gas-at-burkina-protesters-outside-french-embassy-after-coup",
+    "source_date": "2022-10-02"
+  },
+  {
+    "id": "bfa-2023-02-18-sabre-flag-lowering",
+    "country": "BFA",
+    "date": "2023-02-18",
+    "axis": "A",
+    "indicator_id": "A4",
+    "title_fr": "Cérémonie de fin d'opérations de Sabre au Camp Bila Zagré",
+    "title_en": "Sabre end-of-operations ceremony at Camp Bila Zagré",
+    "description_fr": "Cérémonie de baisser des couleurs au Camp Bila Zagré (Kamboinsin), présidée par le colonel Adam Néré (BF) et le lieutenant-colonel Louis Lecacheur (FR). Fin officielle des opérations de la Task Force Sabre au Burkina Faso. Quelques dizaines de militaires français restent encore plusieurs semaines. La présence combattante française se termine ici; la base légale (accord de 1961) ne sera dénoncée que le 28 février 2023 (voir BFA/A4/2023).",
+    "description_en": "Flag-lowering ceremony at Camp Bila Zagré (Kamboinsin), presided over by Col. Adam Néré (BF) and Lt.-Col. Louis Lecacheur (FR). Official end of Task Force Sabre operations in Burkina Faso. A few dozen French troops remained for several more weeks. French combat presence ends here; the legal basis (1961 accord) is only denounced on 28 February 2023 (see BFA/A4/2023).",
+    "direction": "+",
+    "source_url": "https://fr.euronews.com/2023/02/20/fin-officielle-des-operations-des-troupes-francaises-au-burkina-faso",
+    "source_date": "2023-02-20"
+  },
+  {
+    "id": "bfa-2023-08-07-tax-treaty-termination",
+    "country": "BFA",
+    "date": "2023-08-07",
+    "axis": "A",
+    "indicator_id": "A3",
+    "title_fr": "Dénonciation de la convention fiscale franco-burkinabè de 1965",
+    "title_en": "Termination of the 1965 Franco-Burkinabè tax treaty",
+    "description_fr": "Note diplomatique du 7 août 2023 notifiant la France de la dénonciation de la convention de non-double imposition du 11 août 1965, prenant effet le 8 novembre 2023. Évènement fiscal séparé du cluster défense de janvier–février 2023; pertinent pour A3 (dépendance financière) plutôt que pour A5.",
+    "description_en": "Diplomatic note of 7 August 2023 notifying France of the termination of the 11 August 1965 non-double-taxation convention, effective 8 November 2023. A fiscal event separate from the January–February 2023 defense cluster; relevant to A3 (financial dependence) rather than A5.",
+    "direction": "+",
+    "source_url": "https://burkina24.com/2023/08/08/le-burkina-faso-denonce-une-convention-fiscale-qui-le-liait-avec-la-france/",
+    "source_date": "2023-08-08"
+  }
+]
